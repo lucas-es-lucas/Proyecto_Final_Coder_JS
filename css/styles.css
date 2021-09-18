@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #333333;
+  color: #333333; }
+
+li a {
+  color: #e6e6e6; }
+
+.link_activo {
+  color: #666666; }
+
+.options, .sub_option {
+  text-align: center;
+  font-weight: normal;
+  color: #333333;
+  background-color: none; }
+
+.card__movie {
+  font-style: oblique; }
+  .card__movie__image {
+    width: 15vw; }
+
+.selected {
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+  background-color: #333333; }
+
+.resumen {
+  text-align: center; }

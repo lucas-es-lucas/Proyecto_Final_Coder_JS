@@ -1,0 +1,9 @@
+$fuente-principal: 'Roboto', sans-serif;
+$fuente-titulos: 'Tourney', cursive;
+$fuente-secundaria: 'Rajdhani', sans-serif;
+$fuente-tamano: 1rem;
+$color-background: hsl(0, 0%, 20%);
+$color-text: hsl(0, 0%, 20%);
+$color-text-selected: lighten($color: $color-text, $amount: 90);
+$color-link: hsl(0, 0%, 90%);
+$color-link-active: lighten($color: $color-background, $amount: 20);

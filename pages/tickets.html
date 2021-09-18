@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Fuentes -->
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+     <!-- Estilo Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <!-- css propio -->
+     <link rel="stylesheet" href="/css/styles.css">
+     <title>ENTRADAS</title>
+</head>
+<body>
+     <!-- MENU -->
+     <header class="header">
+          <ul>
+               <li><a href="../index.html">INICIO</a></li>
+               <li><a href="/pages/movies.html">PELICULAS</a></li>
+               <li><a href="/pages/theaters.html">CINES</a></li>
+               <li><a class="link_activo" href="#">ENTRADAS</a></li>
+          </ul>
+     </header>
+     <main class="container">
+          <!-- OPCIONES DE COMPRA -->
+          <div class="row">
+               <!-- <button class="btn col-6 offset-3 my-2 py-2 bg-success action" id="btn__start">QUIERO COMPRAR ENTRADAS!</button> -->
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__movie">
+                    <h4>PELICULAS</h4>
+                    <div class="option__movie" id="peliculas">
+                         <!-- <img class="movie__poster" src="/images/posters/silence_of_the_lambs.jpg" alt="silence_of_the_lambs">
+                         <h4 class="movie__title">silence_of_the_lambs</h4>
+                         <h3 class="movie__genre">thriller</h3> -->
+                    </div>
+               </div>
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__theater">
+                    <h4>CINES</h4>
+                    <div class="option__theater" id="cines"></div>
+               </div>
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__date">
+                    <h4>DIAS</h4>
+                    <div class="option__date" id="dias"></div>
+               </div>
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__time">
+                    <h4>HORARIOS</h4>
+                    <div class="option__time" id="horarios"></div>
+               </div>
+               <!-- <div class="col-6 offset-3 my-2 py-2 bg-warning options options__room">
+                    <h4>ASIENTOS</h4>
+                    <div class="option__room" id="salas"></div>
+               </div> -->
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__ticket">
+                    <h4>ENTRADAS ($100)</h4>
+                    <div class="option__ticket" id="entradas"></div>
+               </div>
+               <!-- CONFIRMAR FUNCION -->
+               <div id="btn_resumen_funcion" class="btn col-6 offset-3 my-2 py-2 bg-info confirm confirm__ticket">
+                    <h4>TODO OK?</h4>
+               </div>
+               <!-- OPCIONES DE PAGO -->               
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__prom">
+                    <h4>PROMOCIONES</h4>
+                    <div class="option__prom" id="promociones"></div>
+               </div>
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__pay">
+                    <h4>FORMAS DE PAGO</h4>
+                    <div class="option__pay" id="formas_de_pago" ></div>
+               </div>
+               <div class="col-6 offset-3 my-2 py-2 bg-warning options options__cuota">
+                    <h4>CUOTAS</h4>
+                    <div class="option__cuota" id="cuotas"></div>
+               </div>
+               <!-- CONFIRMAR COMPRA -->
+               <div id="btn_resumen_compra" class="btn col-6 offset-3 my-2 py-2 bg-info confirm confirm__pay">
+                    <h4>SEGUIMOS OK?</h4>
+               </div>
+               <!-- RESUMEN DE COMPRA -->
+               <div id="resumen_compra" class="col-6 offset-3 my-2 py-2 bg-danger resumen">
+                    <h4>TU COMPRA</h4>
+               </div>
+          </div>
+     </main>
+     <footer class="footer">
+          <!-- FORM CONTACTO - NEWSLETTER -->
+     </footer>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+     <script src="/scripts/classes.js"></script>
+     <script src="/scripts/functions.js"></script>
+     <script src="/scripts/tickets.js"></script>
+</body>
+</html>
