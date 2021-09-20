@@ -1,18 +1,12 @@
-.options, .sub_option {
+.option, .sub_option {
      text-align: center;
      font-weight: normal;
      color: $color-text;
      background-color: none;
 }
-.card__movie {
-     font-style: oblique;
-     &__image {
-          width: 15vw;
-     }
-}
 .selected {
-     text-align: center;
-     font-weight: bolder;
+     // text-align: center;
+     // font-weight: bolder;
      color: $color-text-selected;
-     background-color: $color-background;
+     background-color: $color-background-selected;
 }

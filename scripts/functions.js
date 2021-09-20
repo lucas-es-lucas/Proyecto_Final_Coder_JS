@@ -1,22 +1,32 @@
 // FUNCIONES GLOBALES
 function vaciar_contenedor (contenedor) {
-     while (contenedor.childElementCount > 0) {
-          contenedor.removeChild(contenedor.firstChild);
+     let contenedor_a_vaciar = document.getElementById(contenedor);
+     console.log(contenedor_a_vaciar.childElementCount);
+     while (contenedor_a_vaciar.childElementCount > 0) {
+          contenedor_a_vaciar.removeChild(contenedor_a_vaciar.firstChild);
      }
 }
 function resetear_contenedor (contenedor) {
-     let contenedor_a_vaciar = document.getElementById(contenedor);
-     // console.log(contenedor_a_vaciar.childElementCount);
-     for (let i = 0; i <= contenedor_a_vaciar.childElementCount - 1; i++) {
-          // console.log(contenedor_a_vaciar.children[i]);
-          if (contenedor_a_vaciar.children[i].classList.contains('selected')) {
-               contenedor_a_vaciar.children[i].classList.remove('selected');
+     let contenedor_a_resetear = document.getElementById(contenedor);
+     // console.log(contenedor_a_resetear.childElementCount);
+     for (let i = 0; i <= contenedor_a_resetear.childElementCount - 1; i++) {
+          // console.log(contenedor_a_resetear.children[i]);
+          if (contenedor_a_resetear.children[i].classList.contains('selected')) {
+               contenedor_a_resetear.children[i].classList.remove('selected');
           }
      }
 }
+function guardar_localStorage (array, clase) {
+     for (const item of array) {
+          localStorage.setItem(`${clase}_${item.codigo}`, JSON.stringify(item));
+          // (clase_codigo, item del array)
+     }
+     localStorage.setItem(`lista_local_${clase}`, JSON.stringify(array));
+}
 function preparar_compra () {
+     vaciar_contenedor('movies');
      llenar_arrays_globales();
-     llenar_div_card(peliculas, 'peliculas');
+     llenar_div_card('movies', 'movie', true);
 }
 function llenar_arrays_globales () {
      // RESTRICCIONES
@@ -26,34 +36,38 @@ function llenar_arrays_globales () {
      let restriccion4 = new Restriccion(18, 'Sólo Para Adultos');
      restricciones = [restriccion1, restriccion2, restriccion3, restriccion4];
      // console.log(restricciones);
-     // PELICULAS
-     let pelicula1 = new Pelicula(1, 'El Silencio de los Inocentes', 'Director1', restricciones[3], 'Thriller', '../images/posters/silence_of_the_lambs.jpg');
-     let pelicula2 = new Pelicula(2, 'Duro de Matar', 'Director2', restricciones[1], 'Acción', '../images/posters/die_hard.jpg');
-     let pelicula3 = new Pelicula(3, 'Toy Story', 'Director3', restricciones[0], 'Comedia', '../images/posters/toy_story.jpg');
-     let pelicula4 = new Pelicula(4, 'El Sexto Sentido', 'Director4', restricciones[2], 'Terror', '../images/posters/the_sixth_sense.jpg');
-     peliculas = [pelicula1, pelicula2, pelicula3, pelicula4];
-     // PELICULAS ORDENADAS POR LA RESTRICCION DE EDADES
-     // peliculas.sort(function (a, b) {
+     // movieS
+     let movie1 = new Movie(1, 'El Silencio de los Inocentes', 'Director1', restricciones[3], 'Thriller', '../images/posters/silence_of_the_lambs.jpg');
+     let movie2 = new Movie(2, 'Duro de Matar', 'Director2', restricciones[1], 'Acción', '../images/posters/die_hard.jpg');
+     let movie3 = new Movie(3, 'Toy Story', 'Director3', restricciones[0], 'Comedia', '../images/posters/toy_story.jpg');
+     let movie4 = new Movie(4, 'El Sexto Sentido', 'Director4', restricciones[2], 'Terror', '../images/posters/the_sixth_sense.jpg');
+     movies = [movie1, movie2, movie3, movie4];
+     guardar_localStorage(movies, 'movie');
+     lista_local_movie = JSON.parse(localStorage.getItem('lista_local_movie'));
+     console.log(lista_local_movie);
+     // movieS ORDENADAS POR LA RESTRICCION DE EDADES
+     // movies.sort(function (a, b) {
      //      return a.restriccion.edad - b.restriccion.edad;
      // });
-     // console.log(peliculas);
+     // console.log(movies);
      // CINES
-     let cine1 = new Cine(1, 'Cine 1');
-     let cine2 = new Cine(2, 'Cine 2');
-     let cine3 = new Cine(3, 'Cine 3');
-     let cine4 = new Cine(4, 'Cine 4');
-     cines = [cine1, cine2, cine3, cine4];
-     // console.log(cines);
+     let theater1 = new Theater(1, 'Cine 1', 'CABA');
+     let theater2 = new Theater(2, 'Cine 2', 'Zona Norte');
+     let theater3 = new Theater(3, 'Cine 3', 'Zon Oeste');
+     let theater4 = new Theater(4, 'Cine 4', 'Zona Sur');
+     theaters = [theater1, theater2, theater3, theater4];
+     guardar_localStorage(theaters, 'theater');
+     // console.log(theaters);
      // DIAS
-     let dia1 = new Dia(1, 'Lunes');
-     let dia2 = new Dia(2, 'Martes');
-     let dia3 = new Dia(3, 'Miércoles');
-     let dia4 = new Dia(4, 'Jueves');
-     let dia5 = new Dia(5, 'Viernes');
-     let dia6 = new Dia(6, 'Sábado');
-     let dia7 = new Dia(7, 'Domingo');
-     dias = [dia1, dia2, dia3, dia4, dia5, dia6, dia7];
-     // console.log(dias);
+     let day1 = new Day(1, 'Lunes');
+     let day2 = new Day(2, 'Martes');
+     let day3 = new Day(3, 'Miércoles');
+     let day4 = new Day(4, 'Jueves');
+     let day5 = new Day(5, 'Viernes');
+     let day6 = new Day(6, 'Sábado');
+     let day7 = new Day(7, 'Domingo');
+     days = [day1, day2, day3, day4, day5, day6, day7];
+     // console.log(days);
      // HORARIOS
      let horario1 = new Horario(1, '11:00');
      let horario2 = new Horario(2, '15:00');
@@ -76,75 +90,131 @@ function llenar_arrays_globales () {
      // console.log(promociones);
 }
 // OPCIONES
-function llenar_div (array_origen, id_div) {
+function llenar_div (array_origen, id_div, clase) {
      console.log(array_origen, id_div);     
      let div_a_llenar = document.getElementById(id_div);
-     // console.log(lista.childElementCount);
-     // USAR LA FUNCION VACIAR_CONTENEDOR ??
+     console.log(div_a_llenar.childElementCount);
      if (div_a_llenar.childElementCount == 0) {
           array_origen.forEach(elemento => {
                let tit = document.createElement("h4");
                tit.id = elemento.codigo;
                tit.textContent = elemento.descripcion;
                tit.classList.add('option');
+               tit.classList.add(`${clase}`);
                div_a_llenar.appendChild(tit);
                tit.onclick = () => elegir_elemento(id_div, tit);
-
-               // REVISAR - APLICA SOLAMENTE PARA LAS PELICULAS
-               switch (id_div) {
-                    case 'peliculas':
-                         let sub_tit = document.createElement("h5");
-                         sub_tit.textContent = elemento.genero;
-                         sub_tit.classList.add('sub_option');
-                         div_a_llenar.appendChild(sub_tit);
-                         break;
-               }
           });
      }
 }
-function llenar_div_card (array_origen, id_div) {
+function llenar_div_card (id_div, clase, img) {
+     let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
      console.log(array_origen, id_div);     
      let div_a_llenar = document.getElementById(id_div);
 
-     if (div_a_llenar.childElementCount == 0) {
+     //if (div_a_llenar.childElementCount == 0) {
           array_origen.forEach(elemento => {
                // card
                let card = document.createElement('div');
                card.id = elemento.codigo;
-               card.classList.add('card__movie');
+               card.classList.add('card');
+               card.classList.add('option');
+               card.classList.add(`${clase}`);
                // imagen
-               let image = document.createElement('img');
-               image.src = elemento.imagen;
-               image.classList.add('card__movie__image');
-               card.appendChild(image);
+               if (img) {
+                    let img = document.createElement('img');
+                    img.src = elemento.imagen;
+                    img.classList.add('card-img-top');
+                    img.classList.add(`${clase}__img`);
+                    card.appendChild(img);
+               }
+               // body
+               let body = document.createElement('div');
+               body.classList.add('card-body');
+               body.classList.add(`${clase}__body`);
                // titulo
                let tit = document.createElement("h4");
                tit.textContent = elemento.descripcion;
-               tit.classList.add('card__movie__title');
-               card.appendChild(tit);
+               tit.classList.add('card-title');
+               tit.classList.add(`${clase}__title`);
+               body.appendChild(tit);
                // detalle
+               let sub = document.createElement("h5");
                switch (id_div) {
-                    case 'peliculas':
-                         let detail = document.createElement("h5");
-                         detail.textContent = elemento.genero;
-                         detail.classList.add('card__movie__detail');
-                         div_a_llenar.appendChild(detail);
+                    case 'movies':
+                         sub.textContent = elemento.genero;
+                         sub.classList.add('card-subtitle');
+                         sub.classList.add(`${clase}__subtitle`);
+                         body.appendChild(sub);
+                         break;
+                    case 'theaters':
+                         sub.textContent = elemento.adress;
+                         sub.classList.add('card-subtitle');
+                         sub.classList.add(`${clase}__subtitle`);
+                         body.appendChild(sub);
                          break;
                }
                // append al html
+               card.appendChild(body);
                div_a_llenar.appendChild(card);
                card.onclick = () => elegir_elemento(id_div, card);
           });
-     }
+     //}
 }
+// function llenar_div_card_img (id_div, clase) {
+//      let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
+//      console.log(array_origen, id_div);     
+//      let div_a_llenar = document.getElementById(id_div);
+
+//      //if (div_a_llenar.childElementCount == 0) {
+//           array_origen.forEach(elemento => {
+//                // card
+//                let card = document.createElement('div');
+//                card.id = elemento.codigo;
+//                card.classList.add('card');
+//                card.classList.add('option');
+//                card.classList.add(`${clase}`);
+//                // imagen
+//                let img = document.createElement('img');
+//                img.src = elemento.imagen;
+//                img.classList.add('card-img-top');
+//                img.classList.add(`${clase}__img`);
+//                card.appendChild(img);
+//                // body
+//                let body = document.createElement('div');
+//                body.classList.add('card-body');
+//                body.classList.add(`${clase}__body`);
+//                // titulo
+//                let tit = document.createElement("h4");
+//                tit.textContent = elemento.descripcion;
+//                tit.classList.add('card-title');
+//                tit.classList.add(`${clase}__title`);
+//                body.appendChild(tit);
+//                // detalle
+//                switch (id_div) {
+//                     case 'movies':
+//                          let sub = document.createElement("h5");
+//                          sub.textContent = elemento.genero;
+//                          sub.classList.add('card-subtitle');
+//                          sub.classList.add(`${clase}__subtitle`);
+//                          body.appendChild(sub);
+//                          break;
+//                }
+//                // append al html
+//                card.appendChild(body);
+//                div_a_llenar.appendChild(card);
+//                card.onclick = () => elegir_elemento(id_div, card);
+//           });
+//      //}
+// }
 // INPUTS
-function crear_elemento (elemento, id, contenedor) {
+function crear_elemento (elemento, id, contenedor, clase) {
+     console.log(elemento, id, contenedor, clase);
      let padre = document.getElementById(contenedor);
      if (padre.childElementCount == 0) {
           let hijo = document.createElement(elemento);
           hijo.id = id;
-          // hijo.style.textAlign = 'center';
           hijo.classList.add('option');
+          hijo.classList.add(`${clase}`);
           console.log(hijo);
           padre.appendChild(hijo);
      }
@@ -154,27 +224,24 @@ function elegir_elemento (id_div, elemento_seleccionado) {
      marcar_elemento(id_div, elemento_seleccionado);
      console.log(elemento_seleccionado.id);
      switch (id_div) {
-          case 'peliculas':
-               // pelicula_elegida = elemento_seleccionado.id;
-               ticket_nuevo.pelicula = elemento_seleccionado.id;
+          case 'movies':
+               ticket_nuevo.movie = elemento_seleccionado.id;
                //edad               
-               llenar_div(cines, 'cines');
+               // llenar_div(theaters, 'theaters', 'theater');
+               llenar_div_card('theaters', 'theater', false);
                break;
-          case 'cines':
-               // cine_elegido = elemento_seleccionado.id;
-               ticket_nuevo.cine = elemento_seleccionado.id;
-               llenar_div(dias, 'dias');
+          case 'theaters':
+               ticket_nuevo.theater = elemento_seleccionado.id;
+               llenar_div(days, 'days', 'day');
                break;
-          case 'dias':
-               // dia_elegido = elemento_seleccionado.id;
-               ticket_nuevo.dia = elemento_seleccionado.id;
-               llenar_div(horarios, 'horarios');
+          case 'days':
+               ticket_nuevo.day = elemento_seleccionado.id;
+               llenar_div(horarios, 'horarios', 'horario');
                break;
           case 'horarios':
-               // horario_elegido = elemento_seleccionado.id;
                ticket_nuevo.horario = elemento_seleccionado.id;
                //cantidad_entradas
-               crear_elemento('input', 'cantidad_entradas', 'entradas');
+               crear_elemento('input', 'cantidad_entradas', 'entradas', 'entrada');
                let cantidad_entradas = document.getElementById('cantidad_entradas');
                cantidad_entradas.onkeyup = () => {
                     ticket_nuevo.cantidad_entradas = cantidad_entradas.value;
@@ -182,33 +249,35 @@ function elegir_elemento (id_div, elemento_seleccionado) {
                break;
           case 'promociones':
                // //sala_elegida
-               // promocion_elegida = elemento_seleccionado.id;
                ticket_nuevo.promocion = elemento_seleccionado.id;
                descuento = promociones.find(promocion => promocion.codigo == ticket_nuevo.promocion).descuento;
                console.log(promocion_elegida, descuento);
-               llenar_div(formas_de_pago, 'formas_de_pago');
+               llenar_div(formas_de_pago, 'formas_de_pago', 'forma_de_pago');
                break;
           case 'formas_de_pago':
                forma_de_pago_elegida = elemento_seleccionado.id;
                //cantidad_cuotas
                if (forma_de_pago_elegida == 2) {
-                    crear_elemento('input', 'cantidad_cuotas', 'cuotas');
+                    crear_elemento('input', 'cantidad_cuotas', 'cuotas', 'cuota');
                     let cantidad_cuotas = document.getElementById('cantidad_cuotas');
                     cantidad_cuotas.onkeyup = () => {
                          ticket_nuevo.cantidad_cuotas = cantidad_cuotas.value;
                     }
+               } else {
+                    vaciar_contenedor('cuotas');
+                    ticket_nuevo.cantidad_cuotas = 1;
                }
                break;
      }
 }
 function marcar_elemento (contenedor, elemento_seleccionado) {
-     // let contenedor_a_vaciar = document.getElementById(contenedor);
      console.log(contenedor, elemento_seleccionado);
      resetear_contenedor(contenedor);
      elemento_seleccionado.classList.toggle('selected');
 }
 function mostrar_resumen_compra () {
      console.log(promocion_elegida, descuento);
+     // calcular importe
      ticket_nuevo.importe = importe = calcular_importe(valor_entrada, ticket_nuevo.cantidad_entradas, descuento);
      // calcular pagos
      ticket_nuevo.importe_cuota = importe_cuota = calcular_cuota(importe, ticket_nuevo.cantidad_cuotas);
@@ -218,50 +287,6 @@ function mostrar_resumen_compra () {
      // guardar ticket
      tickets.push(ticket_nuevo);
 }
-// // VALIDACIONES
-// function validar_pelicula (pelicula) {
-//      console.log(pelicula);
-//      for (const Pelicula of peliculas) {
-//           if (Pelicula.codigo == pelicula.codigo) {
-//                return true;
-//           }
-//      }
-//      return false;
-// }
-// function validar_cine (cine) {
-//      console.log(cine);
-//      for (const Cine of cines) {
-//           if (Cine.codigo == cine.codigo) {
-//                return true;
-//           }
-//      }
-//      return false;
-// }
-// function validar_dia (dia) {
-//      console.log(dia);
-//      for (const Dia of dias) {
-//           if (Dia.codigo == dia.codigo) {
-//                return true;
-//           }
-//      }
-//      return false;
-// }
-// function validar_horario (horario) {
-//      console.log(horario);
-//      for (const Horario of horarios) {
-//           if (Horario.codigo == horario.codigo) {
-//                return true;
-//           }
-//      }
-//      return false;
-// }
-// function validar_valor (valor) {
-//      if (!isNaN(parseInt(valor))) {
-//           return true;
-//      } else {
-//           return false;
-//      }
-// }
 // INGRESO DE DATOS
 function informar_edad () {
      return prompt('Qué edad tenés?');

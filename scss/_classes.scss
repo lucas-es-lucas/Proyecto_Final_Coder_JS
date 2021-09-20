@@ -1,0 +1,57 @@
+// .card {
+//      background-color: lighten($color: $color-background, $amount: 10);
+//      &__img-top {
+//           width: 20vw;
+//           margin: 2rem 1rem 1rem 1rem;
+//           align-self: center;
+//      }
+//      &__card-body {
+//           flex: 0 0 auto;
+//           justify-items: center;
+//           text-align: center;
+//           &__title {
+//                font-style: oblique;
+//                font-weight: bold;
+//                color: $color-text;
+//                @include textos(($font-size * 1.5), center);
+//           }
+//           &__subtitle {
+//                color: $color-text;
+//           }
+//      }
+// }
+
+.movie {
+     // background-color: lighten($color: $color-background, $amount: 60);
+     &__img {
+          width: 20vw;
+          margin: 2rem 1rem 1rem 1rem;
+          align-self: center;
+     }
+     &__title {
+          font-style: oblique;
+          font-weight: bold;
+          color: $color-text;
+          @include textos(($font-size * 1.5), center);
+     }
+     &__subtitle {
+          color: $color-text;
+     }
+}
+.theater {
+     // background-color: lighten($color: $color-background, $amount: 60);
+     &__img {
+          width: 20vw;
+          margin: 2rem 1rem 1rem 1rem;
+          align-self: center;
+     }
+     &__title {
+          font-style: oblique;
+          font-weight: bold;
+          color: $color-text;
+          @include textos(($font-size * 1.5), center);
+     }
+     &__subtitle {
+          color: $color-text;
+     }
+}

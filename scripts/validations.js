@@ -1,26 +1,26 @@
 // VALIDACIONES
-function validar_pelicula (pelicula) {
-     console.log(pelicula);
-     for (const Pelicula of peliculas) {
-          if (Pelicula.codigo == pelicula.codigo) {
+function validar_movie (movie) {
+     console.log(movie);
+     for (const Movie of movies) {
+          if (Movie.codigo == movie.codigo) {
                return true;
           }
      }
      return false;
 }
-function validar_cine (cine) {
-     console.log(cine);
-     for (const Cine of cines) {
-          if (Cine.codigo == cine.codigo) {
+function validar_theater (theater) {
+     console.log(theater);
+     for (const Theater of theaters) {
+          if (Theater.codigo == theater.codigo) {
                return true;
           }
      }
      return false;
 }
-function validar_dia (dia) {
-     console.log(dia);
-     for (const Dia of dias) {
-          if (Dia.codigo == dia.codigo) {
+function validar_day (day) {
+     console.log(day);
+     for (const Day of days) {
+          if (Day.codigo == day.codigo) {
                return true;
           }
      }

@@ -14,5 +14,13 @@
     "nodemon": "^2.0.12"
   },
   "devDependencies": {},
-  "description": "Proyecto Final del curso de JavaScript de CoderHouse"
+  "description": "Proyecto Final del curso de JavaScript de CoderHouse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucas-es-lucas/Proyecto_Final_Coder_JS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucas-es-lucas/Proyecto_Final_Coder_JS/issues"
+  },
+  "homepage": "https://github.com/lucas-es-lucas/Proyecto_Final_Coder_JS#readme"
 }

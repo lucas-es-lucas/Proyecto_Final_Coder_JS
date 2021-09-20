@@ -4,8 +4,36 @@
      box-sizing: border-box;
 }
 body {
+     margin: $font-size * 2;
      background-color: $color-background;
+     font-size: $font-size;
+     font-family: $font-principal;     
      color: $color-text;
+     ul {
+          list-style: none;
+     }
+
+     a {
+          text-decoration: none;
+          color: $color-link;
+          &:hover {
+               color: $color-text;
+          }
+     }
+     
+     .container {
+          margin-top: 4rem;
+          .container__titulo {
+               margin-top: 2rem;
+               margin-bottom: 2rem;
+               background-color: $color-link;
+               color: $color-background;
+               font-family: $font-titles;
+               font-style: oblique;
+               font-size: $font-size * 2;
+               text-align: center;
+          }
+     }
 }
 li a {
      color: $color-link;

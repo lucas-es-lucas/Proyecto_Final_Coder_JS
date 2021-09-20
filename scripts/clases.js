@@ -8,7 +8,7 @@ class Restriccion {
           return (edad >= this.edad);
      }
 }
-class Pelicula {
+class Movie {
      constructor (codigo, titulo, director, restriccion, genero, poster) {
           this.codigo = codigo,
           this.descripcion = titulo,
@@ -19,22 +19,23 @@ class Pelicula {
           this.genero = genero,
           this.poster = poster
           }
-     getPelicula () {
+     getMovie () {
           return this.titulo + ' ' + this.director + ' ' + this.restriccion.leyenda + ' ' + this.genero;
      }
 }
-class Cine {
-     constructor (codigo, cine) {
+class Theater {
+     constructor (codigo, theater, adress) {
           this.codigo = codigo,
-          this.descripcion = cine,
-          this.cine = cine
+          this.descripcion = theater,
+          this.theater = theater,
+          this.adress = adress
      }
 }
-class Dia {
-     constructor (codigo, dia) {
+class Day {
+     constructor (codigo, day) {
           this.codigo = codigo,          
-          this.descripcion = dia,
-          this.dia = dia
+          this.descripcion = day,
+          this.day = day
      }
 }
 class Horario {
@@ -67,10 +68,10 @@ class Forma_de_Pago {
      }
 }
 class Ticket {
-     constructor (pelicula, cine, dia, horario, sala, cantidad_entradas, cantidad_cuotas, importe, importe_cuota, promocion) {
-          this.pelicula = pelicula, 
-          this.cine = cine, 
-          this.dia = dia, 
+     constructor (movie, theater, day, horario, sala, cantidad_entradas, cantidad_cuotas, importe, importe_cuota, promocion) {
+          this.movie = movie, 
+          this.theater = theater, 
+          this.day = day, 
           this.horario = horario, 
           this.sala = sala, 
           this.cantidad_entradas = cantidad_entradas, 
@@ -81,7 +82,7 @@ class Ticket {
      }
      // RESUMEN DE COMPRA
      getTicketInfo () {
-          let resumen = `Resumen de compra: \nPelícula: ${this.pelicula.titulo} (${this.pelicula.genero}) en el cine ${this.cine.cine} \nFunción: día ${this.dia.dia} a las ${this.horario} en la sala ${this.sala} \n${this.cantidad_entradas} entradas \nTotal: $${this.importe} \n`;
+          let resumen = `Resumen de compra: \nPelícula: ${this.movie.titulo} (${this.movie.genero}) en el theater ${this.theater.theater} \nFunción: día ${this.day.day} a las ${this.horario} en la sala ${this.sala} \n${this.cantidad_entradas} entradas \nTotal: $${this.importe} \n`;
           if (this.cantidad_cuotas > 1) {
                resumen += `Cuotas: ${this.cantidad_cuotas} de $${this.importe_cuota} \n`;
           }
@@ -93,7 +94,7 @@ class Ticket {
      // MOSTRAR INFO EN HTML
      mostrar_importes () {
           let resumen = document.getElementById('resumen_compra');
-          vaciar_contenedor(resumen);
+          vaciar_contenedor('resumen_compra');
 
           // 'IMPORTE TOTAL'
           let total = document.createElement('h3');
