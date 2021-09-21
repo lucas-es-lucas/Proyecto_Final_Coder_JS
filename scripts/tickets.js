@@ -33,6 +33,9 @@ let importe_cuota = 0;
 // btn__start.addEventListener('click', preparar_compra);
 preparar_compra();
 
+// let btn_theater = document.getElementById('btn__theater');
+// btn_theater.onclick = () => llenar_div(days, 'days', 'day');
+
 // CONFIRMAR DATOS PARCIALES
 let btn_resumen_funcion = document.getElementById('btn_resumen_funcion');
 btn_resumen_funcion.onclick = () => llenar_div(promociones, 'promociones');

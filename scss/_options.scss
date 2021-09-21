@@ -1,12 +1,16 @@
-.option, .sub_option {
+.option {
      text-align: center;
      font-weight: normal;
      color: $color-text;
      background-color: none;
 }
 .selected {
-     // text-align: center;
-     // font-weight: bolder;
      color: $color-text-selected;
      background-color: $color-background-selected;
+
+}
+.btn {
+     &__day {
+          color: $color-text;
+     }
 }

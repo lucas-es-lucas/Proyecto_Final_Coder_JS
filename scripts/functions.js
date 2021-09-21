@@ -111,7 +111,7 @@ function llenar_div_card (id_div, clase, img) {
      console.log(array_origen, id_div);     
      let div_a_llenar = document.getElementById(id_div);
 
-     //if (div_a_llenar.childElementCount == 0) {
+     if (div_a_llenar.childElementCount == 0) {
           array_origen.forEach(elemento => {
                // card
                let card = document.createElement('div');
@@ -158,7 +158,7 @@ function llenar_div_card (id_div, clase, img) {
                div_a_llenar.appendChild(card);
                card.onclick = () => elegir_elemento(id_div, card);
           });
-     //}
+     }
 }
 // function llenar_div_card_img (id_div, clase) {
 //      let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));

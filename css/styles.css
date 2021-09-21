@@ -5,7 +5,7 @@
 
 body {
   margin: 2rem;
-  background-color: #f2f2f2;
+  background-color: #cccccc;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
   color: #2662d9; }
@@ -22,7 +22,7 @@ body {
       margin-top: 2rem;
       margin-bottom: 2rem;
       background-color: #1a1a1a;
-      color: #f2f2f2;
+      color: #cccccc;
       font-family: "Tourney", cursive;
       font-style: oblique;
       font-size: 2rem;
@@ -32,7 +32,7 @@ li a {
   color: #1a1a1a; }
 
 .link_activo {
-  color: #999999; }
+  color: #2662d9; }
 
 .movie__img {
   width: 20vw;
@@ -64,7 +64,7 @@ li a {
 .theater__subtitle {
   color: #2662d9; }
 
-.option, .sub_option {
+.option {
   text-align: center;
   font-weight: normal;
   color: #2662d9;
@@ -72,9 +72,12 @@ li a {
 
 .selected {
   color: white;
-  background-color: #737373; }
+  background-color: #a8c0f0; }
+
+.btn__day {
+  color: #2662d9; }
 
 .resumen {
   text-align: center;
   font-weight: normal;
-  color: #f2f2f2; }
+  color: #cccccc; }
