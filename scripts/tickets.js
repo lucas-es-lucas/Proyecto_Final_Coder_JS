@@ -38,7 +38,7 @@ preparar_compra();
 
 // CONFIRMAR DATOS PARCIALES
 let btn_resumen_funcion = document.getElementById('btn_resumen_funcion');
-btn_resumen_funcion.onclick = () => llenar_div(promociones, 'promociones');
+btn_resumen_funcion.onclick = () => llenar_div(promociones, 'promociones', 'promocion');
 // btn_resumen_funcion.addEventListener('click', llenar_div(promociones, 'promociones'));
 
 let btn_resumen_compra = document.getElementById('btn_resumen_compra');

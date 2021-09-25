@@ -102,7 +102,7 @@ function llenar_div (array_origen, id_div, clase) {
                tit.classList.add('option');
                tit.classList.add(`${clase}`);
                div_a_llenar.appendChild(tit);
-               tit.onclick = () => elegir_elemento(id_div, tit);
+               tit.onclick = () => elegir_elemento(id_div, tit, tit.id);
           });
      }
 }
@@ -156,7 +156,7 @@ function llenar_div_card (id_div, clase, img) {
                // append al html
                card.appendChild(body);
                div_a_llenar.appendChild(card);
-               card.onclick = () => elegir_elemento(id_div, card);
+               card.onclick = () => elegir_elemento(id_div, card, card.id);
           });
      }
 }
@@ -220,8 +220,8 @@ function crear_elemento (elemento, id, contenedor, clase) {
      }
 }
 // SELECCIONAR OPCION Y ARMAR SIGUIENTE
-function elegir_elemento (id_div, elemento_seleccionado) {
-     marcar_elemento(id_div, elemento_seleccionado);
+function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
+     marcar_elemento(id_div, elemento_seleccionado, id_elemento);
      console.log(elemento_seleccionado.id);
      switch (id_div) {
           case 'movies':
@@ -250,6 +250,7 @@ function elegir_elemento (id_div, elemento_seleccionado) {
           case 'promociones':
                // //sala_elegida
                ticket_nuevo.promocion = elemento_seleccionado.id;
+               console.log(ticket_nuevo.promocion);
                descuento = promociones.find(promocion => promocion.codigo == ticket_nuevo.promocion).descuento;
                console.log(promocion_elegida, descuento);
                llenar_div(formas_de_pago, 'formas_de_pago', 'forma_de_pago');
@@ -270,10 +271,28 @@ function elegir_elemento (id_div, elemento_seleccionado) {
                break;
      }
 }
-function marcar_elemento (contenedor, elemento_seleccionado) {
+function marcar_elemento (contenedor, elemento_seleccionado, id_elemento) {
      console.log(contenedor, elemento_seleccionado);
-     resetear_contenedor(contenedor);
-     elemento_seleccionado.classList.toggle('selected');
+     // resetear_contenedor(contenedor);
+     // console.log($(`#${contenedor}`).attr('id'));
+     // console.log($(`#${id_elemento}`).hasClass('selected'));
+     if ($(`#${contenedor} #${id_elemento}`).hasClass('selected')) {
+          // si ya estaba selected -> desmarca todos
+          $(`#${contenedor} .option`).removeClass('selected');
+          $(`#${contenedor} .option`).fadeIn("slow");
+     } else {
+          // si no estaba selected -> desmarca todos y lo marca selected
+          $(`#${contenedor} .option`).removeClass('selected');
+          $(`#${contenedor} .option`).fadeOut("slow");
+          $(`#${contenedor} #${id_elemento}`).toggleClass('selected');
+          $(`#${contenedor} .selected`).fadeIn("slow");
+     }
+     // $(`#${contenedor} .option`).removeClass('selected');
+     // $(`#${contenedor} .option`).fadeOut("slow");
+     // elemento_seleccionado.classList.toggle('selected');
+     // $(`#${contenedor} .selected`).fadeIn("slow");
+     // si ya estaba selected -> desmarca todos
+     // si no estaba selected -> desmarca todos y lo marca selected
 }
 function mostrar_resumen_compra () {
      console.log(promocion_elegida, descuento);
