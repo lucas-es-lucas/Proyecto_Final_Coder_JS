@@ -1,0 +1,12 @@
+.counter {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: center;
+     &__sub, &__add {
+          border: $color-text;
+          color: $color-text;
+          font-size: 2vw;
+          font-weight: bolder;
+     }
+}

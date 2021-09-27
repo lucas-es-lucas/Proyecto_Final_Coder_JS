@@ -64,6 +64,17 @@ li a {
 .theater__subtitle {
   color: #2662d9; }
 
+.counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; }
+  .counter__sub, .counter__add {
+    border: #2662d9;
+    color: #2662d9;
+    font-size: 2vw;
+    font-weight: bolder; }
+
 .option {
   text-align: center;
   font-weight: normal;
