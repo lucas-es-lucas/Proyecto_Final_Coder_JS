@@ -2,7 +2,7 @@
 
 ***
 
-Beletería virtual que te deja sin excusas para quedarte en tu casa. 
+Boletería virtual que te deja sin excusas para quedarte en tu casa. 
 
 Los estrenos más esperados y los clásicos imprescindibles. 
 
