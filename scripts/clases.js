@@ -109,5 +109,7 @@ class Ticket {
                forma_pago.textContent = `${this.cantidad_cuotas} cuotas de $${this.importe_cuota}`;
                resumen.appendChild(forma_pago);
           }
+
+          $('#resumen_compra').slideDown(2000);
      }
 }

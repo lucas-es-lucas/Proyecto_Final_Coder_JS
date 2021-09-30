@@ -68,7 +68,10 @@ li a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center; }
+  align-items: center;
+  background-color: #bed0f4; }
+  .counter__cant {
+    color: #2662d9; }
   .counter__sub, .counter__add {
     border: #2662d9;
     color: #2662d9;
@@ -82,11 +85,8 @@ li a {
   background-color: none; }
 
 .selected {
-  color: white;
-  background-color: #a8c0f0; }
-
-.btn__day {
-  color: #2662d9; }
+  color: #2662d9;
+  background-color: #bed0f4; }
 
 .resumen {
   text-align: center;

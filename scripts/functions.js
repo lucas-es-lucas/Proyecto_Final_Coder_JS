@@ -121,7 +121,9 @@ function dibujar_contador (id, contenedor, clase) {
           // alert($(`#${contenedor} #${id}`).text());
      });
      $(`#btn_add_${clase}`).on('click', function () {
+          $(`#${contenedor} #${id}`).fadeOut('fast');
           $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) + 1);
+          $(`#${contenedor} #${id}`).fadeIn('fast');
           // alert($(`#${contenedor} #${id}`).text());
      });
      // <div class="counter">
@@ -130,6 +132,12 @@ function dibujar_contador (id, contenedor, clase) {
      //      <h4 id="cantidad_entradas">0</h4>
      //      <button class="btn" id="btn_add"> + </button>
      // </div>
+}
+function presentar_opciones (id_div, id_elemento, speed_delay, speed_slide) {
+     console.log(id_div, id_elemento);
+     $(`#${id_div} #${id_elemento}`).css('display', 'none')
+     .delay(speed_delay)
+     .slideDown(speed_slide);
 }
 function dibujar_card (id_div, clase, img) {
      let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
@@ -182,6 +190,12 @@ function dibujar_card (id_div, clase, img) {
                card.appendChild(body);
                div_a_llenar.appendChild(card);
                card.onclick = () => elegir_elemento(id_div, card, card.id);
+               
+               presentar_opciones(id_div, card.id, 500, 2000);
+               // console.log(id_div, card.id);
+               // $(card).css('display', 'none')
+               //      .delay(500)
+               //      .slideDown(2000);
           });
      }
 }

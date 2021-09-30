@@ -5,12 +5,12 @@
      background-color: none;
 }
 .selected {
-     color: $color-text-selected;
+     color: $color-text;
      background-color: $color-background-selected;
 
 }
-.btn {
-     &__day {
-          color: $color-text;
-     }
-}
+// .btn {
+//      &__day {
+//           color: $color-text;
+//      }
+// }

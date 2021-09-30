@@ -16,34 +16,34 @@
 </head>
 <body>
      <!-- MENU -->
-     <header class="header">
+     <!-- <header class="header">
           <ul>
                <li><a href="../index.html">INICIO</a></li>
                <li><a href="/pages/movies.html">PELICULAS</a></li>
                <li><a href="/pages/theaters.html">CINES</a></li>
                <li><a class="link_activo" href="#">ENTRADAS</a></li>
           </ul>
-     </header>
-     <!-- <header>
+     </header> -->
+     <header>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <div class="container-fluid">
-                  <a class="navbar-brand" href="index.html">CineXcusas</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                      <div class="navbar-nav">
-                      <a class="nav-link" href="index.html">CineXcusas</a>
-                      <a class="nav-link" href="#nosotros">NOSOTROS</a>
-                      <a class="nav-link active" aria-current="page" href="tickets.html">Entradas</a>
-                      <a class="nav-link" href="contacto.html">CONTACTO</a>
-                  </div>
-              </div>
+               <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.html">cineXcusas</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                         <div class="navbar-nav">
+                         <!-- <a class="nav-link" href="index.html">CineXcusas</a> -->
+                         <a class="nav-link" href="/pages/movies.html">PELICULAS</a>
+                         <a class="nav-link" href="/pages/theaters.html">CINES</a>
+                         <a class="nav-link active link_activo" aria-current="page" href="#">ENTRADAS</a>
+                    </div>
+               </div>
           </nav>
-      </header> -->
+     </header>
      <main class="container">
           <!-- OPCIONES DE COMPRA -->
-          <div class="row cartelera">
+          <section id="section_cartelera" class="row cartelera">
                <div class="col-6 offset-3 my-2 py-2 options options__movie" id="movies">
                     <!-- <div class="card movie">
                          <img class="card-img-top movie__img" src="/images/posters/silence_of_the_lambs.jpg" alt="silence_of_the_lambs">
@@ -58,12 +58,23 @@
                <div class="col-6 offset-3 my-2 py-2 options options__theater" id="theaters">
                </div>
                <!-- <button type="button" class="btn col-6 offset-3 my-2 py-2 btn-dark btn__day" id="btn__day"><h4>DIAS</h4></button> -->
-               <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>DIAS</h4></div>
-               <div class="col-6 offset-3 my-2 py-2 bg-light options options__date" id="days">
-                    <!-- <div class="option__date"></div> -->
+               <div class="col-6 offset-3 my-2 py-2 bg-dark">
+                    <h4>DIAS</h4>
+                    <!-- <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                         <option selected>DIAS</option>
+                         <option value="1">LUNES</option>
+                         <option value="2">MARTES</option>
+                         <option value="3">MIERCOLES</option>
+                         <option value="4">JUEVES</option>
+                         <option value="5">VIERNES</option>
+                         <option value="6">SABADO</option>
+                         <option value="7">DOMINGO</option>
+                    </select> -->
+               </div>
+               <div class="col-6 offset-3 my-2 py-2 options options__date" id="days">
                </div>
                <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>HORARIOS</h4></div>
-               <div class="col-6 offset-3 my-2 py-2 bg-light options options__time" id="horarios">
+               <div class="col-6 offset-3 my-2 py-2 options options__time" id="horarios">
                     <!-- <div class="option__time"></div> -->
                </div>
                <!-- <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>ASIENTOS</h4></div> -->
@@ -71,7 +82,7 @@
                     <div class="option__room" id="salas"></div>
                </div> -->
                <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>ENTRADAS ($100)</h4></div>
-               <div class="col-6 offset-3 my-2 py-2 bg-light options options__ticket" id="entradas">
+               <div class="col-6 offset-3 my-2 py-2 options options__ticket" id="entradas">
                     <!-- <div class="counter">
                          <button class="btn m-2 p-2 counter__sub" id="btn_sub"> - </button>
                          <h4 class="m-2 p-2 counter__cant" id="cantidad_entradas">0</h4>
@@ -84,17 +95,19 @@
                <div id="btn_resumen_funcion" class="btn col-6 offset-3 my-2 py-2 bg-info confirm confirm__ticket">
                     <h4>TODO OK?</h4>
                </div>
+          </section>
+          <section id="section_pago" class="row pagar" style="display:none">
                <!-- OPCIONES DE PAGO -->
                <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>PROMOCIONES</h4></div>
-               <div class="col-6 offset-3 my-2 py-2 bg-light options options__prom" id="promociones">
+               <div class="col-6 offset-3 my-2 py-2 options options__prom" id="promociones">
                     <!-- <div class="option__prom"></div> -->
                </div>
                <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>FORMAS DE PAGO</h4></div>
-               <div class="col-6 offset-3 my-2 py-2 bg-light options options__pay" id="formas_de_pago">
+               <div class="col-6 offset-3 my-2 py-2 options options__pay" id="formas_de_pago">
                     <!-- <div class="option__pay"></div> -->
                </div>
                <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>CUOTAS</h4></div>
-               <div class="col-6 offset-3 my-2 py-2 bg-light options options__cuota" id="cuotas">
+               <div class="col-6 offset-3 my-2 py-2 options options__cuota" id="cuotas">
                     <!-- <div class="option__cuota"></div> -->
                </div>
                <!-- CONFIRMAR COMPRA -->
@@ -103,9 +116,51 @@
                </div>
                <!-- RESUMEN DE COMPRA -->
                <div id="resumen_compra" class="col-6 offset-3 my-2 py-2 bg-danger resumen">
-                    <h4>TU COMPRA</h4>
+                    <!-- <h4>TU COMPRA</h4> -->
                </div>
-          </div>
+          </section>
+          <section id="section_comprador" class="resumen_comprador" style="display:none">
+               <!-- <h3>TUS DATOS</h3> -->
+               <form class="row g-3 comprador">
+                    <div class="col-12 col-md-6 col-lg-6 comprador__nombre">
+                         <label for="validationDefault01" class="form-label">Nombre</label>
+                         <input type="text" class="form-control" id="validationDefault01" value="" placeholder="Nombre"  required>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 comprador__apellido">
+                         <label for="validationDefault02" class="form-label">Apellido</label>
+                         <input type="text" class="form-control" id="validationDefault02" value="" placeholder="Apellido" required>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-2 comprador__envio">
+                         <label for="validationDefault04" class="form-label">Formas de Envío</label>
+                         <select class="form-select" id="validationDefault04" required>
+                         <option selected disabled value="">Seleccionar...</option>
+                         <option value="1">Envío a Domicilio</option>
+                         <option value="2">Retiro en Correo</option>
+                         <option value="3">Retiro en Aduana</option>
+                         </select>
+                    </div>                    
+                    <div class="col-12 col-md-12 col-lg-10 comprador__direccion">
+                         <label for="validationDefault02" class="form-label">Dirección</label>
+                         <input type="text" class="form-control" id="validationDefault02" value="" placeholder="Calle, Número, Piso, Departamento" required>
+                    </div>
+                    <div class="col-8 col-md-8 col-lg-4 comprador__localidad">
+                         <label for="validationDefault03" class="form-label">Localidad</label>
+                         <input type="text" class="form-control" id="validationDefault03" value="" placeholder="Localidad" required>
+                    </div>
+                    <div class="col-4 col-md-4 col-lg-2 comprador__cp">
+                         <label for="validationDefault05" class="form-label">Código Postal</label>
+                         <input type="text" class="form-control" id="validationDefault05" placeholder="1234" required>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-10 comprador__email">
+                         <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="tu_correo_electronico@email.com.ar" required>
+                         <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                    <div class="col-12">
+                         <button class="btn btn-primary comprador__boton boton" type="submit">Enviar</button>
+                    </div>
+               </form>
+          </section>
      </main>
      <footer class="footer">
           <!-- FORM CONTACTO - NEWSLETTER -->

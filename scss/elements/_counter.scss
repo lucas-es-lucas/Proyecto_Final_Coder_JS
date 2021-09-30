@@ -3,6 +3,11 @@
      flex-direction: row;
      justify-content: space-around;
      align-items: center;
+     background-color: $color-background-selected;
+     &__cant {
+          color: $color-text;
+          // background-color: $color-background-selected;
+     }
      &__sub, &__add {
           border: $color-text;
           color: $color-text;
