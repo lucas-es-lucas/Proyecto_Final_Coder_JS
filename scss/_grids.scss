@@ -1,0 +1,5 @@
+// CARTELERA
+.cartelera {
+     @include grillas__simetricas(4, auto, 5, auto, 2vw, 2vw);
+     grid-template-areas: ;
+}

@@ -22,9 +22,9 @@
 // }
 
 .movie {
-     // background-color: lighten($color: $color-background, $amount: 60);
+     background-color: lighten($color: $color-background, $amount: 60);
      &__img {
-          width: 20vw;
+          width: 10vw;
           margin: 2rem 1rem 1rem 1rem;
           align-self: center;
      }
@@ -37,11 +37,14 @@
      &__subtitle {
           color: $color-text;
      }
+     &__text {
+          color: $color-text;
+     }
 }
 .theater {
      // background-color: lighten($color: $color-background, $amount: 60);
      &__img {
-          width: 20vw;
+          width: 10vw;
           margin: 2rem 1rem 1rem 1rem;
           align-self: center;
      }

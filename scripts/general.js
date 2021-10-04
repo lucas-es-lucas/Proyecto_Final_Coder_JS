@@ -1,10 +1,34 @@
 // FUNCIONES GLOBALES
 function vaciar_contenedor (contenedor) {
      let contenedor_a_vaciar = document.getElementById(contenedor);
-     console.log(contenedor_a_vaciar.childElementCount);
+     // console.log(contenedor_a_vaciar.childElementCount);
      while (contenedor_a_vaciar.childElementCount > 0) {
           contenedor_a_vaciar.removeChild(contenedor_a_vaciar.firstChild);
+          console.log(contenedor, 'entra a borrar un child');
      }
+}
+function resetear_opciones (contenedor_actual) {
+     console.log(contenedor_actual);
+     switch (contenedor_actual) {
+          case 'movies':
+               vaciar_contenedor('entradas');
+               vaciar_contenedor('horarios');
+               vaciar_contenedor('days');
+               vaciar_contenedor('theaters');
+               break;
+          case 'theaters':
+               vaciar_contenedor('entradas');
+               vaciar_contenedor('horarios');
+               vaciar_contenedor('days');
+               break;
+          case 'days':
+               vaciar_contenedor('entradas');
+               vaciar_contenedor('horarios');
+               break;
+          default:
+               break;
+     }
+
 }
 function resetear_contenedor (contenedor) {
      let contenedor_a_resetear = document.getElementById(contenedor);
@@ -26,7 +50,7 @@ function guardar_localStorage (array, clase) {
 function preparar_compra () {
      vaciar_contenedor('movies');
      llenar_arrays_globales();
-     dibujar_card('movies', 'movie', true);
+     // dibujar_card('movies', 'movie', true);
 }
 function llenar_arrays_globales () {
      // RESTRICCIONES
@@ -36,15 +60,15 @@ function llenar_arrays_globales () {
      let restriccion4 = new Restriccion(18, 'Sólo Para Adultos');
      restricciones = [restriccion1, restriccion2, restriccion3, restriccion4];
      // console.log(restricciones);
-     // movieS
-     let movie1 = new Movie(1, 'El Silencio de los Inocentes', 'Director1', restricciones[3], 'Thriller', '../images/posters/silence_of_the_lambs.jpg');
-     let movie2 = new Movie(2, 'Duro de Matar', 'Director2', restricciones[1], 'Acción', '../images/posters/die_hard.jpg');
-     let movie3 = new Movie(3, 'Toy Story', 'Director3', restricciones[0], 'Comedia', '../images/posters/toy_story.jpg');
-     let movie4 = new Movie(4, 'El Sexto Sentido', 'Director4', restricciones[2], 'Terror', '../images/posters/the_sixth_sense.jpg');
-     movies = [movie1, movie2, movie3, movie4];
-     guardar_localStorage(movies, 'movie');
-     lista_local_movie = JSON.parse(localStorage.getItem('lista_local_movie'));
-     console.log(lista_local_movie);
+     // MOVIES
+     // let movie1 = new Movie(1, 'El Silencio de los Inocentes', 'Director1', restricciones[3], 'Thriller', '../images/posters/silence_of_the_lambs.jpg');
+     // let movie2 = new Movie(2, 'Duro de Matar', 'Director2', restricciones[1], 'Acción', '../images/posters/die_hard.jpg');
+     // let movie3 = new Movie(3, 'Toy Story', 'Director3', restricciones[0], 'Comedia', '../images/posters/toy_story.jpg');
+     // let movie4 = new Movie(4, 'El Sexto Sentido', 'Director4', restricciones[2], 'Terror', '../images/posters/the_sixth_sense.jpg');
+     // movies = [movie1, movie2, movie3, movie4];
+     // guardar_localStorage(movies, 'movie');
+     // lista_local_movie = JSON.parse(localStorage.getItem('lista_local_movie'));
+     // console.log(lista_local_movie);
      // movieS ORDENADAS POR LA RESTRICCION DE EDADES
      // movies.sort(function (a, b) {
      //      return a.restriccion.edad - b.restriccion.edad;
@@ -70,10 +94,13 @@ function llenar_arrays_globales () {
      // console.log(days);
      // HORARIOS
      let horario1 = new Horario(1, '11:00');
-     let horario2 = new Horario(2, '15:00');
-     let horario3 = new Horario(3, '19:00');
-     let horario4 = new Horario(4, '23:00');
-     horarios = [horario1, horario2, horario3, horario4];
+     let horario2 = new Horario(2, '13:00');
+     let horario3 = new Horario(3, '15:00');
+     let horario4 = new Horario(4, '17:00');
+     let horario5 = new Horario(5, '19:00');
+     let horario6 = new Horario(6, '21:00');
+     let horario7 = new Horario(7, '23:00');
+     horarios = [horario1, horario2, horario3, horario4, horario5, horario6, horario7];
      // console.log(horarios);
      // PROMOCIONES
      let promocion1 = new Promocion(1, '10% descuento', .9);
@@ -91,9 +118,9 @@ function llenar_arrays_globales () {
 }
 // OPCIONES
 function llenar_div (array_origen, id_div, clase) {
-     console.log(array_origen, id_div);     
+     // console.log(array_origen, id_div);     
      let div_a_llenar = document.getElementById(id_div);
-     console.log(div_a_llenar.childElementCount);
+     // console.log(div_a_llenar.childElementCount);
      if (div_a_llenar.childElementCount == 0) {
           array_origen.forEach(elemento => {
                let tit = document.createElement("h4");
@@ -108,24 +135,28 @@ function llenar_div (array_origen, id_div, clase) {
 }
 function dibujar_contador (id, contenedor, clase) {
      console.log(id, contenedor, clase);
-     $(`#${contenedor}`).append(
-          `<div class="counter">
-               <button class="btn counter__sub" id="btn_sub_${clase}"> - </button>
-               <h4 class="counter__cant" id="${id}">1</h4>
-               <button class="btn counter__add" id="btn_add_${clase}"> + </button>
-          </div>`);
-     $(`#btn_sub_${clase}`).on('click', function () {
-          if (Number($(`#${contenedor} #${id}`).text()) > 1) {
-               $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) - 1);
-          }
-          // alert($(`#${contenedor} #${id}`).text());
-     });
-     $(`#btn_add_${clase}`).on('click', function () {
-          $(`#${contenedor} #${id}`).fadeOut('fast');
-          $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) + 1);
-          $(`#${contenedor} #${id}`).fadeIn('fast');
-          // alert($(`#${contenedor} #${id}`).text());
-     });
+     let contenedor_a_llenar = document.getElementById(contenedor);
+
+     if (contenedor_a_llenar.childElementCount == 0) {
+          $(`#${contenedor}`).append(
+               `<div class="counter">
+                    <button class="btn counter__sub" id="btn_sub_${clase}"> - </button>
+                    <h4 class="counter__cant" id="${id}">1</h4>
+                    <button class="btn counter__add" id="btn_add_${clase}"> + </button>
+               </div>`);
+          $(`#btn_sub_${clase}`).on('click', function () {
+               if (Number($(`#${contenedor} #${id}`).text()) > 1) {
+                    $(`#${contenedor} #${id}`).fadeOut('fast');
+                    $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) - 1);
+                    $(`#${contenedor} #${id}`).fadeIn('fast');
+               }
+          });
+          $(`#btn_add_${clase}`).on('click', function () {
+               $(`#${contenedor} #${id}`).fadeOut('fast');
+               $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) + 1);
+               $(`#${contenedor} #${id}`).fadeIn('fast');
+          });
+     }
      // <div class="counter">
      //      <button class="btn" id="btn_sub"> - </button>
      //      <!-- <input type="number"> -->
@@ -134,19 +165,47 @@ function dibujar_contador (id, contenedor, clase) {
      // </div>
 }
 function presentar_opciones (id_div, id_elemento, speed_delay, speed_slide) {
-     console.log(id_div, id_elemento);
+     // console.log(id_div, id_elemento);
      $(`#${id_div} #${id_elemento}`).css('display', 'none')
      .delay(speed_delay)
      .slideDown(speed_slide);
 }
-function dibujar_card (id_div, clase, img) {
-     let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
-     console.log(array_origen, id_div);     
+function dibujar_cine (id_div, clase, img, id_movie) {
+     // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
+     // console.log(array_origen, id_div);
+     // let nuevoCalculos = calculos.filter(item => item.id !== Number(elemento.id))
+     // calculos = nuevoCalculos;
+
+     let funciones_con_la_peli = funciones.filter(item => item.id_movie == id_movie);
+     console.log(funciones_con_la_peli);
+     // RECORRER LOS CINES
+     // SI EL CINE NO ESTÁ EN LAS FUNCIONES DE LA PELI, LO FILTRO DEL ARRAY DE CINES
+     // console.log(theaters);     
+     let theaters_filter = [];
+     theaters_filter = theaters;
+
+     for (let i = 0; i < theaters.length; i++) {
+          // console.log(theaters[i].codigo);
+          if (funciones_con_la_peli.find(item => item.id_theater == theaters[i].codigo) == undefined) {
+               // console.log(theaters[i].codigo);
+               theaters_filter = theaters_filter.filter(item => item.codigo != theaters[i].codigo);
+          };
+     }
+     // ARRAY DE CINES CON LOS CINES QUE TIENEN LA PELI
+     console.log(theaters_filter.length);
+     console.log(funciones_con_la_peli.length);
+     if (funciones_con_la_peli.length == 0 || theaters_filter.length == 0) {
+          let theaters_filter_sin_funciones = new Theater (0, 'PRÓXIMO ESTRENO', 'Fecha a Confirmar');
+          // let theater1 = new Theater(1, 'Cine 1', 'CABA');
+          theaters_filter = [theaters_filter_sin_funciones];
+     }
+
      let div_a_llenar = document.getElementById(id_div);
 
      if (div_a_llenar.childElementCount == 0) {
-          array_origen.forEach(elemento => {
+          theaters_filter.forEach(elemento => {
                // card
+               console.log('entra a dibujar el cine');
                let card = document.createElement('div');
                card.id = elemento.codigo;
                card.classList.add('card');
@@ -191,11 +250,7 @@ function dibujar_card (id_div, clase, img) {
                div_a_llenar.appendChild(card);
                card.onclick = () => elegir_elemento(id_div, card, card.id);
                
-               presentar_opciones(id_div, card.id, 500, 2000);
-               // console.log(id_div, card.id);
-               // $(card).css('display', 'none')
-               //      .delay(500)
-               //      .slideDown(2000);
+               presentar_opciones(id_div, card.id, 500, 1000);
           });
      }
 }
@@ -214,24 +269,27 @@ function crear_elemento (elemento, id, contenedor, clase) {
 }
 // SELECCIONAR OPCION Y ARMAR SIGUIENTE
 function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
-     marcar_elemento(id_div, elemento_seleccionado, id_elemento);
-     console.log(elemento_seleccionado.id);
+     // console.log(elemento_seleccionado.id);
      switch (id_div) {
           case 'movies':
+               marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
                ticket_nuevo.movie = elemento_seleccionado.id;
-               //edad               
-               // llenar_div(theaters, 'theaters', 'theater');
-               dibujar_card('theaters', 'theater', false);
+               //edad
+               console.log(ticket_nuevo.movie);
+               dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
                break;
           case 'theaters':
+               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
                ticket_nuevo.theater = elemento_seleccionado.id;
                llenar_div(days, 'days', 'day');
                break;
           case 'days':
+               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
                ticket_nuevo.day = elemento_seleccionado.id;
                llenar_div(horarios, 'horarios', 'horario');
                break;
           case 'horarios':
+               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
                ticket_nuevo.horario = elemento_seleccionado.id;
                //cantidad_entradas
                dibujar_contador('cantidad_entradas', 'entradas', 'entrada');
@@ -243,14 +301,9 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                     console.log('entra al click de add entradas');
                     ticket_nuevo.cantidad_entradas = $(`#entradas #cantidad_entradas`).text();
                });
-               //
-               // crear_elemento('input', 'cantidad_entradas', 'entradas', 'entrada');
-               // let cantidad_entradas = document.getElementById('cantidad_entradas');
-               // cantidad_entradas.onkeyup = () => {
-               //      ticket_nuevo.cantidad_entradas = cantidad_entradas.value;
-               // }
                break;
           case 'promociones':
+               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
                // //sala_elegida
                ticket_nuevo.promocion = elemento_seleccionado.id;
                console.log(ticket_nuevo.promocion);
@@ -259,6 +312,7 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                llenar_div(formas_de_pago, 'formas_de_pago', 'forma_de_pago');
                break;
           case 'formas_de_pago':
+               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
                forma_de_pago_elegida = elemento_seleccionado.id;
                //cantidad_cuotas
                vaciar_contenedor('cuotas');
@@ -273,32 +327,45 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                          console.log('entra al click de add cuotas');
                          ticket_nuevo.cantidad_cuotas = $(`#cuotas #cantidad_cuotas`).text();
                     });
-                    // crear_elemento('input', 'cantidad_cuotas', 'cuotas', 'cuota');
-                    // let cantidad_cuotas = document.getElementById('cantidad_cuotas');
-                    // cantidad_cuotas.onkeyup = () => {
-                    //      ticket_nuevo.cantidad_cuotas = cantidad_cuotas.value;
-                    // }
                } else {
-                    // vaciar_contenedor('cuotas');
                     $('#cuotas').fadeOut('slow');
                     ticket_nuevo.cantidad_cuotas = 1;
                }
+               break;
+          default:
                break;
      }
 }
 function marcar_elemento (contenedor, elemento_seleccionado, id_elemento) {
      console.log(contenedor, elemento_seleccionado);
      // resetear_contenedor(contenedor);
-     // console.log($(`#${contenedor}`).attr('id'));
-     // console.log($(`#${id_elemento}`).hasClass('selected'));
      if ($(`#${contenedor} #${id_elemento}`).hasClass('selected')) {
           // si ya estaba selected -> desmarca todos
           $(`#${contenedor} .option`).removeClass('selected');
           $(`#${contenedor} .option`).fadeIn("slow");
+          resetear_opciones(contenedor);
      } else {
           // si no estaba selected -> desmarca todos y lo marca selected
           $(`#${contenedor} .option`).removeClass('selected');
           $(`#${contenedor} .option`).fadeOut("slow");
+          $(`#${contenedor} #${id_elemento}`).toggleClass('selected');
+          $(`#${contenedor} .selected`).fadeIn("slow");
+     }
+}
+function marcar_pelicula (contenedor, elemento_seleccionado, id_elemento) {
+     // console.log(contenedor, elemento_seleccionado);
+     // resetear_contenedor(contenedor);
+     if ($(`#${contenedor} #${id_elemento}`).hasClass('selected')) {
+          // si ya estaba selected -> desmarca todos
+          $(`#${contenedor} #${id_elemento}`).toggleClass('col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');
+          $(`#${contenedor} .option`).removeClass('selected');
+          $(`#${contenedor} .option`).fadeIn("slow");
+          resetear_opciones(contenedor);
+     } else {
+          // si no estaba selected -> desmarca todos y lo marca selected
+          $(`#${contenedor} .option`).removeClass('selected');
+          $(`#${contenedor} .option`).fadeOut("slow");
+          $(`#${contenedor} #${id_elemento}`).toggleClass('col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');
           $(`#${contenedor} #${id_elemento}`).toggleClass('selected');
           $(`#${contenedor} .selected`).fadeIn("slow");
      }

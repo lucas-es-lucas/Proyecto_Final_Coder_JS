@@ -9,7 +9,8 @@ class Restriccion {
      }
 }
 class Movie {
-     constructor (codigo, titulo, director, restriccion, genero, poster) {
+     constructor (id, codigo, titulo, director, restriccion, genero, poster, duracion) {
+          this.id = id;
           this.codigo = codigo,
           this.descripcion = titulo,
           this.imagen = poster,         
@@ -17,7 +18,8 @@ class Movie {
           this.director = director,
           this.restriccion = restriccion,
           this.genero = genero,
-          this.poster = poster
+          this.poster = poster,
+          this.duracion = duracion
           }
      getMovie () {
           return this.titulo + ' ' + this.director + ' ' + this.restriccion.leyenda + ' ' + this.genero;
@@ -50,6 +52,32 @@ class Sala {
           this.codigo = codigo,
           this.descripcion = sala,
           this.sala = sala
+     }
+}
+class Funcion_completa {
+     constructor (id_funcion, movie, theater, day, horario) {
+          this.id_funcion = id_funcion,
+          this.movie = movie,
+          this.theater = theater,
+          this.day = day,
+          this.horario = horario
+     }
+
+     // getFuncion () {
+     //      return this.id_funcion + ',' + this.id_movie + ',' + this.id_cinema + ',' + this.id_day + ',' + this.id_horario;
+     // }
+}
+class Funcion {
+     constructor (id_funcion, id_movie, id_theater, id_day, id_horario) {
+          this.id_funcion = id_funcion,
+          this.id_movie = id_movie,
+          this.id_theater = id_theater,
+          this.id_day = id_day,
+          this.id_horario = id_horario
+     }
+
+     getFuncion () {
+          return this.id_funcion + ',' + this.id_movie + ',' + this.id_theater + ',' + this.id_day + ',' + this.id_horario;
      }
 }
 class Promocion {

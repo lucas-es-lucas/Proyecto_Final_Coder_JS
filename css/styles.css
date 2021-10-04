@@ -34,23 +34,25 @@ li a {
 .link_activo {
   color: #2662d9; }
 
-.movie__img {
-  width: 20vw;
-  margin: 2rem 1rem 1rem 1rem;
-  align-self: center; }
-
-.movie__title {
-  font-style: oblique;
-  font-weight: bold;
-  color: #2662d9;
-  font-size: 1.5rem;
-  text-align: center; }
-
-.movie__subtitle {
-  color: #2662d9; }
+.movie {
+  background-color: white; }
+  .movie__img {
+    width: 10vw;
+    margin: 2rem 1rem 1rem 1rem;
+    align-self: center; }
+  .movie__title {
+    font-style: oblique;
+    font-weight: bold;
+    color: #2662d9;
+    font-size: 1.5rem;
+    text-align: center; }
+  .movie__subtitle {
+    color: #2662d9; }
+  .movie__text {
+    color: #2662d9; }
 
 .theater__img {
-  width: 20vw;
+  width: 10vw;
   margin: 2rem 1rem 1rem 1rem;
   align-self: center; }
 
@@ -69,14 +71,17 @@ li a {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  vertical-align: middle;
   background-color: #bed0f4; }
   .counter__cant {
+    margin: 0;
     color: #2662d9; }
   .counter__sub, .counter__add {
-    border: #2662d9;
+    border: solid #2662d9;
+    border-radius: 100%;
+    border-width: medium;
     color: #2662d9;
-    font-size: 2vw;
-    font-weight: bolder; }
+    font-weight: bold; }
 
 .option {
   text-align: center;

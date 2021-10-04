@@ -3,15 +3,19 @@
      flex-direction: row;
      justify-content: space-around;
      align-items: center;
+     vertical-align: middle;
      background-color: $color-background-selected;
      &__cant {
+          margin: 0;
           color: $color-text;
-          // background-color: $color-background-selected;
+          // @include textos(($font-size * 1.5), center);
      }
      &__sub, &__add {
-          border: $color-text;
+          border: solid $color-text;
+          border-radius: 100%;
+          border-width: medium;
           color: $color-text;
-          font-size: 2vw;
-          font-weight: bolder;
+          // @include textos(($font-size * 1.5), center);
+          font-weight: bold;
      }
 }
