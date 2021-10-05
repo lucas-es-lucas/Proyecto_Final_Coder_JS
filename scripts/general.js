@@ -269,6 +269,15 @@ function crear_elemento (elemento, id, contenedor, clase) {
 function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
      // console.log(elemento_seleccionado.id);
      switch (id_div) {
+          case 'movies_principal': 
+          // DIBUJAR FICHA DE LA PELI CON EL TRAILER Y BOTON DE COMPRAR 
+          // BOTON DE COMPRAR: EVENTO PARA IR A TICKETS.HTML CON LA PELI YA SELECTED 
+               marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
+               ticket_nuevo.movie = elemento_seleccionado.id;
+               //edad
+               console.log(ticket_nuevo.movie);
+               dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
+               break;
           case 'movies':
                marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
                ticket_nuevo.movie = elemento_seleccionado.id;

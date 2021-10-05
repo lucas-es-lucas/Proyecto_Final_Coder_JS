@@ -69,7 +69,7 @@ function get_movie (url_api_movies, id_movie, url_api_key, lang) {
           }
      });
 }
-function get_cartelera () {
+function get_cartelera (origen) {
      let url_movies = url_api_movies + list_movie + url_api_key + lang;
      $.get(url_movies, function (respuesta, estado) {
           // console.log(respuesta.results);
@@ -81,7 +81,7 @@ function get_cartelera () {
                // console.log(peliculas.length);
                for (let i = 0; i < peliculas.length; i++) {
                     // console.log(peliculas[i].id);
-                    get_pelicula(peliculas[i].id);
+                    get_pelicula(peliculas[i].id, origen);
                }
                // return peliculas;
                // console.log(peliculas);
@@ -89,7 +89,7 @@ function get_cartelera () {
           }
      })
 }
-function get_pelicula (id_movie) {
+function get_pelicula (id_movie, origen) {
      let url_movie = url_api_movies + id_movie + url_api_key + lang;
      $.get(url_movie, function (respuesta, estado) {
           // console.log(estado);
@@ -111,7 +111,7 @@ function get_pelicula (id_movie) {
                // console.log(movie);
                movies.push(movie);
                // console.log(movies);
-               dibujar_pelicula('movies', 'movie', true, pelicula);
+               dibujar_pelicula(origen, 'movie', true, pelicula);
                // return movie;
           }
      });
@@ -158,11 +158,13 @@ function dibujar_pelicula (id_div, clase, img, pelicula) {
      run.classList.add(`${clase}__subtitle__run`);
      body.appendChild(run);
      // sinopsis
-     let sinopsis = document.createElement("p");
-     sinopsis.textContent = pelicula.overview;
-     sinopsis.classList.add('card-text');
-     sinopsis.classList.add(`${clase}__text`);
-     body.appendChild(sinopsis);
+     if (id_div == 'movies_principal') {
+          let sinopsis = document.createElement("p");
+          sinopsis.textContent = pelicula.overview;
+          sinopsis.classList.add('card-text');
+          sinopsis.classList.add(`${clase}__text`);
+          body.appendChild(sinopsis);
+     }
      // append al html
      card.appendChild(body);
      div_a_llenar.appendChild(card);

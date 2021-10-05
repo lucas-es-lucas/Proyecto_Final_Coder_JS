@@ -79,7 +79,7 @@ function traer_funciones_JSON () {
 }
 
 preparar_compra();
-get_cartelera();
+get_cartelera('movies');
 console.log(movies);
 // console.log(theaters);
 // console.log(days);
