@@ -173,9 +173,7 @@ function presentar_opciones (id_div, id_elemento, speed_delay, speed_slide) {
 function dibujar_cine (id_div, clase, img, id_movie) {
      // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
      // console.log(array_origen, id_div);
-     // let nuevoCalculos = calculos.filter(item => item.id !== Number(elemento.id))
-     // calculos = nuevoCalculos;
-
+     // FUNCIONES QUE TIENE LA PELI
      let funciones_con_la_peli = funciones.filter(item => item.id_movie == id_movie);
      console.log(funciones_con_la_peli);
      // RECORRER LOS CINES
@@ -232,12 +230,12 @@ function dibujar_cine (id_div, clase, img, id_movie) {
                // detalle
                let sub = document.createElement("h5");
                switch (id_div) {
-                    case 'movies':
-                         sub.textContent = elemento.genero;
-                         sub.classList.add('card-subtitle');
-                         sub.classList.add(`${clase}__subtitle`);
-                         body.appendChild(sub);
-                         break;
+                    // case 'movies':
+                    //      sub.textContent = elemento.genero;
+                    //      sub.classList.add('card-subtitle');
+                    //      sub.classList.add(`${clase}__subtitle`);
+                    //      body.appendChild(sub);
+                    //      break;
                     case 'theaters':
                          sub.textContent = elemento.adress;
                          sub.classList.add('card-subtitle');

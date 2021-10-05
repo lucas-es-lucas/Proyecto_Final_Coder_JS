@@ -37,6 +37,10 @@
      &__subtitle {
           color: $color-text;
      }
+     &__subtitle__run {
+          font-weight: bold;
+          color: $color-text;
+     }
      &__text {
           color: $color-text;
      }

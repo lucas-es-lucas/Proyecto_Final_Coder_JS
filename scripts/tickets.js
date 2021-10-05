@@ -87,9 +87,6 @@ console.log(movies);
 traer_funciones_JSON();
 // console.log(funciones);
 
-// let btn_theater = document.getElementById('btn__theater');
-// btn_theater.onclick = () => llenar_div(days, 'days', 'day');
-
 // CONFIRMAR DATOS PARCIALES
 let btn_resumen_funcion = document.getElementById('btn_resumen_funcion');
 btn_resumen_funcion.onclick = () => $('#section_pago').slideDown(2000);

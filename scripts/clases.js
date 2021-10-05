@@ -139,5 +139,6 @@ class Ticket {
           }
 
           $('#resumen_compra').slideDown(2000);
+          $('#section_comprador').slideDown(2000);
      }
 }

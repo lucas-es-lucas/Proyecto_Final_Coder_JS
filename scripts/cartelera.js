@@ -17,7 +17,7 @@ let url_images;
 let image_size;
 let list_movie = 'now_playing';
 let id_movie = 550; //PELICULA DE PRUEBA
-let lang = '&language=en';
+let lang = '&language=es';
 
 // const url_movies = 'https://api.themoviedb.org/3/movie/550?api_key=83ee70971e16f966c95c1418658d5317';
 const url_configuration = url_api_config + url_api_key;
@@ -151,6 +151,12 @@ function dibujar_pelicula (id_div, clase, img, pelicula) {
      sub.classList.add('card-subtitle');
      sub.classList.add(`${clase}__subtitle`);
      body.appendChild(sub);
+     // genero
+     let run = document.createElement("h5");
+     run.textContent = `${pelicula.runtime} min`;
+     run.classList.add('card-subtitle');
+     run.classList.add(`${clase}__subtitle__run`);
+     body.appendChild(run);
      // sinopsis
      let sinopsis = document.createElement("p");
      sinopsis.textContent = pelicula.overview;

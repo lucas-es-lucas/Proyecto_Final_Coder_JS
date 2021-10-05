@@ -48,6 +48,9 @@ li a {
     text-align: center; }
   .movie__subtitle {
     color: #2662d9; }
+  .movie__subtitle__run {
+    font-weight: bold;
+    color: #2662d9; }
   .movie__text {
     color: #2662d9; }
 
