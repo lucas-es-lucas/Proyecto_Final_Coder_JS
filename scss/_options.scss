@@ -1,11 +1,22 @@
 .option {
+     padding-top: 1vw;
+     padding-bottom: 1vw;
      text-align: center;
      font-weight: normal;
      color: $color-text;
-     background-color: none;
+     border: $color-text solid;
+     background-color: white; // $color-background;
+}
+.options {
+     padding-top: 0;
+     padding-bottom: 0;
+     :hover {
+          color: $color-text-selected;
+          background-color: $color-background-selected;
+     }
 }
 .selected {
-     color: $color-text;
+     color: $color-text-selected;
      background-color: $color-background-selected;
 
 }

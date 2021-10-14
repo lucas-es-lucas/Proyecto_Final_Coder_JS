@@ -1,16 +1,20 @@
 .counter {
+     padding-top: 1vw;
+     padding-bottom: 1vw;
      display: flex;
      flex-direction: row;
      justify-content: space-around;
      align-items: center;
      vertical-align: middle;
      background-color: $color-background-selected;
+     border: $color-text solid;
      &__cant {
           margin: 0;
-          color: $color-text;
+          color: $color-text-selected;
           // @include textos(($font-size * 1.5), center);
      }
      &__sub, &__add {
+          background-color: $color-background;
           border: solid $color-text;
           border-radius: 100%;
           border-width: medium;

@@ -18,6 +18,7 @@ let image_size;
 let list_movie = 'now_playing';
 let id_movie = 550; //PELICULA DE PRUEBA
 let lang = '&language=es';
+let movies = new Array();
 
 // const url_movies = 'https://api.themoviedb.org/3/movie/550?api_key=83ee70971e16f966c95c1418658d5317';
 const url_configuration = url_api_config + url_api_key;
@@ -69,6 +70,19 @@ function get_movie (url_api_movies, id_movie, url_api_key, lang) {
           }
      });
 }
+async function armar_cartelera (origen) {
+     // debugger;
+     // console.log(movies);
+     preparar_compra(origen);
+     console.log(theaters);
+     console.log(days);
+     console.log(horarios);
+     // traer_funciones_JSON();
+     // console.log(funciones);
+     get_cartelera(origen);
+     // console.log(movies);
+     // traer_funciones_JSON_completas(funciones);
+}
 function get_cartelera (origen) {
      let url_movies = url_api_movies + list_movie + url_api_key + lang;
      $.get(url_movies, function (respuesta, estado) {
@@ -85,7 +99,7 @@ function get_cartelera (origen) {
                }
                // return peliculas;
                // console.log(peliculas);
-               console.log(movies);
+               // console.log(movies);
           }
      })
 }
@@ -170,5 +184,56 @@ function dibujar_pelicula (id_div, clase, img, pelicula) {
      div_a_llenar.appendChild(card);
      card.onclick = () => elegir_elemento(id_div, card, card.id);
      
-     presentar_opciones(id_div, card.id, 500, 1000);
+     presentar_opciones(id_div, card.id, 500, 1000, true);
 }
+
+// function traer_funciones_JSON () {
+//      $.get(url_JSON_funciones, function (respuesta, estado) {
+//           if (estado === 'success') {
+//                let funciones_JSON = respuesta;
+//                console.log(funciones_JSON);
+//                for (let i = 0; i < funciones_JSON.length; i++) {
+//                     let funcion = new Funcion;
+//                     funcion.id_funcion = funciones_JSON[i].id_funcion;
+//                     funcion.id_movie = funciones_JSON[i].id_movie;
+//                     funcion.id_theater = funciones_JSON[i].id_theater;
+//                     funcion.id_day = funciones_JSON[i].id_day;
+//                     funcion.id_horario = funciones_JSON[i].id_horario;
+//                     funciones.push(funcion);
+//                }
+//                console.log(funciones);
+//                // for (let i = 0; i < funciones.length; i++) {
+//                //      let funcion_completa = new Funcion_completa;
+//                //      funcion_completa.id_funcion = funciones[i].id_funcion;
+
+//                //      // console.log(funciones_JSON[i].id_movie, funciones_JSON[i].id_theater,funciones_JSON[i].id_day, funciones_JSON[i].id_horario);
+//                //      // let item =   movies.find(i => i.id == funciones[i].id_movie)
+//                //      // let item = calculos.find(i => i.id == elemento.id);
+//                //      console.log(movies);
+//                //      funcion_completa.movie = movies.find(i => i.codigo == funciones[i].id_movie);
+//                //      funcion_completa.theater = theaters.find(i => i.codigo == funciones[i].id_theater);
+//                //      funcion_completa.day = days.find(i => i.codigo == funciones[i].id_day);
+//                //      funcion_completa.horario = days.find(i => i.codigo == funciones[i].id_horario);
+//                //      funciones_completas.push(funcion_completa);
+//                //      console.log(funcion_completa);
+//                // }
+//           }
+//      })
+// }
+// function traer_funciones_JSON_completas (funciones) {
+//      for (let i = 0; i < funciones.length; i++) {
+//           let funcion_completa = new Funcion_completa;
+//           funcion_completa.id_funcion = funciones[i].id_funcion;
+
+//           // console.log(funciones_JSON[i].id_movie, funciones_JSON[i].id_theater,funciones_JSON[i].id_day, funciones_JSON[i].id_horario);
+//           // let item =   movies.find(i => i.id == funciones[i].id_movie)
+//           // let item = calculos.find(i => i.id == elemento.id);
+//           console.log(movies);
+//           funcion_completa.movie = movies.find(i => i.codigo == funciones[i].id_movie);
+//           funcion_completa.theater = theaters.find(i => i.codigo == funciones[i].id_theater);
+//           funcion_completa.day = days.find(i => i.codigo == funciones[i].id_day);
+//           funcion_completa.horario = days.find(i => i.codigo == funciones[i].id_horario);
+//           funciones_completas.push(funcion_completa);
+//           console.log(funcion_completa);
+//      }
+// }

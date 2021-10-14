@@ -5,7 +5,7 @@
 
 body {
   margin: 2rem;
-  background-color: #cccccc;
+  background-color: #e6e6e6;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
   color: #2662d9; }
@@ -22,7 +22,7 @@ body {
       margin-top: 2rem;
       margin-bottom: 2rem;
       background-color: #1a1a1a;
-      color: #cccccc;
+      color: #e6e6e6;
       font-family: "Tourney", cursive;
       font-style: oblique;
       font-size: 2rem;
@@ -69,17 +69,25 @@ li a {
 .theater__subtitle {
   color: #2662d9; }
 
+.titles {
+  color: #e6e6e6;
+  text-align: center; }
+
 .counter {
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   vertical-align: middle;
-  background-color: #bed0f4; }
+  background-color: #9ebdfa;
+  border: #2662d9 solid; }
   .counter__cant {
     margin: 0;
-    color: #2662d9; }
+    color: #1a1a1a; }
   .counter__sub, .counter__add {
+    background-color: #e6e6e6;
     border: solid #2662d9;
     border-radius: 100%;
     border-width: medium;
@@ -87,16 +95,26 @@ li a {
     font-weight: bold; }
 
 .option {
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   text-align: center;
   font-weight: normal;
   color: #2662d9;
-  background-color: none; }
+  border: #2662d9 solid;
+  background-color: white; }
+
+.options {
+  padding-top: 0;
+  padding-bottom: 0; }
+  .options :hover {
+    color: #1a1a1a;
+    background-color: #9ebdfa; }
 
 .selected {
-  color: #2662d9;
-  background-color: #bed0f4; }
+  color: #1a1a1a;
+  background-color: #9ebdfa; }
 
 .resumen {
   text-align: center;
   font-weight: normal;
-  color: #cccccc; }
+  color: #e6e6e6; }

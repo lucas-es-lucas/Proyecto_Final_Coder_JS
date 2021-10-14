@@ -96,7 +96,7 @@ class Forma_de_Pago {
      }
 }
 class Ticket {
-     constructor (movie, theater, day, horario, sala, cantidad_entradas, cantidad_cuotas, importe, importe_cuota, promocion) {
+     constructor (movie, theater, day, horario, sala, cantidad_entradas, cantidad_cuotas, importe, importe_cuota, promocion, forma_de_pago) {
           this.movie = movie, 
           this.theater = theater, 
           this.day = day, 
@@ -106,7 +106,8 @@ class Ticket {
           this.cantidad_cuotas = cantidad_cuotas, 
           this.importe = importe, 
           this.importe_cuota = importe_cuota, 
-          this.promocion = promocion
+          this.promocion = promocion,
+          this.forma_de_pago = forma_de_pago
      }
      // RESUMEN DE COMPRA
      getTicketInfo () {
@@ -134,10 +135,11 @@ class Ticket {
 
           if (this.cantidad_cuotas > 1) {
                let forma_pago = document.createElement('h3');
-               forma_pago.textContent = `${this.cantidad_cuotas} cuotas de $${this.importe_cuota}`;
+               forma_pago.textContent = `${this.cantidad_cuotas} cuotas de $${this.importe_cuota.toFixed(2)}`;
                resumen.appendChild(forma_pago);
           }
 
+          $('#section_resumen').slideDown(2000);
           $('#resumen_compra').slideDown(2000);
           $('#section_comprador').slideDown(2000);
      }
