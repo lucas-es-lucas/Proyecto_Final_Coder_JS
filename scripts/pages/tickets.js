@@ -9,7 +9,11 @@
 traer_funciones_JSON();
 // console.log(funciones);
 console.log('pasó por tickets.js');
-armar_cartelera('movies');
+preparar_compra('movies_tickets');
+console.log(theaters);
+console.log(days);
+console.log(horarios);
+armar_cartelera('movies_tickets');
 
 let btn_resumen_compra = document.getElementById('btn_resumen_compra');
 btn_resumen_compra.onclick = () => mostrar_resumen_compra();

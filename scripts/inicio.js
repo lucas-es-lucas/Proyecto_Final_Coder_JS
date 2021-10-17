@@ -30,6 +30,8 @@ let cuotas_elegidas = 1;
 let importe = 0;
 let importe_cuota = 0;
 
+// let funciones_con_la_peli = Array();
+
 // $(document).ready(() => {
      // get_config();
      // get_movie(url_api_movies, id_movie, url_api_key, lang);

@@ -3,6 +3,7 @@ let ticket_nuevo = new Ticket;
 let tickets = new Array();
 // FUNCIONES GLOBALES
 function vaciar_contenedor (contenedor) {
+     // console.log('pasa por vaciar contenedor', contenedor);
      let contenedor_a_vaciar = document.getElementById(contenedor);
      while (contenedor_a_vaciar.childElementCount > 0) {
           contenedor_a_vaciar.removeChild(contenedor_a_vaciar.firstChild);
@@ -11,7 +12,7 @@ function vaciar_contenedor (contenedor) {
 function resetear_opciones (contenedor_actual) {
      // console.log(contenedor_actual);
      switch (contenedor_actual) {
-          case 'movies':
+          case 'movies_tickets':
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideUp(2000);
                $('#section_comprador').slideUp(2000);
@@ -199,7 +200,7 @@ function llenar_arrays_globales () {
      // console.log(promociones);
 }
 // OPCIONES
-function llenar_div (array_origen, id_div, clase) {
+function dibujar_opciones_estaticas (array_origen, id_div, clase) {
      console.log(array_origen, id_div);     
      let div_a_llenar = document.getElementById(id_div);
      console.log(div_a_llenar.childElementCount);
@@ -230,15 +231,17 @@ function dibujar_contador (id, contenedor, clase) {
                </div>`);
           $(`#btn_sub_${clase}`).on('click', function () {
                if (Number($(`#${contenedor} #${id}`).text()) > 1) {
-                    $(`#${contenedor} #${id}`).fadeOut('fast');
+                    $(`#${contenedor} #${id}`).css('display', 'none');
+                    // $(`#${contenedor} #${id}`).fadeOut('fast');
                     $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) - 1);
-                    $(`#${contenedor} #${id}`).fadeIn('fast');
+                    $(`#${contenedor} #${id}`).slideDown('5000');
+                    // $(`#${contenedor} #${id}`).fadeIn('fast');
                }
           });
           $(`#btn_add_${clase}`).on('click', function () {
-               $(`#${contenedor} #${id}`).fadeOut('fast');
+               $(`#${contenedor} #${id}`).css('display', 'none');
                $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) + 1);
-               $(`#${contenedor} #${id}`).fadeIn('fast');
+               $(`#${contenedor} #${id}`).slideDown('5000');
           });
      }
 
@@ -251,7 +254,7 @@ function dibujar_contador (id, contenedor, clase) {
      // </div>
 }
 function presentar_opciones (id_div, id_elemento, speed_delay, speed_slide, move) {
-     console.log(id_div, id_elemento);
+     // console.log(id_div, id_elemento);
      $(`.titles__${id_div}`).css('display', 'block');
 
      if (move === true) {
@@ -286,31 +289,31 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
           // DIBUJAR FICHA DE LA PELI CON EL TRAILER Y BOTON DE COMPRAR 
           // BOTON DE COMPRAR: EVENTO PARA IR A TICKETS.HTML CON LA PELI YA SELECTED 
                ticket_nuevo.movie = elemento_seleccionado.id;
-               marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
+               marcar_pelicula(id_div, id_elemento);
                //edad
                console.log(ticket_nuevo.movie);
                // dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
                break;
-          case 'movies':
+          case 'movies_tickets':
                ticket_nuevo.movie = elemento_seleccionado.id;
-               marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
+               marcar_pelicula(id_div, id_elemento);
                //edad
                console.log(ticket_nuevo.movie);
                // dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
                break;
           case 'theaters':
                ticket_nuevo.theater = elemento_seleccionado.id;
-               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
+               marcar_elemento(id_div, id_elemento);
                // llenar_div(days, 'days', 'day');
                break;
           case 'dias':
                ticket_nuevo.day = elemento_seleccionado.id;
-               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
+               marcar_elemento(id_div, id_elemento);
                // llenar_div(horarios, 'horarios', 'horario');
                break;
           case 'horarios':
                ticket_nuevo.horario = elemento_seleccionado.id;
-               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
+               marcar_elemento(id_div, id_elemento);
                //cantidad_entradas
                // dibujar_contador('cantidad_entradas', 'entradas', 'entrada');
                // $(`#btn_sub_entrada`).on('click', function() {
@@ -324,7 +327,7 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                break;
           case 'promociones':
                ticket_nuevo.promocion = elemento_seleccionado.id;
-               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
+               marcar_elemento(id_div, id_elemento);
                // //sala_elegida
                console.log(ticket_nuevo.promocion);
                descuento = promociones.find(promocion => promocion.codigo == ticket_nuevo.promocion).descuento;
@@ -333,7 +336,7 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                break;
           case 'formas_de_pago':
                ticket_nuevo.forma_de_pago = elemento_seleccionado.id;
-               marcar_elemento(id_div, elemento_seleccionado, id_elemento);
+               marcar_elemento(id_div, id_elemento);
                // forma_de_pago_elegida = elemento_seleccionado.id;
                // //cantidad_cuotas
                // vaciar_contenedor('cuotas');
@@ -357,9 +360,8 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                break;
      }
 }
-function marcar_elemento (contenedor, elemento_seleccionado, id_elemento) {
-     console.log(contenedor, elemento_seleccionado, id_elemento);
-     // resetear_contenedor(contenedor);
+function marcar_elemento (contenedor, id_elemento) {
+     // console.log(contenedor, id_elemento);
      if ($(`#${contenedor} #${id_elemento}`).hasClass('selected')) {
           // si ya estaba selected -> desmarca todos
           $(`#${contenedor} .option`).removeClass('selected');
@@ -390,10 +392,12 @@ function marcar_elemento (contenedor, elemento_seleccionado, id_elemento) {
                //      // dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
                //      break;
                case 'theaters':
-                    llenar_div(days, 'dias', 'day');
+                    // llenar_div(days, 'dias', 'day');
+                    dibujar_opciones(days, 'dias', 'day', ticket_nuevo.theater);
                     break;
                case 'dias':
-                    llenar_div(horarios, 'horarios', 'horario');
+                    // llenar_div(horarios, 'horarios', 'horario');
+                    dibujar_opciones(horarios, 'horarios', 'horario', ticket_nuevo.day);
                     break;
                case 'horarios':
                     //cantidad_entradas
@@ -407,10 +411,10 @@ function marcar_elemento (contenedor, elemento_seleccionado, id_elemento) {
                          ticket_nuevo.cantidad_entradas = $(`#entradas #cantidad_entradas`).text();
                     });
                     ticket_nuevo.cantidad_entradas = 1;
-                    llenar_div(promociones, 'promociones', 'promocion');
+                    dibujar_opciones_estaticas(promociones, 'promociones', 'promocion');
                     break;
                case 'promociones':
-                    llenar_div(formas_de_pago, 'formas_de_pago', 'forma_de_pago');
+                    dibujar_opciones_estaticas(formas_de_pago, 'formas_de_pago', 'forma_de_pago');
                     break;
                case 'formas_de_pago':
                     //cantidad_cuotas
@@ -442,9 +446,8 @@ function marcar_elemento (contenedor, elemento_seleccionado, id_elemento) {
           }
      }
 }
-function marcar_pelicula (contenedor, elemento_seleccionado, id_elemento) {
-     // console.log(contenedor, elemento_seleccionado);
-     // resetear_contenedor(contenedor);
+function marcar_pelicula (contenedor, id_elemento) {
+     // console.log(contenedor, id_elemento);
      if ($(`#${contenedor} #${id_elemento}`).hasClass('selected')) {
           // si ya estaba selected -> desmarca todos
           $(`#${contenedor} #${id_elemento}`).toggleClass('col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');

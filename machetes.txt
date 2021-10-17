@@ -1,0 +1,49 @@
+// CLASES
+// THEATERS
+// Theater = 1, 'Cine 1', 'CABA'
+// Theater = 2, 'Cine 2', 'Zona Norte'
+// Theater = 3, 'Cine 3', 'Zon Oeste'
+// Theater = 4, 'Cine 4', 'Zona Sur'
+
+// DIAS
+// Day = 1, 'Lunes'
+// Day = 2, 'Martes'
+// Day = 3, 'Miércoles'
+// Day = 4, 'Jueves'
+// Day = 5, 'Viernes'
+// Day = 6, 'Sábado'
+// Day = 7, 'Domingo'
+
+// HORARIOS
+// Horario = 1, '11:00'
+// Horario = 2, '13:00'
+// Horario = 3, '15:00'
+// Horario = 4, '17:00'
+// Horario = 5, '19:00'
+// Horario = 6, '21:00'
+// Horario = 7, '23:00'
+
+// PELICULAS
+// 550988 = 'FREE GUY' 
+CINE 1 = EL FINDE TODO EL DIA / LUNES A VIERNES DURANTE EL DIA
+CINE 2 = EL FINDE TODO EL DIA
+CINE 3 = LUNES A VIERNES DURANTE EL DIA
+
+// 568620 = 'SNAKE EYES'
+CINE 1 = EL FINDE A LA NOCHE
+CINE 2 = EL FINDE A LA NOCHE
+CINE 3 = LUNES A MIERCOLES DURANTE EL DIA
+
+// 580489 = 'VENOM'
+CINE 3 = VIERNES A DOMINGO A LA NOCHE
+CINE 4 = VIERNES A DOMINGO A LA NOCHE
+
+
+// 610253 = 'HALLOWEEN KILLS'
+CINE 1 = VIERNES A DOMINGO A LA NOCHE
+CINE 2 = VIERNES A DOMINGO A LA NOCHE
+CINE 3 = VIERNES A DOMINGO A LA NOCHE
+CINE 4 = VIERNES A DOMINGO A LA NOCHE
+
+
+// 566525 = 'SHANG-CHI'

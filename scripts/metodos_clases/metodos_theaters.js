@@ -3,32 +3,18 @@ function dibujar_cine(id_div, clase, img, id_movie) {
      // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
      // console.log(array_origen, id_div);
      // FUNCIONES QUE TIENE LA PELI
-     let funciones_con_la_peli = funciones.filter(item => item.id_movie == id_movie);
-     console.log(funciones_con_la_peli);
-     // RECORRO LOS CINES Y ARMO UN ARRAY NUEVO CON LOS CINES QUE DAN LA PELI
-     let theaters_filtered = [];
-     theaters_filtered = theaters;
-
-     for (let i = 0; i < theaters.length; i++) {
-          // console.log(theaters[i].codigo);
-          if (funciones_con_la_peli.find(item => item.id_theater == theaters[i].codigo) == undefined) {
-               // console.log(theaters[i].codigo);
-               theaters_filtered = theaters_filtered.filter(item => item.codigo != theaters[i].codigo);
-          };
-     }
-     // ARRAY DE CINES CON LOS CINES QUE TIENEN LA PELI
-     console.log(theaters_filtered.length);
-     // console.log(funciones_con_la_peli.length);
-     if (funciones_con_la_peli.length == 0 || theaters_filtered.length == 0) {
-          let theaters_filtered_sin_funciones = new Theater(0, 'PRÓXIMO ESTRENO', 'Fecha a Confirmar');
-          // let theater1 = new Theater(1, 'Cine 1', 'CABA');
-          theaters_filtered = [theaters_filtered_sin_funciones];
+     // funciones_con_la_peli = funciones.filter(item => item.id_movie == id_movie);
+     funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_movie);
+     // RECORRO LOS CINES Y ARMO UN ARRAY NUEVO CON LOS CINES QUE TIENEN LA PELI
+     let array_de_funciones_disponibles = armar_array_de_opciones_con_la_peli('theater');
+     if (array_de_funciones_disponibles.length === 0) {
+          array_de_funciones_disponibles = mensaje_sin_funciones_disponibles;
+          // console.log(array_de_funciones_disponibles);
      }
 
      let div_a_llenar = document.getElementById(id_div);
-
      if (div_a_llenar.childElementCount == 0) {
-          theaters_filtered.forEach(elemento => {
+          array_de_funciones_disponibles.forEach(elemento => {
                // card
                // console.log('entra a dibujar el cine');
                let card = document.createElement('div');
@@ -73,8 +59,10 @@ function dibujar_cine(id_div, clase, img, id_movie) {
                // append al html
                card.appendChild(body);
                div_a_llenar.appendChild(card);
-               card.onclick = () => elegir_elemento(id_div, card, card.id);
-
+               if (elemento.codigo != 0) {
+                    card.onclick = () => elegir_elemento(id_div, card, card.id);
+               }
+               // animaciones
                presentar_opciones(id_div, card.id, 500, 1000, true);
           });
      }
