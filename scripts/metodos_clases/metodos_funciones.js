@@ -5,6 +5,10 @@ let funciones = new Array();
 let funciones_completas = new Array();
 // FUNCIONES FILTRADAS X ID (FILTRO ACUMULADO EN ORDEN: MOVIE, THEATER, DAY, HORARIO)
 let funciones_con_la_peli = Array();
+// FUNCIONES FILTRADAS PARA RESETEAR FILTROS (CUANDO DES-SELECCIONAN OPCIONES)
+let funciones_xPeli = Array();
+let funciones_xPeli_xCine = Array();
+let funciones_xPeli_xCine_xDia = Array();
 // MENSAJE SI NO HAY FUNCIONES DISPONIBLES CON ALGUN FILTRO
 const mensaje_sin_funciones_disponibles = [{codigo: 0, descripcion: 'NO HAY FUNCIONES DISPONIBLES'}];
 
@@ -12,7 +16,7 @@ function traer_funciones_JSON () {
      $.get(url_JSON_funciones, function (respuesta, estado) {
           if (estado === 'success') {
                let funciones_JSON = respuesta;
-               console.log(funciones_JSON);
+               // console.log(funciones_JSON);
                for (let i = 0; i < funciones_JSON.length; i++) {
                     let funcion = new Funcion;
                     funcion.id_funcion = funciones_JSON[i].id_funcion;
@@ -22,7 +26,7 @@ function traer_funciones_JSON () {
                     funcion.id_horario = funciones_JSON[i].id_horario;
                     funciones.push(funcion);
                }
-               console.log(funciones);
+               // console.log(funciones);
           }
      })
 }
@@ -44,12 +48,13 @@ function traer_funciones_JSON_completas (funciones) {
      }
 }
 // OPCIONES
-function dibujar_opciones (array_origen, id_div, clase, id_filtro) {
-     // console.log(array_origen, id_div, clase, id_filtro);
-     funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_filtro);
-     console.log(funciones_con_la_peli);
+function dibujar_opciones (id_div, clase, id_filtro) {
+     // console.log(id_div, clase, id_filtro);
+     // funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_filtro);
+     // console.log(funciones_con_la_peli);
      // RECORRO LOS ARRAYS DE CLASES Y ARMO ARRAYS NUEVOS CON LOS ELEMENTOS QUE TIENEN LA PELI
-     let array_de_funciones_disponibles = armar_array_de_opciones_con_la_peli(clase);
+     let array_de_funciones_disponibles = filtrar_funciones_con_la_peli(clase, id_filtro);
+     // let array_de_funciones_disponibles = armar_array_de_opciones_con_la_peli(clase);
      // ARMAR MENSAJE SI NO EXISTEN FUNCIONES CON ESE FILTRO
      if (array_de_funciones_disponibles.length === 0) {
           array_de_funciones_disponibles = mensaje_sin_funciones_disponibles;
@@ -67,30 +72,40 @@ function dibujar_opciones (array_origen, id_div, clase, id_filtro) {
                if (elemento.codigo != 0) {
                     opt.onclick = () => elegir_elemento(id_div, opt, opt.id);
                }
+               div_a_llenar.classList.add('enabled');
                // animaciones
                presentar_opciones(id_div, opt.id, 500, 1000, true);
           });
      }
 }
 function filtrar_funciones_con_la_peli (clase, id_filtro) {
+     let array_de_opciones = [];
      // FUNCIONES QUE TIENEN LA PELI
      // console.log(funciones_con_la_peli);
      switch (clase) {
           case 'theater':
-               funciones_con_la_peli = funciones.filter(item => item.id_movie == id_filtro);
+               funciones_con_la_peli = funciones_xPeli = funciones.filter(item => item.id_movie == id_filtro);
+               // funciones_xPeli = funciones.filter(item => item.id_movie == id_filtro);
+               array_de_opciones = armar_array_de_opciones_con_la_peli('theater');
                break;
           case 'day':
-               funciones_con_la_peli = funciones_con_la_peli.filter(item => item.id_theater == id_filtro);
+               funciones_con_la_peli = funciones_xPeli_xCine = funciones_con_la_peli.filter(item => item.id_theater == id_filtro);
+               // funciones_xPeli_xCine = funciones_con_la_peli.filter(item => item.id_theater == id_filtro);
+               array_de_opciones = armar_array_de_opciones_con_la_peli('day');
                break;
           case 'horario':
-               funciones_con_la_peli = funciones_con_la_peli.filter(item => item.id_day == id_filtro);
+               funciones_con_la_peli = funciones_xPeli_xCine_xDia = funciones_con_la_peli.filter(item => item.id_day == id_filtro);
+               // funciones_xPeli_xCine_xDia = funciones_con_la_peli.filter(item => item.id_day == id_filtro);
+               array_de_opciones = armar_array_de_opciones_con_la_peli('horario');
                break;
           default:
                break;
      }
-     console.log(funciones_con_la_peli);
+     // console.log(funciones);
+     // console.log(funciones_con_la_peli);
+     // console.log(array_de_opciones);
 
-     return funciones_con_la_peli;
+     return array_de_opciones; // funciones_con_la_peli;
 }
 function armar_array_de_opciones_con_la_peli (clase) {
      let array_filtrado = [];

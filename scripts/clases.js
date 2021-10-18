@@ -122,6 +122,11 @@ class Ticket {
      }
      // MOSTRAR INFO EN HTML
      mostrar_importes () {
+          let btn_checkout = document.getElementById('btn_checkout');
+          btn_checkout.firstElementChild.textContent = 'QUERÉS MODIFICÁR TU COMPRA?';
+          btn_checkout.classList.add('modificar');
+          // $('#btn_checkout').addClass('modificar');
+
           let resumen = document.getElementById('resumen_compra');
           vaciar_contenedor('resumen_compra');
 
@@ -139,8 +144,12 @@ class Ticket {
                resumen.appendChild(forma_pago);
           }
 
-          $('#section_resumen').slideDown(2000);
-          $('#resumen_compra').slideDown(2000);
+          $('#section_resumen').slideDown(1000);
+          $('#resumen_compra').slideDown(1000);
           $('#section_comprador').slideDown(2000);
+
+          $('#section_cartelera .movie').addClass('disabled');
+          $('#section_cartelera .options').addClass('disabled');
+          $('#section_pago .options').addClass('disabled');
      }
 }

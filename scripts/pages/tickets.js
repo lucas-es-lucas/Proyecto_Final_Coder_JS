@@ -15,8 +15,11 @@ console.log(days);
 console.log(horarios);
 armar_cartelera('movies_tickets');
 
-let btn_resumen_compra = document.getElementById('btn_resumen_compra');
-btn_resumen_compra.onclick = () => mostrar_resumen_compra();
+// EVENTO PARA BLOQUEAR / DESBLOQUEAR LAS OPCIONES
+let btn_checkout = document.getElementById('btn_checkout');
+// btn_checkout.onclick = () => mostrar_resumen_compra();
+console.log($('#btn_checkout').hasClass('modificar'));
+btn_checkout.onclick = () => hacer_checkout($('#btn_checkout').hasClass('modificar'));
 
 // // EMISION DE TICKETS ORDENADA POR EL DIA MÁS PROXIMO
 // tickets.sort(function (a, b) {

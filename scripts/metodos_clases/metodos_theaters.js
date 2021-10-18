@@ -1,12 +1,14 @@
 // CINES - METODOS
 function dibujar_cine(id_div, clase, img, id_movie) {
      // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
-     // console.log(array_origen, id_div);
+     console.log(id_div, clase, id_movie);
      // FUNCIONES QUE TIENE LA PELI
+     console.log(funciones_con_la_peli);
      // funciones_con_la_peli = funciones.filter(item => item.id_movie == id_movie);
-     funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_movie);
+     // funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_movie);
      // RECORRO LOS CINES Y ARMO UN ARRAY NUEVO CON LOS CINES QUE TIENEN LA PELI
-     let array_de_funciones_disponibles = armar_array_de_opciones_con_la_peli('theater');
+     let array_de_funciones_disponibles = filtrar_funciones_con_la_peli(clase, id_movie);
+     // let array_de_funciones_disponibles = armar_array_de_opciones_con_la_peli('theater');
      if (array_de_funciones_disponibles.length === 0) {
           array_de_funciones_disponibles = mensaje_sin_funciones_disponibles;
           // console.log(array_de_funciones_disponibles);
@@ -62,6 +64,7 @@ function dibujar_cine(id_div, clase, img, id_movie) {
                if (elemento.codigo != 0) {
                     card.onclick = () => elegir_elemento(id_div, card, card.id);
                }
+               div_a_llenar.classList.add('enabled');
                // animaciones
                presentar_opciones(id_div, card.id, 500, 1000, true);
           });

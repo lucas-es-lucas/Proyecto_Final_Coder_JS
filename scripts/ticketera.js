@@ -16,8 +16,8 @@ function resetear_opciones (contenedor_actual) {
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideUp(2000);
                $('#section_comprador').slideUp(2000);
-               $('#btn_resumen_compra').css('display', 'none');
-               $(`.titles__resumen_compra`).css('display', 'none');
+               $('#btn_checkout').css('display', 'none');
+               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -38,8 +38,8 @@ function resetear_opciones (contenedor_actual) {
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideDown(2000);
                $('#section_comprador').slideUp(2000);
-               $('#btn_resumen_compra').css('display', 'none');
-               $(`.titles__resumen_compra`).css('display', 'none');
+               $('#btn_checkout').css('display', 'none');
+               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -58,8 +58,8 @@ function resetear_opciones (contenedor_actual) {
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideUp(2000);
                $('#section_comprador').slideUp(2000);
-               $('#btn_resumen_compra').css('display', 'none');
-               $(`.titles__resumen_compra`).css('display', 'none');
+               $('#btn_checkout').css('display', 'none');
+               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -76,8 +76,8 @@ function resetear_opciones (contenedor_actual) {
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideUp(2000);
                $('#section_comprador').slideUp(2000);
-               $('#btn_resumen_compra').css('display', 'none');
-               $(`.titles__resumen_compra`).css('display', 'none');
+               $('#btn_checkout').css('display', 'none');
+               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -92,8 +92,8 @@ function resetear_opciones (contenedor_actual) {
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideUp(2000);
                $('#section_comprador').slideUp(2000);
-               $('#btn_resumen_compra').css('display', 'none');
-               $(`.titles__resumen_compra`).css('display', 'none');
+               $('#btn_checkout').css('display', 'none');
+               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -104,8 +104,8 @@ function resetear_opciones (contenedor_actual) {
                $('#section_resumen').slideUp(2000);
                $('#resumen_compra').slideUp(2000);
                $('#section_comprador').slideUp(2000);
-               $('#btn_resumen_compra').css('display', 'none');
-               $(`.titles__resumen_compra`).css('display', 'none');
+               $('#btn_checkout').css('display', 'none');
+               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -367,6 +367,18 @@ function marcar_elemento (contenedor, id_elemento) {
           $(`#${contenedor} .option`).removeClass('selected');
           $(`#${contenedor} .option`).fadeIn("slow");
           resetear_opciones(contenedor);
+
+          switch (contenedor) {
+               case 'theaters':
+                    funciones_con_la_peli = funciones_xPeli;
+                    break;
+               case 'dias':
+                    funciones_con_la_peli = funciones_xPeli_xCine;
+                    break;
+               case 'horarios':
+                    funciones_con_la_peli = funciones_xPeli_xCine_xDia;
+                    break;
+          }
      } else {
           // si no estaba selected -> desmarca todos y lo marca selected
           $(`#${contenedor} .option`).removeClass('selected');
@@ -393,11 +405,11 @@ function marcar_elemento (contenedor, id_elemento) {
                //      break;
                case 'theaters':
                     // llenar_div(days, 'dias', 'day');
-                    dibujar_opciones(days, 'dias', 'day', ticket_nuevo.theater);
+                    dibujar_opciones('dias', 'day', ticket_nuevo.theater);
                     break;
                case 'dias':
                     // llenar_div(horarios, 'horarios', 'horario');
-                    dibujar_opciones(horarios, 'horarios', 'horario', ticket_nuevo.day);
+                    dibujar_opciones('horarios', 'horario', ticket_nuevo.day);
                     break;
                case 'horarios':
                     //cantidad_entradas
@@ -434,12 +446,13 @@ function marcar_elemento (contenedor, id_elemento) {
                          $('#cuotas').fadeOut('slow');
                          ticket_nuevo.cantidad_cuotas = 1;
                     }
-                    $('#btn_resumen_compra').fadeIn('slow');
-                    $('#btn_resumen_compra').click(function (e) { 
-                         e.preventDefault();
+                    $('section_checkout').fadeIn('slow');
+                    $('#btn_checkout').fadeIn('slow');
+                    // $('#btn_checkout').click(function (e) { 
+                    //      e.preventDefault();
 
-                         mostrar_resumen_compra();
-                    });
+                    //      mostrar_resumen_compra();
+                    // });
                     break;
                default:
                     break;
@@ -463,6 +476,29 @@ function marcar_pelicula (contenedor, id_elemento) {
           $(`#${contenedor} .selected`).fadeIn("slow");
 
           dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
+     }
+}
+function hacer_checkout (modificar) {
+     if (modificar) {
+          $('#btn_checkout').removeClass('modificar');
+
+          $('#section_resumen').slideUp(2000);
+          $('#resumen_compra').slideUp(2000);
+          $('#section_comprador').slideUp(2000);
+          // $('#btn_checkout').css('display', 'none');
+          vaciar_contenedor('resumen_compra');
+
+          $('#section_cartelera .movie').removeClass('disabled');
+          $('#section_cartelera .movie').addClass('enabled');
+          $('#section_cartelera .options').removeClass('disabled');
+          $('#section_cartelera .options').addClass('enabled');
+          $('#section_pago .options').removeClass('disabled');
+          $('#section_pago .options').addClass('enabled');
+
+          console.log('pasa x hacer checkout modificar = true');
+     } else {
+          console.log('pasa x hacer checkout modificar = false');
+          mostrar_resumen_compra();
      }
 }
 function mostrar_resumen_compra () {
