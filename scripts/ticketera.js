@@ -13,9 +13,9 @@ function resetear_opciones (contenedor_actual) {
      // console.log(contenedor_actual);
      switch (contenedor_actual) {
           case 'movies_tickets':
-               $('#section_resumen').slideUp(2000);
-               $('#resumen_compra').slideUp(2000);
-               $('#section_comprador').slideUp(2000);
+               $('#section_resumen').slideUp(1000);
+               $('#resumen_compra').slideUp(1000);
+               $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
                // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
@@ -35,9 +35,9 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('theaters');
                break;
           case 'theaters':
-               $('#section_resumen').slideUp(2000);
-               $('#resumen_compra').slideDown(2000);
-               $('#section_comprador').slideUp(2000);
+               $('#section_resumen').slideUp(1000);
+               $('#resumen_compra').slideDown(1000);
+               $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
                // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
@@ -55,9 +55,9 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('dias');
                break;
           case 'dias':
-               $('#section_resumen').slideUp(2000);
-               $('#resumen_compra').slideUp(2000);
-               $('#section_comprador').slideUp(2000);
+               $('#section_resumen').slideUp(1000);
+               $('#resumen_compra').slideUp(1000);
+               $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
                // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
@@ -73,9 +73,9 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('horarios');
                break;
           case 'horarios':
-               $('#section_resumen').slideUp(2000);
-               $('#resumen_compra').slideUp(2000);
-               $('#section_comprador').slideUp(2000);
+               $('#section_resumen').slideUp(1000);
+               $('#resumen_compra').slideUp(1000);
+               $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
                // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
@@ -89,9 +89,9 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('entradas');
                break;
           case 'promociones':
-               $('#section_resumen').slideUp(2000);
-               $('#resumen_compra').slideUp(2000);
-               $('#section_comprador').slideUp(2000);
+               $('#section_resumen').slideUp(1000);
+               $('#resumen_compra').slideUp(1000);
+               $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
                // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
@@ -101,9 +101,9 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('formas_de_pago');
                break;
           case 'formas_de_pago':
-               $('#section_resumen').slideUp(2000);
-               $('#resumen_compra').slideUp(2000);
-               $('#section_comprador').slideUp(2000);
+               $('#section_resumen').slideUp(1000);
+               $('#resumen_compra').slideUp(1000);
+               $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
                // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
@@ -480,6 +480,9 @@ function marcar_pelicula (contenedor, id_elemento) {
 }
 function hacer_checkout (modificar) {
      if (modificar) {
+          let btn_checkout = document.getElementById('btn_checkout');
+          btn_checkout.firstElementChild.textContent = 'CONFIRMÁS TU COMPRA?';
+
           $('#btn_checkout').removeClass('modificar');
 
           $('#section_resumen').slideUp(2000);

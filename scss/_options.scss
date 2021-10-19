@@ -8,6 +8,7 @@
      background-color: white; // $color-background;
 }
 .options {
+     justify-items: center;
      padding-top: 0;
      padding-bottom: 0;
      :hover {
@@ -20,8 +21,3 @@
      background-color: $color-background-selected;
 
 }
-// .btn {
-//      &__day {
-//           color: $color-text;
-//      }
-// }

@@ -21,6 +21,38 @@ let btn_checkout = document.getElementById('btn_checkout');
 console.log($('#btn_checkout').hasClass('modificar'));
 btn_checkout.onclick = () => hacer_checkout($('#btn_checkout').hasClass('modificar'));
 
+$('#email_enviar').attr('href', `mailto:${$('#email').text()}`);
+// href="mailto:midireccioneslucas@hotmail.com"
+
+// let input_nro_tarjeta = document.getElementById('nro_tarjeta');
+
+// input_nro_tarjeta.addEventListener("keyup", event => {
+//     //Objeto de evento
+//      if (event.which === 13 || event.keyCode == 13) {
+//         //Al presionar enter
+//      //    keyText.textContent = ':)';
+//      } else if (event.which === 8 || event.keyCode == 8){
+//         //Al presionar Backspace 
+//      //    keyText.textContent = ':(';
+//      } else {
+//         //Acción para el resto de las teclas
+//      //    keyText.textContent = 
+//      console.log(input_nro_tarjeta.value);
+//      if (!validar_valor(parseInt(input_nro_tarjeta.value))) {
+//           alert('Solamente podés ingresar números');
+//      };
+// }
+// });
+
+// function validar_valor (valor) {
+//      console.log(valor);
+//      if (!isNaN(parseInt(valor))) {
+//           return true;
+//      } else {
+//           return false;
+//      }
+// }
+
 // // EMISION DE TICKETS ORDENADA POR EL DIA MÁS PROXIMO
 // tickets.sort(function (a, b) {
 //      if (a.dia > b.dia) {

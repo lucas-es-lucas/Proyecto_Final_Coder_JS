@@ -146,7 +146,15 @@ class Ticket {
 
           $('#section_resumen').slideDown(1000);
           $('#resumen_compra').slideDown(1000);
-          $('#section_comprador').slideDown(2000);
+          $('#section_comprador').slideDown(1000);
+
+          console.log(this.forma_de_pago);
+
+          if (this.forma_de_pago === '1' || this.forma_de_pago === '2') {
+               $('#section_tarjeta').slideDown(500);
+          } else {
+               $('#section_tarjeta').css('display', 'none');
+          }
 
           $('#section_cartelera .movie').addClass('disabled');
           $('#section_cartelera .options').addClass('disabled');
