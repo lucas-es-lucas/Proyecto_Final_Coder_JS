@@ -56,22 +56,22 @@
                          </div>
                     </div> -->
                </div>
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__theaters" style="display:none"><h4>CINES</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__theater" id="theaters">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__theaters" style="display:none"><h4>CINES</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__theater" id="theaters">
                </div>
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__dias" style="display:none"><h4>DIAS</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__dia" id="dias">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__dias" style="display:none"><h4>DIAS</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__dia" id="dias">
                </div>
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__horarios" style="display:none"><h4>HORARIOS</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__horario" id="horarios">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__horarios" style="display:none"><h4>HORARIOS</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__horario" id="horarios">
                     <!-- <div class="option__time"></div> -->
                </div>
                <!-- <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>ASIENTOS</h4></div> -->
                <!-- <div class="col-6 offset-3 my-2 py-2 bg-light options options__room">
                     <div class="option__room" id="salas"></div>
                </div> -->
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__entradas" style="display:none"><h4>ENTRADAS ($100)</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__entrada" id="entradas">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__entradas" style="display:none"><h4>ENTRADAS ($100)</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__entrada" id="entradas">
                     <!-- <div class="counter">
                          <button class="btn m-2 p-2 counter__sub" id="btn_sub"> - </button>
                          <h4 class="m-2 p-2 counter__cant" id="cantidad_entradas">0</h4>
@@ -83,22 +83,22 @@
           </section>
           <section class="row pagar" id="section_pago">
                <!-- OPCIONES DE PAGO -->
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__promociones" style="display:none"><h4>PROMOCIONES</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__promocion" id="promociones">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__promociones" style="display:none"><h4>PROMOCIONES</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__promocion" id="promociones">
                     <!-- <div class="option__prom"></div> -->
                </div>
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__formas_de_pago" style="display:none"><h4>FORMAS DE PAGO</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__forma_de_pago" id="formas_de_pago">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__formas_de_pago" style="display:none"><h4>FORMAS DE PAGO</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__forma_de_pago" id="formas_de_pago">
                     <!-- <div class="option__pay"></div> -->
                </div>
-               <div class="btn col-8 mt-2 py-2 bg-dark titles titles__cuotas" style="display:none"><h4>CUOTAS</h4></div>
-               <div class="btn col-8 mt-2 py-2 options options__cuota" id="cuotas" style="display:none">
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__cuotas" style="display:none"><h4>CUOTAS</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__cuota" id="cuotas" style="display:none">
                     <!-- <div class="option__cuota"></div> -->
                </div>
           </section>
           <section class="row checkout" id="section_checkout">
                <!-- CONFIRMAR COMPRA -->
-               <div class="btn col-10 my-2 py-2 bg-warning checkout checkout__compra" id="btn_checkout" style="display:none">
+               <div class="btn col-10 col-md-8 my-2 py-2 bg-warning checkout checkout__compra" id="btn_checkout" style="display:none">
                     <h4>CONFIRMÁS TU COMPRA?</h4>
                </div>
           </section>
@@ -110,7 +110,7 @@
           </section>
           <section class="resumen_comprador" id="section_comprador" style="display:none">
                <!-- <h3>TUS DATOS</h3> -->
-               <form class="row g-3 comprador">
+               <form class="row g-3 comprador" id="form__comprador">
                     <div class="col-12 col-md-6 col-lg-6 comprador__nombre">
                          <label for="nombre" class="form-label">Nombre</label>
                          <input type="text" class="form-control" id="nombre" value="" placeholder="Nombre" required>
@@ -120,27 +120,27 @@
                          <input type="text" class="form-control" id="apellido" value="" placeholder="Apellido" required>
                     </div>
                     <section class="row g-3 tarjeta" id="section_tarjeta" style="display:none">
-                         <div class="col-12 col-md-6 col-lg-6 comprador__titular_tarjeta">
+                         <div class="col-12 col-md-6 col-lg-6 offset-lg-1 comprador__titular_tarjeta">
                               <label for="titular_tarjeta" class="form-label">Titular Tarjeta</label>
                               <input type="text" class="form-control" id="titular_tarjeta" value="" placeholder="Titular Tarjeta" required>
                          </div>
-                         <div class="col-3 col-md-3 col-lg-3 comprador__dni">
+                         <div class="col-3 col-sm-3 col-md-2 col-lg-2 comprador__dni">
                               <label for="dni" class="form-label">Nro DNI</label>
                               <input type="number" class="form-control" id="dni" placeholder="12345678" required>
                          </div>
-                         <div class="col-9 col-md-9 col-lg-9 comprador__nro_tarjeta">
+                         <div class="col-5 col-sm-5 col-md-3 col-lg-3 comprador__nro_tarjeta">
                               <label for="nro_tarjeta" class="form-label">Nro Tarjeta</label>
                               <input type="number" class="form-control" id="nro_tarjeta" placeholder="1111 2222 3333 4444" required>
                          </div>
-                         <div class="col-2 col-md-2 col-lg-2 comprador__mes">
+                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 offset-lg-1 comprador__mes">
                               <label for="mes" class="form-label">MES</label>
                               <input type="number" class="form-control" id="mes" placeholder="MM" required>
                          </div>
-                         <div class="col-2 col-md-2 col-lg-2 comprador__anio">
+                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 comprador__anio">
                               <label for="anio" class="form-label">AÑO</label>
                               <input type="number" class="form-control" id="anio" placeholder="AA" required>
                          </div>
-                         <div class="col-2 col-md-2 col-lg-2 comprador__cvc">
+                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 comprador__cvc">
                               <label for="cvc" class="form-label">CVC</label>
                               <input type="password" class="form-control" id="cvc" placeholder="***" required>
                          </div>

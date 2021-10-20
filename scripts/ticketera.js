@@ -463,7 +463,7 @@ function marcar_pelicula (contenedor, id_elemento) {
      // console.log(contenedor, id_elemento);
      if ($(`#${contenedor} #${id_elemento}`).hasClass('selected')) {
           // si ya estaba selected -> desmarca todos
-          $(`#${contenedor} #${id_elemento}`).toggleClass('col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');
+          $(`#${contenedor} #${id_elemento}`).toggleClass('col-12 col-sm-12 col-md-6 offset-md-0 col-lg-3 offset-lg-0 col-xl-3 offset-xl-0 col-xxl-3 offset-xxl-0');
           $(`#${contenedor} .option`).removeClass('selected');
           $(`#${contenedor} .option`).fadeIn("slow");
           resetear_opciones(contenedor);
@@ -471,7 +471,8 @@ function marcar_pelicula (contenedor, id_elemento) {
           // si no estaba selected -> desmarca todos y lo marca selected
           $(`#${contenedor} .option`).removeClass('selected');
           $(`#${contenedor} .option`).fadeOut("slow");
-          $(`#${contenedor} #${id_elemento}`).toggleClass('col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');
+          $(`#${contenedor} #${id_elemento}`).toggleClass('col-12 col-sm-12 col-md-6 offset-md-0 col-lg-3 offset-lg-0 col-xl-3 offset-xl-0 col-xxl-3 offset-xxl-0');
+          // $(`#${contenedor} #${id_elemento}`).toggleClass('btn col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');
           $(`#${contenedor} #${id_elemento}`).toggleClass('selected');
           $(`#${contenedor} .selected`).fadeIn("slow");
 

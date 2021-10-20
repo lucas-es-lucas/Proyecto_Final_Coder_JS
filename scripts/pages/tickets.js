@@ -21,7 +21,19 @@ let btn_checkout = document.getElementById('btn_checkout');
 console.log($('#btn_checkout').hasClass('modificar'));
 btn_checkout.onclick = () => hacer_checkout($('#btn_checkout').hasClass('modificar'));
 
-$('#email_enviar').attr('href', `mailto:${$('#email').text()}`);
+// $('#email_enviar').attr('href', `mailto:${$('#email').text()}`);
+
+//BLUR
+email.addEventListener('blur', ()=>{
+     // inputFocus.style.border = "1px solid black";
+     // passRecomendation.textContent = "";
+     console.log($('#email').value);
+     $('#form__comprador').append(
+          `<a id="email_enviar"href="mailto:${$('#email').value}">email del comprador</a>`
+     );
+})
+
+
 // href="mailto:midireccioneslucas@hotmail.com"
 
 // let input_nro_tarjeta = document.getElementById('nro_tarjeta');
