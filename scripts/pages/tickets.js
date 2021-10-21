@@ -8,62 +8,50 @@
 
 traer_funciones_JSON();
 // console.log(funciones);
-console.log('pasó por tickets.js');
+// console.log('pasó por tickets.js');
 preparar_compra('movies_tickets');
-console.log(theaters);
-console.log(days);
-console.log(horarios);
+// console.log(theaters);
+// console.log(days);
+// console.log(horarios);
 armar_cartelera('movies_tickets');
 
 // EVENTO PARA BLOQUEAR / DESBLOQUEAR LAS OPCIONES
 let btn_checkout = document.getElementById('btn_checkout');
 // btn_checkout.onclick = () => mostrar_resumen_compra();
-console.log($('#btn_checkout').hasClass('modificar'));
 btn_checkout.onclick = () => hacer_checkout($('#btn_checkout').hasClass('modificar'));
 
-// $('#email_enviar').attr('href', `mailto:${$('#email').text()}`);
+// email.onblur = () => {
+//      return $('#email_enviar').attr('href', `mailto:${$('#email').val()}`);
+// };
 
-//BLUR
-email.addEventListener('blur', ()=>{
-     // inputFocus.style.border = "1px solid black";
-     // passRecomendation.textContent = "";
-     console.log($('#email').value);
-     $('#form__comprador').append(
-          `<a id="email_enviar"href="mailto:${$('#email').value}">email del comprador</a>`
-     );
-})
+$("#btn_enviar").click( function() {
+     // console.log('entra en el click de btn_enviar');
 
+     if (validar_formulario ()) {
+          $('#section_cartelera').slideUp(1000);
+          $('#section_pago').slideUp(1000);
+          $('#section_checkout').slideUp(1000);
+          $('#section_resumen').slideUp(1000);
+          // $('#resumen_compra').slideUp(1000);
+          $('#section_comprador').slideUp(1000);
+
+          $('#section_finalizar').fadeIn(1000);
+
+          // setTimeout(()=>{
+          //      preparar_compra('movies_tickets');
+          //      armar_cartelera('movies_tickets');
+          // }, 2000);
+     }
+});
+
+$('#btn_finalizar').click( function () {
+     console.log('entra en el click de btn_finalizar');
+     
+     preparar_compra('movies_tickets');
+     armar_cartelera('movies_tickets');
+});
 
 // href="mailto:midireccioneslucas@hotmail.com"
-
-// let input_nro_tarjeta = document.getElementById('nro_tarjeta');
-
-// input_nro_tarjeta.addEventListener("keyup", event => {
-//     //Objeto de evento
-//      if (event.which === 13 || event.keyCode == 13) {
-//         //Al presionar enter
-//      //    keyText.textContent = ':)';
-//      } else if (event.which === 8 || event.keyCode == 8){
-//         //Al presionar Backspace 
-//      //    keyText.textContent = ':(';
-//      } else {
-//         //Acción para el resto de las teclas
-//      //    keyText.textContent = 
-//      console.log(input_nro_tarjeta.value);
-//      if (!validar_valor(parseInt(input_nro_tarjeta.value))) {
-//           alert('Solamente podés ingresar números');
-//      };
-// }
-// });
-
-// function validar_valor (valor) {
-//      console.log(valor);
-//      if (!isNaN(parseInt(valor))) {
-//           return true;
-//      } else {
-//           return false;
-//      }
-// }
 
 // // EMISION DE TICKETS ORDENADA POR EL DIA MÁS PROXIMO
 // tickets.sort(function (a, b) {

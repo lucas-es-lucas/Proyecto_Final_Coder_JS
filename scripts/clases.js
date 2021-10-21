@@ -152,8 +152,10 @@ class Ticket {
 
           if (this.forma_de_pago === '1' || this.forma_de_pago === '2') {
                $('#section_tarjeta').slideDown(500);
+               // $('#section_tarjeta input').attr('required', true);
           } else {
                $('#section_tarjeta').css('display', 'none');
+               // $('#section_tarjeta input').removeAttr('required');
           }
 
           $('#section_cartelera .movie').addClass('disabled');

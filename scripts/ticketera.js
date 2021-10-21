@@ -499,9 +499,9 @@ function hacer_checkout (modificar) {
           $('#section_pago .options').removeClass('disabled');
           $('#section_pago .options').addClass('enabled');
 
-          console.log('pasa x hacer checkout modificar = true');
+          // console.log('pasa x hacer checkout modificar = true');
      } else {
-          console.log('pasa x hacer checkout modificar = false');
+          // console.log('pasa x hacer checkout modificar = false');
           mostrar_resumen_compra();
      }
 }
@@ -512,10 +512,65 @@ function mostrar_resumen_compra () {
      // calcular pagos
      ticket_nuevo.importe_cuota = importe_cuota = calcular_cuota(importe, ticket_nuevo.cantidad_cuotas);
      // generar ticket
-     console.log(ticket_nuevo);
+     // console.log(ticket_nuevo);
      ticket_nuevo.mostrar_importes();     
      // guardar ticket
      tickets.push(ticket_nuevo);
+}
+function validar_formulario () {
+     // console.log('entra en validar_formulario');
+
+     // console.log($('#tarjeta_nro'));
+     // console.log($('#tarjeta_nro').val());
+     // console.log($('#tarjeta_nro').val().length);
+     // console.log(validar_valor(parseInt($('#tarjeta_nro').val())));
+     console.log(ticket_nuevo.forma_de_pago);
+
+     if (ticket_nuevo.forma_de_pago === 1 || ticket_nuevo.forma_de_pago === 2) {
+          if (!validar_valor(parseInt($('#tarjeta_nro').val())) || 
+          ($('#tarjeta_nro').val().length != 16 && $('#tarjeta_nro').val().length != 22)) {
+               $('#tarjeta__nro').focus();
+               $('#invalido_tarjeta_nro').css('display', 'block')
+               .css('color', 'red');
+               return false;
+          } else {
+               $('#invalido_tarjeta_nro').css('display', 'none');
+          }
+     }
+
+     // if($("#nombre").val() == ""){
+     //      alert("El campo Nombre no puede estar vacío.");
+     //      $("#nombre").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+     //      return false;
+     // }
+     // if($("#apellido").val() == ""){
+     //      alert("El campo Apellidos no puede estar vacío.");
+     //      $("#apellidos").focus();
+     //      return false;
+     // }
+     // if($("#direccion").val() == ""){
+     //      alert("El campo Dirección no puede estar vacío.");
+     //      $("#direccion").focus();
+     //      return false;
+     // }
+
+     // Checkbox
+     if(!$("#comprador_mayor").is(":checked")){
+          // alert("Debe confirmar que es mayor de 18 años.");
+          $('#invalido_comprador_mayor').css('display', 'block')
+          .css('color', 'red');
+          return false;
+     } else {
+          $('#invalido_comprador_mayor').css('display', 'none');
+     }
+
+     return true; // Si todo está correcto
+     }
+function despedir () {
+     console.log('entra en despedir');
+     if (validar_formulario) {
+          alert('Gracias por ir a nuestros cines!');
+     }
 }
 // INGRESO DE DATOS
 function informar_edad () {

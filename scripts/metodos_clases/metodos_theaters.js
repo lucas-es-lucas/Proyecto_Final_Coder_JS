@@ -1,9 +1,9 @@
 // CINES - METODOS
 function dibujar_cine(id_div, clase, img, id_movie) {
      // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
-     console.log(id_div, clase, id_movie);
+     // console.log(id_div, clase, id_movie);
      // FUNCIONES QUE TIENE LA PELI
-     console.log(funciones_con_la_peli);
+     // console.log(funciones_con_la_peli);
      // funciones_con_la_peli = funciones.filter(item => item.id_movie == id_movie);
      // funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_movie);
      // RECORRO LOS CINES Y ARMO UN ARRAY NUEVO CON LOS CINES QUE TIENEN LA PELI

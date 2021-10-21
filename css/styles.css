@@ -134,3 +134,8 @@ li a {
 
 .comprador {
   justify-content: space-around; }
+
+.finalizar__btn {
+  text-align: center;
+  font-weight: normal;
+  color: #e6e6e6; }

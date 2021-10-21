@@ -112,66 +112,84 @@
                <!-- <h3>TUS DATOS</h3> -->
                <form class="row g-3 comprador" id="form__comprador">
                     <div class="col-12 col-md-6 col-lg-6 comprador__nombre">
-                         <label for="nombre" class="form-label">Nombre</label>
-                         <input type="text" class="form-control" id="nombre" value="" placeholder="Nombre" required>
+                         <label for="comprador_nombre" class="form-label">Nombre</label>
+                         <input type="text" class="form-control" id="comprador_nombre" value="" placeholder="Nombre">
                     </div>
                     <div class="col-12 col-md-6 col-lg-6 comprador__apellido">
-                         <label for="apellido" class="form-label">Apellido</label>
-                         <input type="text" class="form-control" id="apellido" value="" placeholder="Apellido" required>
+                         <label for="comprador_apellido" class="form-label">Apellido</label>
+                         <input type="text" class="form-control" id="comprador_apellido" value="" placeholder="Apellido">
                     </div>
-                    <section class="row g-3 tarjeta" id="section_tarjeta" style="display:none">
-                         <div class="col-12 col-md-6 col-lg-6 offset-lg-1 comprador__titular_tarjeta">
-                              <label for="titular_tarjeta" class="form-label">Titular Tarjeta</label>
-                              <input type="text" class="form-control" id="titular_tarjeta" value="" placeholder="Titular Tarjeta" required>
+                    <div class="col-3 col-sm-3 col-md-2 col-lg-2 comprador__dni">
+                         <label for="comprador_dni" class="form-label">Nro DNI</label>
+                         <input type="number" class="form-control" id="comprador_dni" placeholder="12345678">
+                         <div class="invalid-feedback invalido" id="invalido_comprador_dni" style="display: none;">
+                              Tenés que ingresar 8 números
                          </div>
-                         <div class="col-3 col-sm-3 col-md-2 col-lg-2 comprador__dni">
-                              <label for="dni" class="form-label">Nro DNI</label>
-                              <input type="number" class="form-control" id="dni" placeholder="12345678" required>
+                    </div>
+                    <section class="row g-3 comprador__tarjeta tarjeta" id="section_tarjeta" style="display:none">
+                         <div class="col-12 col-md-6 col-lg-6 offset-lg-1 tarjeta__titular">
+                              <label for="tarjeta_titular" class="form-label">Titular Tarjeta</label>
+                              <input type="text" class="form-control" id="tarjeta_titular" value="" placeholder="Titular Tarjeta">
                          </div>
-                         <div class="col-5 col-sm-5 col-md-3 col-lg-3 comprador__nro_tarjeta">
-                              <label for="nro_tarjeta" class="form-label">Nro Tarjeta</label>
-                              <input type="number" class="form-control" id="nro_tarjeta" placeholder="1111 2222 3333 4444" required>
+                         <div class="col-5 col-sm-5 col-md-3 col-lg-3 tarjeta__nro">
+                              <label for="tarjeta_nro" class="form-label">Nro Tarjeta</label>
+                              <input type="number" class="form-control" id="tarjeta_nro" placeholder="1111 2222 3333 4444">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_nro" style="display: none;">
+                                   Tenés que ingresar 16 números (TC) o 22 números (TD)
+                              </div>
                          </div>
-                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 offset-lg-1 comprador__mes">
-                              <label for="mes" class="form-label">MES</label>
-                              <input type="number" class="form-control" id="mes" placeholder="MM" required>
+                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 offset-lg-1 tarjeta__mes">
+                              <label for="tarjeta_mes" class="form-label">MES</label>
+                              <input type="number" class="form-control" id="tarjeta_mes" placeholder="MM">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_mes" style="display: none;">
+                                   Tenés que ingresar 2 números
+                              </div>
                          </div>
-                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 comprador__anio">
-                              <label for="anio" class="form-label">AÑO</label>
-                              <input type="number" class="form-control" id="anio" placeholder="AA" required>
+                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 tarjeta__anio">
+                              <label for="tarjeta_anio" class="form-label">AÑO</label>
+                              <input type="number" class="form-control" id="tarjeta_anio" placeholder="AA">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_anio" style="display: none;">
+                                   Tenés que ingresar 2 números
+                              </div>
                          </div>
-                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 comprador__cvc">
-                              <label for="cvc" class="form-label">CVC</label>
-                              <input type="password" class="form-control" id="cvc" placeholder="***" required>
+                         <div class="col-2 col-sm-2 col-md-2 col-lg-1 tarjeta__cvc">
+                              <label for="tarjeta_cvc" class="form-label">CVC</label>
+                              <input type="password" class="form-control" id="tarjeta_cvc" placeholder="***">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_cvc" style="display: none;">
+                                   Tenés que ingresar 3 números
+                              </div>
                          </div>
                     </section>
-                    <!-- <div class="col-6 col-md-6 col-lg-2 comprador__envio">
-                         <label for="validationDefault04" class="form-label">Formas de Envío</label>
-                         <select class="form-select" id="validationDefault04" required>
-                         <option selected disabled value="">Seleccionar...</option>
-                         <option value="1">Envío por mail</option>
-                         <option value="2">Retiro en Boletería</option>
-                         </select>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-10 comprador__direccion">
-                         <label for="validationDefault03" class="form-label">Dirección</label>
-                         <input type="text" class="form-control" id="validationDefault03" value="" placeholder="Calle, Número, Piso, Departamento" required>
-                    </div>
-                    <div class="col-8 col-md-8 col-lg-4 comprador__localidad">
-                         <label for="validationDefault03" class="form-label">Localidad</label>
-                         <input type="text" class="form-control" id="validationDefault03" value="" placeholder="Localidad" required>
-                    </div> -->
-
                     <div class="col-12 col-md-12 col-lg-10 comprador__email">
-                         <label for="email" class="form-label">Correo Electrónico</label>
-                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="tu_correo_electronico@email.com.ar" required>
-                         <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                         <!-- <a id="email_enviar" href=""></a> -->
+                         <label for="comprador_email" class="form-label">Correo Electrónico</label>
+                         <input type="email" class="form-control" id="comprador_email" aria-describedby="emailHelp" placeholder="tu_correo_electronico@email.com.ar">
                     </div>
                     <div class="col-12">
-                         <button class="btn btn-primary comprador__boton boton" type="submit">Enviar</button>
+                         <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="comprador_mayor" aria-describedby="invalido_comprador_mayor">
+                              <label class="form-check-label" for="comprador_mayor">
+                              Soy mayor de edad
+                              </label>
+                              <div class="invalid-feedback invalido" id="invalido_comprador_mayor" style="display: none;">
+                                   Tenés que confirmar que sos mayor de 18 años
+                              </div>
+                         </div>
+                    </div>
+                    <!-- <div class="col-12 col-md-6 col-lg-6 comprador__email__enviar">
+                         <a class="form-control" id="email_enviar" href=""></a>
+                    </div> -->
+                    <div class="col-12">
+                         <button class="btn btn-primary comprador__btn boton" id="btn_enviar" type="button">Enviar Tickets</button>
                     </div>
                </form>
+          </section>
+          <section class="row finalizar" id="section_finalizar" style="display:none">
+               <!-- FINALIZAR COMPRA -->
+               <div class="btn col-12 my-2 py-2 bg-info finalizar__mensaje" id="finalizar_compra">
+                    <h2>MUCHAS GRACIAS POR VISITAR NUESTROS CINES!</h3>
+                    <h3>Tus tickets ya se enviaron a tu email</h3>
+                    <div class="btn col-8 mt-2 py-2 bg-dark finalizar__btn" id="btn_finalizar">SEGUIR COMPRANDO</div>
+               </div>
           </section>
      </main>
      <footer class="footer">
@@ -180,6 +198,7 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
      <script src="/scripts/clases.js"></script>
+     <script src="/scripts/validaciones.js"></script>
      <script src="/scripts/metodos_clases/metodos_funciones.js"></script>
      <script src="/scripts/metodos_clases/metodos_movies.js"></script>
      <script src="/scripts/metodos_clases/metodos_theaters.js"></script>

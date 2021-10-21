@@ -6,3 +6,30 @@
 .comprador {
      justify-content: space-around;
 }
+.finalizar {
+     // &__mensaje {
+     //      text-align: center;
+     //      font-weight: normal;
+     //      color: $color-background;
+     // }
+     &__btn {
+          text-align: center;
+          font-weight: normal;
+          color: $color-background;
+     }
+     // text-align: center;
+     // font-weight: normal;
+     // color: $color-background;
+}
+// .finalizar {
+//      &&__mensaje {
+//           text-align: center;
+//           font-weight: normal;
+//           color: $color-background;
+//      }
+//      &&__btn {
+//           text-align: center;
+//           font-weight: normal;
+//           color: $color-background;
+//      }
+// }
