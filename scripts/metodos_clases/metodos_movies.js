@@ -141,7 +141,8 @@ function dibujar_pelicula (id_div, clase, img, pelicula) {
           // card.classList.add('btn', 'col-10', 'offset-1', 'col-sm-10', 'offset-sm-1', 'col-md-6', 'offset-md-0', 'col-xl-4', 'offset-xl-0', 'col-xxl-4', 'offset-xxl-0');
           card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-6', 'offset-md-0', 'col-lg-3', 'offset-lg-0', 'col-xl-3', 'offset-xl-0', 'col-xxl-3', 'offset-xxl-0');
      } else if (id_div === 'movies_principal') {
-          card.classList.add('btn', 'col-10', 'offset-1', 'col-sm-10', 'offset-sm-1', 'col-md-6', 'offset-md-0', 'col-xl-4', 'offset-xl-0', 'col-xxl-4', 'offset-xxl-0');
+          card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-12', 'col-lg-6', 'col-xl-6', 'col-xxl-4');
+          // card.classList.add('btn', 'col-10', 'offset-1', 'col-sm-10', 'offset-sm-1', 'col-md-6', 'offset-md-0', 'col-xl-4', 'offset-xl-0', 'col-xxl-4', 'offset-xxl-0');
      }
 
      card.classList.add('card');

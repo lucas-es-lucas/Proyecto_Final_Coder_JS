@@ -1,21 +1,13 @@
-localStorage.clear();
-// const valor_entrada = 100;
-let seguir;
+// localStorage.clear();
 // ARRAYS
 let lista_local_movie;
-let lista_local_theaters;
-// let tickets = new Array();
+let lista_local_theater;
 let restricciones = new Array();
-// let movies = new Array();
 let theaters = new Array();
 let days = new Array();
 let horarios = new Array();
-// let funciones = new Array();
-// let funciones_completas = new Array();
 let promociones = new Array();
 let formas_de_pago = new Array();
-// llenar_arrays_globales();
-// let ticket_nuevo = new Ticket;
 let movie_elegida = new Movie;
 let edad;
 let theater_elegido = new Theater;
@@ -43,3 +35,8 @@ let importe_cuota = 0;
 traer_funciones_JSON();
 // console.log(funciones);
 console.log('pasó por inicio.js');
+
+
+// traer_funciones_JSON();
+// console.log('pasó por movies.js');
+armar_cartelera('movies_principal');

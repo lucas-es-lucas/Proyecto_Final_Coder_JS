@@ -16,7 +16,6 @@ function traer_funciones_JSON () {
      $.get(url_JSON_funciones, function (respuesta, estado) {
           if (estado === 'success') {
                let funciones_JSON = respuesta;
-               // console.log(funciones_JSON);
                for (let i = 0; i < funciones_JSON.length; i++) {
                     let funcion = new Funcion;
                     funcion.id_funcion = funciones_JSON[i].id_funcion;
@@ -49,18 +48,13 @@ function traer_funciones_JSON_completas (funciones) {
 }
 // OPCIONES
 function dibujar_opciones (id_div, clase, id_filtro) {
-     // console.log(id_div, clase, id_filtro);
-     // funciones_con_la_peli = filtrar_funciones_con_la_peli(clase, id_filtro);
-     // console.log(funciones_con_la_peli);
      // RECORRO LOS ARRAYS DE CLASES Y ARMO ARRAYS NUEVOS CON LOS ELEMENTOS QUE TIENEN LA PELI
      let array_de_funciones_disponibles = filtrar_funciones_con_la_peli(clase, id_filtro);
-     // let array_de_funciones_disponibles = armar_array_de_opciones_con_la_peli(clase);
      // ARMAR MENSAJE SI NO EXISTEN FUNCIONES CON ESE FILTRO
      if (array_de_funciones_disponibles.length === 0) {
           array_de_funciones_disponibles = mensaje_sin_funciones_disponibles;
      }
      let div_a_llenar = document.getElementById(id_div);
-     // console.log(div_a_llenar.childElementCount);
      if (div_a_llenar.childElementCount == 0) {
           array_de_funciones_disponibles.forEach(elemento => {
                let opt = document.createElement("h4");
@@ -81,31 +75,24 @@ function dibujar_opciones (id_div, clase, id_filtro) {
 function filtrar_funciones_con_la_peli (clase, id_filtro) {
      let array_de_opciones = [];
      // FUNCIONES QUE TIENEN LA PELI
-     // console.log(funciones_con_la_peli);
      switch (clase) {
           case 'theater':
                funciones_con_la_peli = funciones_xPeli = funciones.filter(item => item.id_movie == id_filtro);
-               // funciones_xPeli = funciones.filter(item => item.id_movie == id_filtro);
                array_de_opciones = armar_array_de_opciones_con_la_peli('theater');
                break;
           case 'day':
                funciones_con_la_peli = funciones_xPeli_xCine = funciones_con_la_peli.filter(item => item.id_theater == id_filtro);
-               // funciones_xPeli_xCine = funciones_con_la_peli.filter(item => item.id_theater == id_filtro);
                array_de_opciones = armar_array_de_opciones_con_la_peli('day');
                break;
           case 'horario':
                funciones_con_la_peli = funciones_xPeli_xCine_xDia = funciones_con_la_peli.filter(item => item.id_day == id_filtro);
-               // funciones_xPeli_xCine_xDia = funciones_con_la_peli.filter(item => item.id_day == id_filtro);
                array_de_opciones = armar_array_de_opciones_con_la_peli('horario');
                break;
           default:
                break;
      }
-     // console.log(funciones);
-     // console.log(funciones_con_la_peli);
-     // console.log(array_de_opciones);
 
-     return array_de_opciones; // funciones_con_la_peli;
+     return array_de_opciones;
 }
 function armar_array_de_opciones_con_la_peli (clase) {
      let array_filtrado = [];
@@ -145,22 +132,7 @@ function armar_array_de_opciones_con_la_peli (clase) {
                break;
      }
      // ARRAY NUEVO CON LOS ELEMENTOS QUE TIENEN LA PELI
-     console.log(array_filtrado.length);
      return array_filtrado;
-
-     // // RECORRO LOS CINES Y ARMO UN ARRAY NUEVO CON LOS CINES QUE DAN LA PELI
-     // let theaters_filtered = [];
-     // theaters_filtered = theaters;
-
-     // for (let i = 0; i < theaters.length; i++) {
-     //      // console.log(theaters[i].codigo);
-     //      if (funciones_con_la_peli.find(item => item.id_theater == theaters[i].codigo) == undefined) {
-     //           // console.log(theaters[i].codigo);
-     //           theaters_filtered = theaters_filtered.filter(item => item.codigo != theaters[i].codigo);
-     //      };
-     // }
-     // // ARRAY DE CINES CON LOS CINES QUE TIENEN LA PELI
-     // console.log(theaters_filtered.length);
 }
 function armar_mensaje_sin_funciones_disponibles (clase) {
      let mensaje_sin_funciones_disponibles;

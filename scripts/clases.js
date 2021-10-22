@@ -122,10 +122,11 @@ class Ticket {
      }
      // MOSTRAR INFO EN HTML
      mostrar_importes () {
-          let btn_checkout = document.getElementById('btn_checkout');
-          btn_checkout.firstElementChild.textContent = 'QUERÉS MODIFICÁR TU COMPRA?';
-          btn_checkout.classList.add('modificar');
-          // $('#btn_checkout').addClass('modificar');
+          // let btn_checkout = document.getElementById('btn_checkout');
+          // btn_checkout.firstElementChild.textContent = 'QUERÉS MODIFICÁR TU COMPRA?';
+          // btn_checkout.classList.add('modificar');
+          $('#btn_checkout h4').text('QUERÉS MODIFICÁR TU COMPRA?');
+          $('#btn_checkout').addClass('modificar');
 
           let resumen = document.getElementById('resumen_compra');
           vaciar_contenedor('resumen_compra');
@@ -148,18 +149,19 @@ class Ticket {
           $('#resumen_compra').slideDown(1000);
           $('#section_comprador').slideDown(1000);
 
-          console.log(this.forma_de_pago);
-
-          if (this.forma_de_pago === '1' || this.forma_de_pago === '2') {
+          if (this.forma_de_pago === 1 || this.forma_de_pago === 2) {
                $('#section_tarjeta').slideDown(500);
-               // $('#section_tarjeta input').attr('required', true);
           } else {
                $('#section_tarjeta').css('display', 'none');
-               // $('#section_tarjeta input').removeAttr('required');
           }
+     }
 
-          $('#section_cartelera .movie').addClass('disabled');
-          $('#section_cartelera .options').addClass('disabled');
-          $('#section_pago .options').addClass('disabled');
+     guardar_tickets () {
+          tickets.push(this);
+          console.log(tickets);
+          guardar_localStorage(tickets, 'ticket');
+          lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
+          console.log(lista_local_ticket);
+          // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
      }
 }

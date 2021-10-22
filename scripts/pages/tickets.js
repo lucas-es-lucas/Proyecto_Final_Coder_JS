@@ -5,29 +5,23 @@
 
      // get_cartelera(url_api_movies, list_movie, url_api_key, lang);
 // })
+let lista_local_ticket;
+function iniciar () {
+     preparar_compra('movies_tickets');
+     armar_cartelera('movies_tickets');
+}
 
 traer_funciones_JSON();
-// console.log(funciones);
-// console.log('pasó por tickets.js');
-preparar_compra('movies_tickets');
-// console.log(theaters);
-// console.log(days);
-// console.log(horarios);
-armar_cartelera('movies_tickets');
+iniciar();
 
 // EVENTO PARA BLOQUEAR / DESBLOQUEAR LAS OPCIONES
 let btn_checkout = document.getElementById('btn_checkout');
-// btn_checkout.onclick = () => mostrar_resumen_compra();
 btn_checkout.onclick = () => hacer_checkout($('#btn_checkout').hasClass('modificar'));
 
-// email.onblur = () => {
-//      return $('#email_enviar').attr('href', `mailto:${$('#email').val()}`);
-// };
-
 $("#btn_enviar").click( function() {
-     // console.log('entra en el click de btn_enviar');
-
      if (validar_formulario ()) {
+          guardar_tickets();
+          
           $('#section_cartelera').slideUp(1000);
           $('#section_pago').slideUp(1000);
           $('#section_checkout').slideUp(1000);
@@ -36,22 +30,19 @@ $("#btn_enviar").click( function() {
           $('#section_comprador').slideUp(1000);
 
           $('#section_finalizar').fadeIn(1000);
-
-          // setTimeout(()=>{
-          //      preparar_compra('movies_tickets');
-          //      armar_cartelera('movies_tickets');
-          // }, 2000);
      }
 });
 
 $('#btn_finalizar').click( function () {
-     console.log('entra en el click de btn_finalizar');
-     
-     preparar_compra('movies_tickets');
-     armar_cartelera('movies_tickets');
-});
+     iniciar();
 
-// href="mailto:midireccioneslucas@hotmail.com"
+     $('#section_finalizar').fadeOut(500);
+     resetear_opciones('movies_tickets');
+     $('#btn_checkout').removeClass('modificar');
+     $('#btn_checkout h4').text('CONFIRMÁS TU COMPRA?');
+     habilitar_opciones(true);
+     $('#section_cartelera').slideDown(500);
+});
 
 // // EMISION DE TICKETS ORDENADA POR EL DIA MÁS PROXIMO
 // tickets.sort(function (a, b) {
