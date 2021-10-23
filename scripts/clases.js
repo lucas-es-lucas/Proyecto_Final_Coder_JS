@@ -32,6 +32,9 @@ class Theater {
           this.theater = theater,
           this.adress = adress
      }
+     getTheater (codigo) {
+          return this;
+     }
 }
 class Day {
      constructor (codigo, day) {
@@ -96,7 +99,8 @@ class Forma_de_Pago {
      }
 }
 class Ticket {
-     constructor (movie, theater, day, horario, sala, cantidad_entradas, cantidad_cuotas, importe, importe_cuota, promocion, forma_de_pago) {
+     constructor (codigo, movie, theater, day, horario, sala, cantidad_entradas, cantidad_cuotas, importe, importe_cuota, promocion, forma_de_pago) {
+          this.codigo = codigo,
           this.movie = movie, 
           this.theater = theater, 
           this.day = day, 
@@ -145,7 +149,7 @@ class Ticket {
                resumen.appendChild(forma_pago);
           }
 
-          $('#section_resumen').slideDown(1000);
+          $('#section_importe').slideDown(1000);
           $('#resumen_compra').slideDown(1000);
           $('#section_comprador').slideDown(1000);
 
@@ -156,12 +160,26 @@ class Ticket {
           }
      }
 
-     guardar_tickets () {
-          tickets.push(this);
-          console.log(tickets);
-          guardar_localStorage(tickets, 'ticket');
-          lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
-          console.log(lista_local_ticket);
-          // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
+     // guardar_tickets () {
+     //      tickets.push(this);
+     //      console.log(tickets);
+     //      guardar_localStorage(tickets, 'ticket');
+     //      lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
+     //      console.log(lista_local_ticket);
+     //      // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
+     // }
+}
+class Comprador {
+     constructor (email, nombre, apellido, dni, tarjeta_titular, tarjeta_nro, tarjeta_mes, tarjeta_anio, tarjeta_cvc, tickets) {
+          this.email = email,
+          this.nombre = nombre,
+          this.apellido = apellido,
+          this.dni = dni,
+          this.tarjeta_titular = tarjeta_titular,
+          this.tarjeta_nro = tarjeta_nro,
+          this.tarjeta_mes = tarjeta_mes,
+          this.tarjeta_anio = tarjeta_anio,
+          this.tarjeta_cvc = tarjeta_cvc,
+          this.tickets = tickets
      }
 }

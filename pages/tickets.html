@@ -35,7 +35,7 @@
                          <div class="navbar-nav">
                          <!-- <a class="nav-link" href="index.html">CineXcusas</a> -->
                          <!-- <a class="nav-link" href="/pages/movies.html">PELICULAS</a> -->
-                         <a class="nav-link" href="/pages/theaters.html">CINES</a>
+                         <!-- <a class="nav-link" href="/pages/theaters.html">CINES</a> -->
                          <a class="nav-link active link_activo" aria-current="page" href="#">ENTRADAS</a>
                     </div>
                </div>
@@ -43,7 +43,7 @@
      </header>
      <main class="container">
           <!-- OPCIONES DE COMPRA -->
-          <section id="section_cartelera" class="row cartelera">
+          <section class="row cartelera" id="section_cartelera">
                <div class="row options options__movie" id="movies_tickets">
                     <!-- <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0 my-2 py-3">
                          <div class="card movie">
@@ -64,12 +64,7 @@
                </div>
                <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__horarios" style="display:none"><h4>HORARIOS</h4></div>
                <div class="btn col-10 col-md-8 mt-2 py-2 options options__horario" id="horarios">
-                    <!-- <div class="option__time"></div> -->
                </div>
-               <!-- <div class="col-6 offset-3 my-2 py-2 bg-dark"><h4>ASIENTOS</h4></div> -->
-               <!-- <div class="col-6 offset-3 my-2 py-2 bg-light options options__room">
-                    <div class="option__room" id="salas"></div>
-               </div> -->
                <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__entradas" style="display:none"><h4>ENTRADAS ($100)</h4></div>
                <div class="btn col-10 col-md-8 mt-2 py-2 options options__entrada" id="entradas">
                     <!-- <div class="counter">
@@ -81,7 +76,7 @@
                     <!-- <div class="option__ticket"></div> -->
                </div>
           </section>
-          <section id="section_pago" class="row pagar">
+          <section class="row pago" id="section_pago">
                <!-- OPCIONES DE PAGO -->
                <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__promociones" style="display:none"><h4>PROMOCIONES</h4></div>
                <div class="btn col-10 col-md-8 mt-2 py-2 options options__promocion" id="promociones">
@@ -102,9 +97,9 @@
                     <h4>CONFIRMÁS TU COMPRA?</h4>
                </div>
           </section>
-          <section class="row pagar" id="section_resumen" style="display:none">
+          <section class="row importe" id="section_importe" style="display:none">
                <!-- RESUMEN DE COMPRA -->
-               <div class="btn col-10 my-2 py-2 bg-success resumen" id="resumen_compra">
+               <div class="btn col-10 my-2 py-2 bg-success importe" id="resumen_compra">
                     <!-- <h4>TU COMPRA</h4> -->
                </div>
           </section>
@@ -187,20 +182,20 @@
                               </div>
                          </div>
                     </div>
-                    <!-- <div class="col-12 col-md-6 col-lg-6 comprador__email__enviar">
-                         <a class="form-control" id="email_enviar" href=""></a>
-                    </div> -->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                         <button class="btn btn-primary comprador__btn boton" id="btn_enviar" type="button">Enviar Tickets</button>
+                         <button class="btn btn-primary comprador__btn boton" id="btn_comprador" type="button">Confirmá tus datos</button>
                     </div>
                </form>
           </section>
-          <section class="row finalizar" id="section_finalizar" style="display:none">
-               <!-- FINALIZAR COMPRA -->
-               <div class="btn col-12 my-2 py-2 bg-info finalizar__mensaje" id="finalizar_compra">
-                    <h2>MUCHAS GRACIAS POR VISITAR NUESTROS CINES!</h3>
-                    <h3>Tus tickets ya se enviaron a tu email</h3>
-                    <div class="btn col-8 mt-2 py-2 bg-light finalizar__btn" id="btn_finalizar">SEGUIR COMPRANDO?</div>
+          <section class="row carrito" id="section_carrito" style="display:none">
+               <!-- FINALIZAR COMPRA Y ENVIAR MAIL -->
+               <div class="btn col-12 my-2 py-2 bg-info carrito__mensaje" id="carrito">
+                    <h4>MUCHAS GRACIAS POR VISITAR NUESTROS CINES</h4>
+                    <div class="col-12 my-2 py-2 carrito__comprador" id="carrito_comprador">
+                    </div>
+                    <section class="row movies__carrito" id="movies_carrito"></section>
+                    <div class="btn col-8 mt-2 py-2 bg-light seguir_btn" id="btn_seguir">SEGUIR COMPRANDO</div>
+                    <div class="btn col-8 mt-2 py-2 bg-dark titles titles__enviar enviar_btn" id="btn_enviar">ENVIAR TICKETS</div>
                </div>
           </section>
      </main>
@@ -210,6 +205,7 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
      <script src="/scripts/clases.js"></script>
+     <script src="/scripts/variables.js"></script>
      <script src="/scripts/validaciones.js"></script>
      <script src="/scripts/metodos_clases/metodos_funciones.js"></script>
      <script src="/scripts/metodos_clases/metodos_movies.js"></script>

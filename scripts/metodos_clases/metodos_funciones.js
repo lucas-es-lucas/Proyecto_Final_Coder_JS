@@ -26,6 +26,7 @@ function traer_funciones_JSON () {
                     funciones.push(funcion);
                }
                // console.log(funciones);
+               // traer_funciones_JSON_completas(funciones);
           }
      })
 }
@@ -33,12 +34,9 @@ function traer_funciones_JSON_completas (funciones) {
      for (let i = 0; i < funciones.length; i++) {
           let funcion_completa = new Funcion_completa;
           funcion_completa.id_funcion = funciones[i].id_funcion;
-
-          // console.log(funciones_JSON[i].id_movie, funciones_JSON[i].id_theater,funciones_JSON[i].id_day, funciones_JSON[i].id_horario);
-          // let item =   movies.find(i => i.id == funciones[i].id_movie)
-          // let item = calculos.find(i => i.id == elemento.id);
-          console.log(movies);
-          funcion_completa.movie = movies.find(i => i.codigo == funciones[i].id_movie);
+          console.log(funciones[i]);
+          console.log(movies.id);
+          funcion_completa.movie = movies.find(i => i.id_movie == funciones[i].id_movie);
           funcion_completa.theater = theaters.find(i => i.codigo == funciones[i].id_theater);
           funcion_completa.day = days.find(i => i.codigo == funciones[i].id_day);
           funcion_completa.horario = days.find(i => i.codigo == funciones[i].id_horario);

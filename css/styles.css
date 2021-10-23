@@ -34,18 +34,6 @@ li a {
 .link_activo {
   color: #2662d9; }
 
-.cartelera {
-  justify-content: space-around; }
-
-.pagar {
-  justify-content: space-around; }
-
-.checkout {
-  justify-content: space-around; }
-
-.resumen {
-  justify-content: space-around; }
-
 .movie {
   background-color: white; }
   .movie__img {
@@ -80,6 +68,9 @@ li a {
 
 .theater__subtitle {
   color: #2662d9; }
+
+.comprador {
+  justify-content: space-around; }
 
 .titles {
   color: #e6e6e6;
@@ -127,15 +118,45 @@ li a {
   color: #1a1a1a;
   background-color: #9ebdfa; }
 
+.cartelera {
+  justify-content: space-around; }
+
+.pago {
+  justify-content: space-around; }
+
+.checkout {
+  justify-content: space-around; }
+
+.importe {
+  justify-content: space-around; }
+
 .resumen {
+  justify-content: space-around;
   text-align: center;
   font-weight: normal;
   color: #e6e6e6; }
 
-.comprador {
-  justify-content: space-around; }
-
-.finalizar__btn {
+.carrito__mensaje {
   text-align: center;
   font-weight: normal;
   color: #1a1a1a; }
+
+.carrito__comprador {
+  text-align: center;
+  font-weight: normal;
+  color: #1a1a1a; }
+
+.carrito__tickets {
+  text-align: center;
+  font-weight: normal;
+  font-style: oblique;
+  color: #1a1a1a; }
+
+.carrito .seguir__btn {
+  text-align: center;
+  font-weight: normal;
+  color: #1a1a1a; }
+
+.carrito .enviar__btn {
+  text-align: center;
+  font-weight: normal; }

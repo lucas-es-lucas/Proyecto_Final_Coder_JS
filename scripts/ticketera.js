@@ -1,20 +1,18 @@
 const valor_entrada = 100;
-let ticket_nuevo = new Ticket;
-let tickets = new Array();
+// let ticket_nuevo = new Ticket;
+// let tickets = new Array();
 // let lista_local_ticket;
 // FUNCIONES GLOBALES
 function vaciar_contenedor (contenedor) {
-     // console.log('pasa por vaciar contenedor', contenedor);
      let contenedor_a_vaciar = document.getElementById(contenedor);
      while (contenedor_a_vaciar.childElementCount > 0) {
           contenedor_a_vaciar.removeChild(contenedor_a_vaciar.firstChild);
      }
 }
 function resetear_opciones (contenedor_actual) {
-     // console.log(contenedor_actual);
      switch (contenedor_actual) {
           case 'movies_tickets':
-               $('#section_resumen').slideUp(1000);
+               $('#section_importe').slideUp(1000);
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
@@ -36,7 +34,7 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('theaters');
                break;
           case 'theaters':
-               $('#section_resumen').slideUp(1000);
+               $('#section_importe').slideUp(1000);
                $('#resumen_compra').slideDown(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
@@ -56,7 +54,7 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('dias');
                break;
           case 'dias':
-               $('#section_resumen').slideUp(1000);
+               $('#section_importe').slideUp(1000);
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
@@ -74,7 +72,7 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('horarios');
                break;
           case 'horarios':
-               $('#section_resumen').slideUp(1000);
+               $('#section_importe').slideUp(1000);
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
@@ -90,7 +88,7 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('entradas');
                break;
           case 'promociones':
-               $('#section_resumen').slideUp(1000);
+               $('#section_importe').slideUp(1000);
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
@@ -102,7 +100,7 @@ function resetear_opciones (contenedor_actual) {
                vaciar_contenedor('formas_de_pago');
                break;
           case 'formas_de_pago':
-               $('#section_resumen').slideUp(1000);
+               $('#section_importe').slideUp(1000);
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
@@ -125,17 +123,83 @@ function resetear_contenedor (contenedor) {
           }
      }
 }
-function guardar_localStorage (array, clase) {
+function guardar_localStorage_array (array, clase) {
      for (const item of array) {
           localStorage.setItem(`${clase}_${item.codigo}`, JSON.stringify(item));
           // (clase_codigo, item del array)
      }
      localStorage.setItem(`lista_local_${clase}`, JSON.stringify(array));
 }
+function guardar_localStorage_objeto (objeto, clase, codigo) {
+     // Si tiene contenido el localStorage
+     if (localStorage.getItem(`lista_local_${clase}_${codigo}`)) {
+          // guardo el contenido en un array
+          let guardados = JSON.parse(localStorage.getItem(`lista_local_${clase}_${codigo}`));
+          // agregago el objeto que quiero guardar
+          guardados.push(objeto);
+          // lo paso a string para usarlo como JSON
+          let guardados_string = JSON.stringify(guardados);
+          // guardo el array (string) con el objeto nuevo en el localStorage
+          localStorage.setItem(`lista_local_${clase}_${codigo}`, guardados_string);
+     } else { // si el localStorage está vacío
+          let guardados = new Array();
+          // guardo el objeto en un array nuevo
+          guardados.push(objeto);
+          // lo paso a string para usarlo como JSON
+          let guardados_string = JSON.stringify(guardados);
+          // guardo el array (string) con el objeto en el localStorage
+          localStorage.setItem(`lista_local_${clase}_${codigo}`, guardados_string);
+     }
+}
 function preparar_compra (origen) {
      vaciar_contenedor(`${origen}`);
      llenar_arrays_globales();
      ticket_nuevo = new Ticket;
+     ticket_nuevo.codigo = proximo_codigo('lista_local_ticket');
+     // buscar_codigo('lista_local_ticket');
+}
+function proximo_codigo (lista_local) {
+     if ( !localStorage.getItem(`${lista_local}`) ){
+          console.log('entra en el lista_local_ticket vacía');
+          return 1;
+     }
+     let almacenados = JSON.parse(localStorage.getItem(`${lista_local}`));
+     let proximo_codigo = almacenados.length + 1;
+
+     return proximo_codigo;
+}
+function buscar_email (lista_local, email){
+     console.log('entra en buscar_email');
+     console.log(lista_local);
+     console.log(email);
+     if ( !localStorage.getItem(`${lista_local}`) ){
+          return false;
+     }
+     let almacenados = JSON.parse(localStorage.getItem(`${lista_local}`));
+     let encontrado = false;
+     let i = 0;
+     while (!encontrado && i != almacenados.length) {
+          if (almacenados[i].email == email) {
+               encontrado = almacenados[i];
+          }
+          i++;
+     }
+     return encontrado;
+}
+function buscar_codigo (lista_local, codigo){
+     if ( !localStorage.getItem(`${lista_local}`) ){
+          return false;
+     }
+     let almacenados = JSON.parse(localStorage.getItem(`${lista_local}`));
+     let encontrado = false;
+     let i = 0;
+     while (!encontrado && i != almacenados.length) {
+          if (almacenados[i].codigo == codigo) {
+               encontrado = almacenados[i];
+          }
+          i++;
+     }
+     return encontrado;
 }
 function llenar_arrays_globales () {
      // // RESTRICCIONES
@@ -165,10 +229,10 @@ function llenar_arrays_globales () {
      let theater3 = new Theater(3, 'Cine 3', 'Zon Oeste');
      let theater4 = new Theater(4, 'Cine 4', 'Zona Sur');
      theaters = [theater1, theater2, theater3, theater4];
-     guardar_localStorage(theaters, 'theater');
+     guardar_localStorage_array(theaters, 'theater');
      lista_local_theater = JSON.parse(localStorage.getItem('lista_local_theater'));
      console.log(lista_local_theater);
-     // console.log(theaters);
+     console.log(theaters);
      // DIAS
      let day1 = new Day(1, 'Lunes');
      let day2 = new Day(2, 'Martes');
@@ -308,7 +372,6 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
                ticket_nuevo.promocion = parseInt(elemento_seleccionado.id);
                marcar_elemento(id_div, id_elemento);
                // //sala_elegida
-               console.log(ticket_nuevo.promocion);
                descuento = promociones.find(promocion => promocion.codigo == ticket_nuevo.promocion).descuento;
                break;
           case 'formas_de_pago':
@@ -345,28 +408,10 @@ function marcar_elemento (contenedor, id_elemento) {
           $(`#${contenedor} .selected`).fadeIn("slow");
 
           switch (contenedor) {
-               // case 'movies_principal': 
-               // // DIBUJAR FICHA DE LA PELI CON EL TRAILER Y BOTON DE COMPRAR 
-               // // BOTON DE COMPRAR: EVENTO PARA IR A TICKETS.HTML CON LA PELI YA SELECTED 
-               //      marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
-               //      ticket_nuevo.movie = elemento_seleccionado.id;
-               //      //edad
-               //      console.log(ticket_nuevo.movie);
-               //      // dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
-               //      break;
-               // case 'movies':
-               //      marcar_pelicula(id_div, elemento_seleccionado, id_elemento);
-               //      ticket_nuevo.movie = elemento_seleccionado.id;
-               //      //edad
-               //      console.log(ticket_nuevo.movie);
-               //      // dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
-               //      break;
                case 'theaters':
-                    // llenar_div(days, 'dias', 'day');
                     dibujar_opciones('dias', 'day', ticket_nuevo.theater);
                     break;
                case 'dias':
-                    // llenar_div(horarios, 'horarios', 'horario');
                     dibujar_opciones('horarios', 'horario', ticket_nuevo.day);
                     break;
                case 'horarios':
@@ -374,11 +419,9 @@ function marcar_elemento (contenedor, id_elemento) {
                     ticket_nuevo.cantidad_entradas = 1;
                     dibujar_contador('cantidad_entradas', 'entradas', 'entrada');
                     $(`#btn_sub_entrada`).on('click', function() {
-                         console.log('entra al click de sub entradas');
                          ticket_nuevo.cantidad_entradas = parseInt($(`#entradas #cantidad_entradas`).text());
                     });
                     $(`#btn_add_entrada`).on('click', function() {
-                         console.log('entra al click de add entradas');
                          ticket_nuevo.cantidad_entradas = parseInt($(`#entradas #cantidad_entradas`).text());
                     });
                     dibujar_opciones_estaticas(promociones, 'promociones', 'promocion');
@@ -394,11 +437,9 @@ function marcar_elemento (contenedor, id_elemento) {
                          $('#cuotas').fadeIn('slow');
                          dibujar_contador('cantidad_cuotas', 'cuotas', 'cuota');
                          $(`#btn_sub_cuota`).on('click', function() {
-                              console.log('entra al click de sub cuotas');
                               ticket_nuevo.cantidad_cuotas = parseInt($(`#cuotas #cantidad_cuotas`).text());
                          });
                          $(`#btn_add_cuota`).on('click', function() {
-                              console.log('entra al click de add cuotas');
                               ticket_nuevo.cantidad_cuotas = parseInt($(`#cuotas #cantidad_cuotas`).text());
                          });
                     } else {
@@ -477,7 +518,7 @@ function hacer_checkout (modificar) {
 
           $('#btn_checkout').removeClass('modificar');
 
-          $('#section_resumen').slideUp(2000);
+          $('#section_importe').slideUp(2000);
           $('#resumen_compra').slideUp(2000);
           $('#section_comprador').slideUp(2000);
           // $('#btn_checkout').css('display', 'none');
@@ -487,13 +528,11 @@ function hacer_checkout (modificar) {
      }
 }
 function mostrar_resumen_compra () {
-     // console.log(descuento);
      // calcular importe
      ticket_nuevo.importe = importe = calcular_importe(valor_entrada, ticket_nuevo.cantidad_entradas, descuento);
      // calcular pagos
      ticket_nuevo.importe_cuota = importe_cuota = calcular_cuota(importe, ticket_nuevo.cantidad_cuotas);
      // generar ticket
-     // console.log(ticket_nuevo);
      ticket_nuevo.mostrar_importes();     
      // // guardar ticket
      // tickets.push(ticket_nuevo);
@@ -527,7 +566,6 @@ function validar_formulario () {
           $('#invalido_comprador_dni').css('display', 'none');
      }
      if (ticket_nuevo.forma_de_pago === 1 || ticket_nuevo.forma_de_pago === 2) {
-          console.log('entra al if de validar forma de pago');
           if ($('#tarjeta_titular').val() == '') {
                $('#invalido_tarjeta_titular').css('display', 'block')
                .css('color', 'red');
@@ -545,18 +583,6 @@ function validar_formulario () {
           } else {
                $('#invalido_tarjeta_nro').css('display', 'none');
           }
-          if (!validar_valor(parseInt($('#tarjeta_anio').val())) || 
-          $('#tarjeta_anio').val().length != 2 || 
-          (validar_valor(parseInt($('#tarjeta_anio').val())) && 
-          parseInt($('#tarjeta_anio').val()) < 21)) {
-               $('#invalido_tarjeta_anio').css('display', 'block')
-               .css('color', 'red');
-               $('#tarjeta_anio').focus();
-               return false;
-          } else {
-               $('#invalido_tarjeta_anio').css('display', 'none');
-          }
-          console.log(parseInt($('#tarjeta_mes').val()));
           if (!validar_valor(parseInt($('#tarjeta_mes').val())) || 
           $('#tarjeta_mes').val().length != 2 || 
           (validar_valor(parseInt($('#tarjeta_mes').val())) && 
@@ -567,6 +593,17 @@ function validar_formulario () {
                return false;
           } else {
                $('#invalido_tarjeta_mes').css('display', 'none');
+          }          
+          if (!validar_valor(parseInt($('#tarjeta_anio').val())) || 
+          $('#tarjeta_anio').val().length != 2 || 
+          (validar_valor(parseInt($('#tarjeta_anio').val())) && 
+          parseInt($('#tarjeta_anio').val()) < 21)) {
+               $('#invalido_tarjeta_anio').css('display', 'block')
+               .css('color', 'red');
+               $('#tarjeta_anio').focus();
+               return false;
+          } else {
+               $('#invalido_tarjeta_anio').css('display', 'none');
           }
           if (!validar_valor(parseInt($('#tarjeta_cvc').val())) || 
           $('#tarjeta_cvc').val().length != 3) {
@@ -595,16 +632,56 @@ function validar_formulario () {
           $('#invalido_comprador_mayor').css('display', 'none');
      }
 
+     let email_existe = buscar_email(`lista_local_comprador_${$('#comprador_email').val()}`, $('#comprador_email').val());
+
+     if (email_existe == false) {
+          comprador = new Comprador($('#comprador_email').val(), $('#comprador_nombre').val(), $('#comprador_apellido').val(), $('#comprador_dni').val(), $('#tarjeta_titular').val(), $('#tarjeta_nro').val(), $('#tarjeta_anio').val(), $('#tarjeta_mes').val(), $('#tarjeta_cvc').val());
+
+          guardar_localStorage_objeto(comprador, 'comprador', comprador.email);
+     }
+
      return true;
 }
+function vaciar_formulario () {
+     $('#comprador_nombre').val() = '';
+     $('#comprador_apellido').val() = '';
+     $('#comprador_dni').val() = '';
+
+     $('#tarjeta_titular').val() = '';
+     $('#tarjeta_nro').val() = '';
+     $('#tarjeta_mes').val() = '';
+     $('#tarjeta_anio').val() = '';
+     $('#tarjeta_cvc').val() = '';
+
+     $('#comprador_email').val() = '';
+     !$("#comprador_mayor").is(":checked");
+}
 function guardar_tickets () {
-     ticket_nuevo.guardar_tickets();
-//      tickets.push(ticket_nuevo);
-//      console.log(tickets);
-//      guardar_localStorage(tickets, 'ticket');
-//      lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
-//      console.log(lista_local_ticket);
-//      // let array_origen = JSON.parse(localStorage.getItem(`lista_local_${clase}`));
+     tickets.push(ticket_nuevo);
+     // guardo el array de tickets en el localStorage
+     guardar_localStorage_array(tickets, 'ticket');
+     // recupero el array de tickets para guardarlo en el comprador
+     lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
+     // recupero el comprador del localStorage para guardar el array de tickets
+     lista_local_comprador = JSON.parse(localStorage.getItem(`lista_local_comprador_${comprador.email}`));
+     lista_local_comprador.tickets = lista_local_ticket;
+     // vuelvo a guardar el comprador en el localStorage
+     let lista_local_comprador_string = JSON.stringify(lista_local_comprador);
+     localStorage.setItem(`lista_local_comprador_${comprador.email}`, lista_local_comprador_string);
+     // DIBUJO EL CARRITO DE TICKETS
+     dibujar_carrito(comprador, lista_local_ticket);
+}
+function dibujar_carrito (comprador, lista_local_ticket) {
+     vaciar_contenedor('carrito_comprador');
+     vaciar_contenedor('movies_carrito');
+     $('#carrito_comprador').append(`
+     <h4 id="carrito_comprador_nombre">${comprador.nombre} ${comprador.apellido}</h4>
+     <h5 id="carrito_comprador_email">Tus tickets se enviarán a ${comprador.email}</h5>`
+     );
+
+     for (const item of lista_local_ticket) {
+          get_pelicula(item.movie, 'movies_carrito', item);
+     };
 }
 // INGRESO DE DATOS
 function informar_edad () {

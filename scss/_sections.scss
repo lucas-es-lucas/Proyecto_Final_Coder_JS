@@ -1,0 +1,46 @@
+.cartelera {
+     justify-content: space-around;
+}
+.pago {
+     justify-content: space-around;
+}
+.checkout {
+     justify-content: space-around;
+}
+.importe {
+     justify-content: space-around;
+}
+.resumen {
+     justify-content: space-around;
+     text-align: center;
+     font-weight: normal;
+     color: $color-background;
+}
+.carrito {
+     &__mensaje {
+          text-align: center;
+          font-weight: normal;
+          color: $color-link;
+     }
+     &__comprador {
+          text-align: center;
+          font-weight: normal;
+          color: $color-link;
+     }
+     &__tickets {
+          text-align: center;
+          font-weight: normal;
+          font-style: oblique;
+          color: $color-link;
+     }
+     .seguir__btn {
+          text-align: center;
+          font-weight: normal;
+          color: $color-link;
+     }
+     .enviar__btn {
+          text-align: center;
+          font-weight: normal;
+          // color: white;
+     }
+}

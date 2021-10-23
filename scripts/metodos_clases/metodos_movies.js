@@ -103,7 +103,7 @@ function get_cartelera (origen) {
           }
      })
 }
-function get_pelicula (id_movie, origen) {
+function get_pelicula (id_movie, origen, ticket) {
      let url_movie = url_api_movies + id_movie + url_api_key + lang;
      $.get(url_movie, function (respuesta, estado) {
           // console.log(estado);
@@ -125,24 +125,30 @@ function get_pelicula (id_movie, origen) {
                // console.log(movie);
                movies.push(movie);
                // console.log(movies);
-               dibujar_pelicula(origen, 'movie', true, pelicula);
+               dibujar_pelicula(origen, 'movie', true, pelicula, ticket);
                // return movie;
           }
      });
 }
-function dibujar_pelicula (id_div, clase, img, pelicula) {
+function dibujar_pelicula (id_div, clase, img, pelicula, ticket) {
      // console.log(array_origen, id_div);
      let div_a_llenar = document.getElementById(id_div);
      // console.log(div_a_llenar.childElementCount);
      // card
      let card = document.createElement('div');
      card.id = pelicula.id;
-     if (id_div === 'movies_tickets') {
-          // card.classList.add('btn', 'col-10', 'offset-1', 'col-sm-10', 'offset-sm-1', 'col-md-6', 'offset-md-0', 'col-xl-4', 'offset-xl-0', 'col-xxl-4', 'offset-xxl-0');
-          card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-6', 'offset-md-0', 'col-lg-3', 'offset-lg-0', 'col-xl-3', 'offset-xl-0', 'col-xxl-3', 'offset-xxl-0');
-     } else if (id_div === 'movies_principal') {
-          card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-12', 'col-lg-6', 'col-xl-6', 'col-xxl-4');
-          // card.classList.add('btn', 'col-10', 'offset-1', 'col-sm-10', 'offset-sm-1', 'col-md-6', 'offset-md-0', 'col-xl-4', 'offset-xl-0', 'col-xxl-4', 'offset-xxl-0');
+
+     switch (id_div) {
+          case 'movies_tickets':
+               card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-6', 'offset-md-0', 'col-lg-3', 'offset-lg-0', 'col-xl-3', 'offset-xl-0', 'col-xxl-3', 'offset-xxl-0');
+               break;
+          case 'movies_principal':
+               card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-12', 'col-lg-6', 'col-xl-6', 'col-xxl-4');
+               break;
+          case 'movies_carrito':
+               card.classList.add('btn', 'col-12', 'col-sm-12', 'col-md-12', 'col-lg-12', 'col-xl-12', 'col-xxl-12');
+          default:
+               break;
      }
 
      card.classList.add('card');
@@ -166,18 +172,34 @@ function dibujar_pelicula (id_div, clase, img, pelicula) {
      tit.classList.add('card-title');
      tit.classList.add(`${clase}__title`);
      body.appendChild(tit);
-     // genero
-     let sub = document.createElement("h5");
-     sub.textContent = pelicula.genres[0].name;
-     sub.classList.add('card-subtitle');
-     sub.classList.add(`${clase}__subtitle`);
-     body.appendChild(sub);
-     // genero
-     let run = document.createElement("h5");
-     run.textContent = `${pelicula.runtime} min`;
-     run.classList.add('card-subtitle');
-     run.classList.add(`${clase}__subtitle__run`);
-     body.appendChild(run);
+
+     if (id_div == 'movies_tickets' || id_div == 'movies_principal') {
+          // genero
+          let sub = document.createElement("h5");
+          sub.textContent = pelicula.genres[0].name;
+          sub.classList.add('card-subtitle');
+          sub.classList.add(`${clase}__subtitle`);
+          body.appendChild(sub);
+          // duración
+          let run = document.createElement("h5");
+          run.textContent = `${pelicula.runtime} min`;
+          run.classList.add('card-subtitle');
+          run.classList.add(`${clase}__subtitle__run`);
+          body.appendChild(run);
+     // } else if (id_div == 'movies_carrito') {
+     //      // cine
+     //      let cine = document.createElement("h5");
+     //      cine.textContent = ticket.theater;
+     //      cine.classList.add('card-subtitle');
+     //      cine.classList.add(`${clase}__subtitle`);
+     //      body.appendChild(cine);
+     //      // día y horario
+     //      let dia_hora = document.createElement("h5");
+     //      dia_hora.textContent = `${ticket.day} a las ${ticket.horario}`;
+     //      dia_hora.classList.add('card-subtitle');
+     //      dia_hora.classList.add(`${clase}__subtitle__dia_hora`);
+     //      body.appendChild(dia_hora);
+     }
      // sinopsis
      if (id_div == 'movies_principal') {
           let sinopsis = document.createElement("p");
