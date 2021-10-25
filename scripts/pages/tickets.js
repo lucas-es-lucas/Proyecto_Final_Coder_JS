@@ -13,7 +13,7 @@ function iniciar_comprador () {
      window.localStorage.clear();
      tickets = new Array();
      // NO FUNCIONA - REVISAR
-     // vaciar_formulario();
+     vaciar_formulario();
      preparar_compra('movies_tickets');
      armar_cartelera('movies_tickets');
 }

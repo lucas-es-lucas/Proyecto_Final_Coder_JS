@@ -643,18 +643,21 @@ function validar_formulario () {
      return true;
 }
 function vaciar_formulario () {
-     $('#comprador_nombre').val() = '';
-     $('#comprador_apellido').val() = '';
-     $('#comprador_dni').val() = '';
+     document.getElementById("form_comprador").reset() ;
+     // $('#form_comprador').reset();
 
-     $('#tarjeta_titular').val() = '';
-     $('#tarjeta_nro').val() = '';
-     $('#tarjeta_mes').val() = '';
-     $('#tarjeta_anio').val() = '';
-     $('#tarjeta_cvc').val() = '';
+     // $('#comprador_nombre').val() = '';
+     // $('#comprador_apellido').val() = '';
+     // $('#comprador_dni').val() = '';
 
-     $('#comprador_email').val() = '';
-     !$("#comprador_mayor").is(":checked");
+     // $('#tarjeta_titular').val() = '';
+     // $('#tarjeta_nro').val() = '';
+     // $('#tarjeta_mes').val() = '';
+     // $('#tarjeta_anio').val() = '';
+     // $('#tarjeta_cvc').val() = '';
+
+     // $('#comprador_email').val() = '';
+     // !$("#comprador_mayor").is(":checked");
 }
 function guardar_tickets () {
      tickets.push(ticket_nuevo);
