@@ -71,17 +71,7 @@ function get_movie (url_api_movies, id_movie, url_api_key, lang) {
      });
 }
 async function armar_cartelera (origen) {
-     // debugger;
-     // console.log(movies);
-     // preparar_compra(origen);
-     // console.log(theaters);
-     // console.log(days);
-     // console.log(horarios);
-     // traer_funciones_JSON();
-     // console.log(funciones);
      get_cartelera(origen);
-     // console.log(movies);
-     // traer_funciones_JSON_completas(funciones);
 }
 function get_cartelera (origen) {
      let url_movies = url_api_movies + list_movie + url_api_key + lang;
@@ -186,22 +176,10 @@ function dibujar_pelicula (id_div, clase, img, pelicula, ticket) {
           run.classList.add('card-subtitle');
           run.classList.add(`${clase}__subtitle__run`);
           body.appendChild(run);
-     // } else if (id_div == 'movies_carrito') {
-     //      // cine
-     //      let cine = document.createElement("h5");
-     //      cine.textContent = ticket.theater;
-     //      cine.classList.add('card-subtitle');
-     //      cine.classList.add(`${clase}__subtitle`);
-     //      body.appendChild(cine);
-     //      // día y horario
-     //      let dia_hora = document.createElement("h5");
-     //      dia_hora.textContent = `${ticket.day} a las ${ticket.horario}`;
-     //      dia_hora.classList.add('card-subtitle');
-     //      dia_hora.classList.add(`${clase}__subtitle__dia_hora`);
-     //      body.appendChild(dia_hora);
      }
-     // sinopsis
+     
      if (id_div == 'movies_principal') {
+          // sinopsis
           let sinopsis = document.createElement("p");
           sinopsis.textContent = pelicula.overview;
           sinopsis.classList.add('card-text');

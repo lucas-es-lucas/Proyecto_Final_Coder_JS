@@ -1,7 +1,4 @@
 const valor_entrada = 100;
-// let ticket_nuevo = new Ticket;
-// let tickets = new Array();
-// let lista_local_ticket;
 // FUNCIONES GLOBALES
 function vaciar_contenedor (contenedor) {
      let contenedor_a_vaciar = document.getElementById(contenedor);
@@ -16,7 +13,6 @@ function resetear_opciones (contenedor_actual) {
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
-               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -38,7 +34,6 @@ function resetear_opciones (contenedor_actual) {
                $('#resumen_compra').slideDown(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
-               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -58,7 +53,6 @@ function resetear_opciones (contenedor_actual) {
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
-               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -76,7 +70,6 @@ function resetear_opciones (contenedor_actual) {
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
-               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -92,7 +85,6 @@ function resetear_opciones (contenedor_actual) {
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
-               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -104,7 +96,6 @@ function resetear_opciones (contenedor_actual) {
                $('#resumen_compra').slideUp(1000);
                $('#section_comprador').slideUp(1000);
                $('#btn_checkout').css('display', 'none');
-               // $(`.titles__resumen_compra`).css('display', 'none');
                vaciar_contenedor('resumen_compra');
                $(`.titles__cuotas`).css('display', 'none');
                vaciar_contenedor('cuotas');
@@ -115,9 +106,7 @@ function resetear_opciones (contenedor_actual) {
 }
 function resetear_contenedor (contenedor) {
      let contenedor_a_resetear = document.getElementById(contenedor);
-     // console.log(contenedor_a_resetear.childElementCount);
      for (let i = 0; i <= contenedor_a_resetear.childElementCount - 1; i++) {
-          // console.log(contenedor_a_resetear.children[i]);
           if (contenedor_a_resetear.children[i].classList.contains('selected')) {
                contenedor_a_resetear.children[i].classList.remove('selected');
           }
@@ -156,11 +145,9 @@ function preparar_compra (origen) {
      llenar_arrays_globales();
      ticket_nuevo = new Ticket;
      ticket_nuevo.codigo = proximo_codigo('lista_local_ticket');
-     // buscar_codigo('lista_local_ticket');
 }
 function proximo_codigo (lista_local) {
      if ( !localStorage.getItem(`${lista_local}`) ){
-          console.log('entra en el lista_local_ticket vacía');
           return 1;
      }
      let almacenados = JSON.parse(localStorage.getItem(`${lista_local}`));
@@ -169,9 +156,6 @@ function proximo_codigo (lista_local) {
      return proximo_codigo;
 }
 function buscar_email (lista_local, email){
-     console.log('entra en buscar_email');
-     console.log(lista_local);
-     console.log(email);
      if ( !localStorage.getItem(`${lista_local}`) ){
           return false;
      }
@@ -209,20 +193,6 @@ function llenar_arrays_globales () {
      // let restriccion4 = new Restriccion(18, 'Sólo Para Adultos');
      // restricciones = [restriccion1, restriccion2, restriccion3, restriccion4];
      // console.log(restricciones);
-     // // MOVIES
-     // let movie1 = new Movie(1, 'El Silencio de los Inocentes', 'Director1', restricciones[3], 'Thriller', '../images/posters/silence_of_the_lambs.jpg');
-     // let movie2 = new Movie(2, 'Duro de Matar', 'Director2', restricciones[1], 'Acción', '../images/posters/die_hard.jpg');
-     // let movie3 = new Movie(3, 'Toy Story', 'Director3', restricciones[0], 'Comedia', '../images/posters/toy_story.jpg');
-     // let movie4 = new Movie(4, 'El Sexto Sentido', 'Director4', restricciones[2], 'Terror', '../images/posters/the_sixth_sense.jpg');
-     // movies = [movie1, movie2, movie3, movie4];
-     // guardar_localStorage(movies, 'movie');
-     // lista_local_movie = JSON.parse(localStorage.getItem('lista_local_movie'));
-     // console.log(lista_local_movie);
-     // // movieS ORDENADAS POR LA RESTRICCION DE EDADES
-     // movies.sort(function (a, b) {
-     //      return a.restriccion.edad - b.restriccion.edad;
-     // });
-     // console.log(movies);
      // CINES
      let theater1 = new Theater(1, 'Cine 1', 'CABA');
      let theater2 = new Theater(2, 'Cine 2', 'Zona Norte');
@@ -297,10 +267,8 @@ function dibujar_contador (id, contenedor, clase) {
           $(`#btn_sub_${clase}`).on('click', function () {
                if (Number($(`#${contenedor} #${id}`).text()) > 1) {
                     $(`#${contenedor} #${id}`).css('display', 'none');
-                    // $(`#${contenedor} #${id}`).fadeOut('fast');
                     $(`#${contenedor} #${id}`).text(Number($(`#${contenedor} #${id}`).text()) - 1);
                     $(`#${contenedor} #${id}`).slideDown('5000');
-                    // $(`#${contenedor} #${id}`).fadeIn('fast');
                }
           });
           $(`#btn_add_${clase}`).on('click', function () {
@@ -328,7 +296,6 @@ function presentar_opciones (id_div, id_elemento, speed_delay, speed_slide, move
 }
 // INPUTS
 function crear_elemento (elemento, id, contenedor, clase) {
-     console.log(elemento, id, contenedor, clase);
      let padre = document.getElementById(contenedor);
      if (padre.childElementCount == 0) {
           let hijo = document.createElement(elemento);
@@ -347,14 +314,10 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
           // BOTON DE COMPRAR: EVENTO PARA IR A TICKETS.HTML CON LA PELI YA SELECTED 
                ticket_nuevo.movie = parseInt(elemento_seleccionado.id);
                marcar_pelicula_principal(id_div, id_elemento);
-               //edad
-               console.log(ticket_nuevo.movie);
                break;
           case 'movies_tickets':
                ticket_nuevo.movie = parseInt(elemento_seleccionado.id);
                marcar_pelicula(id_div, id_elemento);
-               //edad
-               console.log(ticket_nuevo.movie);
                break;
           case 'theaters':
                ticket_nuevo.theater = parseInt(elemento_seleccionado.id);
@@ -371,7 +334,6 @@ function elegir_elemento (id_div, elemento_seleccionado, id_elemento) {
           case 'promociones':
                ticket_nuevo.promocion = parseInt(elemento_seleccionado.id);
                marcar_elemento(id_div, id_elemento);
-               // //sala_elegida
                descuento = promociones.find(promocion => promocion.codigo == ticket_nuevo.promocion).descuento;
                break;
           case 'formas_de_pago':
@@ -465,7 +427,6 @@ function marcar_pelicula (contenedor, id_elemento) {
           $(`#${contenedor} .option`).removeClass('selected');
           $(`#${contenedor} .option`).fadeOut("slow");
           $(`#${contenedor} #${id_elemento}`).toggleClass('col-12 col-sm-12 col-md-6 offset-md-0 col-lg-3 offset-lg-0 col-xl-3 offset-xl-0 col-xxl-3 offset-xxl-0');
-          // $(`#${contenedor} #${id_elemento}`).toggleClass('btn col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0');
           $(`#${contenedor} #${id_elemento}`).toggleClass('selected');
           $(`#${contenedor} .selected`).fadeIn("slow");
 
@@ -488,12 +449,6 @@ function marcar_pelicula_principal (contenedor, id_elemento) {
           $(`#${contenedor} #${id_elemento}`).toggleClass('col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-4');
           $(`#${contenedor} #${id_elemento}`).toggleClass('selected');
           $(`#${contenedor} .selected`).fadeIn("slow");
-
-          // iniciar('principal');
-          // dibujar botón para ir a 'entradas'
-          // if (contenedor == 'movies_tickets') {
-          //      dibujar_cine('theaters', 'theater', false, ticket_nuevo.movie);
-          // }
      }
 }
 function habilitar_opciones (habilitar) {
@@ -521,7 +476,6 @@ function hacer_checkout (modificar) {
           $('#section_importe').slideUp(2000);
           $('#resumen_compra').slideUp(2000);
           $('#section_comprador').slideUp(2000);
-          // $('#btn_checkout').css('display', 'none');
           vaciar_contenedor('resumen_compra');
      } else {
           mostrar_resumen_compra();
@@ -534,8 +488,6 @@ function mostrar_resumen_compra () {
      ticket_nuevo.importe_cuota = importe_cuota = calcular_cuota(importe, ticket_nuevo.cantidad_cuotas);
      // generar ticket
      ticket_nuevo.mostrar_importes();     
-     // // guardar ticket
-     // tickets.push(ticket_nuevo);
 }
 function validar_formulario () {
      const arroba = $('#comprador_email').val().includes('@');
@@ -633,54 +585,89 @@ function validar_formulario () {
      }
 
      let email_existe = buscar_email(`lista_local_comprador_${$('#comprador_email').val()}`, $('#comprador_email').val());
-
+     // SI NO EXISTE EL MAIL, ES UN COMPRADOR NUEVO
      if (email_existe == false) {
           comprador = new Comprador($('#comprador_email').val(), $('#comprador_nombre').val(), $('#comprador_apellido').val(), $('#comprador_dni').val(), $('#tarjeta_titular').val(), $('#tarjeta_nro').val(), $('#tarjeta_anio').val(), $('#tarjeta_mes').val(), $('#tarjeta_cvc').val());
 
           guardar_localStorage_objeto(comprador, 'comprador', comprador.email);
+          // NO PERMITO QUE CAMBIE SUS DATOS PERSONALES
+          $('#comprador_nombre').prop('disabled', true);
+          $('#comprador_apellido').prop('disabled', true);
+          $('#comprador_dni').prop('disabled', true);
+          $('#comprador_email').prop('disabled', true);
+          // $('#comprador_email').prop('disabled', false);
+     } else {
+          // SI ES UN COMPRADOR NUEVO, VUELVO A HABILITAR LOS INPUTS
+          $('#comprador_nombre').prop('disabled', false);
+          $('#comprador_apellido').prop('disabled', false);
+          $('#comprador_dni').prop('disabled', false);
+          $('#comprador_email').prop('disabled', false);
+          $('#comprador_email').prop('disabled', false);
      }
 
      return true;
 }
 function vaciar_formulario () {
-     document.getElementById("form_comprador").reset() ;
-     // $('#form_comprador').reset();
+     document.getElementById("form_comprador").reset();
 
-     // $('#comprador_nombre').val() = '';
-     // $('#comprador_apellido').val() = '';
-     // $('#comprador_dni').val() = '';
+     // SI ES UN COMPRADOR NUEVO, VUELVO A HABILITAR LOS INPUTS
+     $('#comprador_nombre').prop('disabled', false);
+     $('#comprador_apellido').prop('disabled', false);
+     $('#comprador_dni').prop('disabled', false);
+     $('#comprador_email').prop('disabled', false);
+     $('#comprador_email').prop('disabled', false);
+}
+function cancelar_carrito () {
+     guardar_tickets();
+     // DIBUJO EL CARRITO CON LOS TICKETS
+     dibujar_carrito_tickets();
+     // OCULTO BOTONES SEGUIR Y ENVIAR
+     $('#btn_seguir').css('display', 'none');
+     $('#btn_enviar').css('display', 'none');
+     // MUESTRO BOTONES VOLVER Y CANCELAR
+     $('#btn_volver').css('display', 'block');
+     $('#btn_cancelar').css('display', 'block');
 
-     // $('#tarjeta_titular').val() = '';
-     // $('#tarjeta_nro').val() = '';
-     // $('#tarjeta_mes').val() = '';
-     // $('#tarjeta_anio').val() = '';
-     // $('#tarjeta_cvc').val() = '';
-
-     // $('#comprador_email').val() = '';
-     // !$("#comprador_mayor").is(":checked");
+}
+function cargar_carrito () {
+     guardar_tickets();
+     guardar_tickets_comprador();
+     // DIBUJO EL CARRITO CON EL COMPRADOR Y LOS TICKETS
+     dibujar_carrito_comprador(comprador);
+     dibujar_carrito_tickets();
+     // MUESTRO BOTONES SEGUIR, ENVIAR Y CANCELAR
+     $('#btn_seguir').css('display', 'block');
+     $('#btn_enviar').css('display', 'block');
+     // OCULTO BOTÓN VOLVER
+     $('#btn_volver').css('display', 'none');
+     $('#btn_cancelar').css('display', 'block');
 }
 function guardar_tickets () {
-     tickets.push(ticket_nuevo);
+     if (!tickets.find(i => i.codigo == ticket_nuevo.codigo)) {
+          tickets.push(ticket_nuevo);
+     }
      // guardo el array de tickets en el localStorage
      guardar_localStorage_array(tickets, 'ticket');
-     // recupero el array de tickets para guardarlo en el comprador
-     lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
+}
+function guardar_tickets_comprador () {
      // recupero el comprador del localStorage para guardar el array de tickets
      lista_local_comprador = JSON.parse(localStorage.getItem(`lista_local_comprador_${comprador.email}`));
      lista_local_comprador.tickets = lista_local_ticket;
      // vuelvo a guardar el comprador en el localStorage
      let lista_local_comprador_string = JSON.stringify(lista_local_comprador);
      localStorage.setItem(`lista_local_comprador_${comprador.email}`, lista_local_comprador_string);
-     // DIBUJO EL CARRITO DE TICKETS
-     dibujar_carrito(comprador, lista_local_ticket);
 }
-function dibujar_carrito (comprador, lista_local_ticket) {
+function dibujar_carrito_comprador (comprador) {
      vaciar_contenedor('carrito_comprador');
-     vaciar_contenedor('movies_carrito');
      $('#carrito_comprador').append(`
      <h4 id="carrito_comprador_nombre">${comprador.nombre} ${comprador.apellido}</h4>
      <h5 id="carrito_comprador_email">Tus tickets se enviarán a ${comprador.email}</h5>`
      );
+}
+function dibujar_carrito_tickets () {
+     // recupero el array de tickets para guardarlo en el comprador
+     lista_local_ticket = JSON.parse(localStorage.getItem('lista_local_ticket'));
+     vaciar_contenedor('movies_carrito');
 
      for (const item of lista_local_ticket) {
           get_pelicula(item.movie, 'movies_carrito', item);
@@ -692,10 +679,8 @@ function informar_edad () {
 }
 // CALCULOS
 function calcular_importe (valor_entrada, entradas, descuento) {
-     // console.log(valor_entrada, entradas, descuento);
      return ((valor_entrada * entradas) * descuento);
 }
 function calcular_cuota (importe, cuotas) {
-     // console.log(importe, cuotas)
      return (importe / cuotas);
 }

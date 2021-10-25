@@ -182,20 +182,25 @@
                               </div>
                          </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                         <button class="btn btn-primary comprador__btn boton" id="btn_comprador" type="button">Confirmá tus datos</button>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                         <button class="btn btn-success comprador__btn boton" id="btn_comprador" type="button">Confirmá tus datos</button>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                         <button class="btn btn-danger comprador__btn boton" id="btn_comprador_cancelar" type="button">Cancelá tus tickets</button>
                     </div>
                </form>
           </section>
           <section class="row carrito" id="section_carrito" style="display:none">
                <!-- FINALIZAR COMPRA Y ENVIAR MAIL -->
-               <div class="btn col-12 my-2 py-2 bg-info carrito__mensaje" id="carrito">
-                    <h4>MUCHAS GRACIAS POR VISITAR NUESTROS CINES</h4>
+               <div class="btn col-12 my-2 py-2 bg-info carrito__encabezado" id="carrito">
+                    <h4 id="carrito_mensaje">MUCHAS GRACIAS POR VISITAR NUESTROS CINES</h4>
                     <div class="col-12 my-2 py-2 carrito__comprador" id="carrito_comprador">
                     </div>
                     <section class="row movies__carrito" id="movies_carrito"></section>
-                    <div class="btn col-8 mt-2 py-2 bg-light seguir_btn" id="btn_seguir">SEGUIR COMPRANDO</div>
-                    <div class="btn col-8 mt-2 py-2 bg-dark titles titles__enviar enviar_btn" id="btn_enviar">ENVIAR TICKETS</div>
+                    <div class="btn col-8 mt-2 py-2 bg-light seguir_btn" id="btn_seguir" style="display:none">SEGUIR COMPRANDO</div>
+                    <div class="btn col-8 mt-2 py-2 bg-success titles titles__enviar enviar_btn" id="btn_enviar" style="display:none">ENVIAR TICKETS</div>
+                    <div class="btn col-8 mt-2 py-2 bg-light volver_btn" id="btn_volver" style="display:none">VOLVER A LA COMPRA</div>
+                    <div class="btn col-8 mt-2 py-2 bg-danger titles titles__cancelar cancelar_btn" id="btn_cancelar" style="display:none">CANCELAR TICKETS</div>
                </div>
           </section>
      </main>

@@ -36,20 +36,6 @@ function dibujar_cine(id_div, clase, img, id_movie) {
                body.appendChild(tit);
                // detalle
                let sub = document.createElement("h5");
-               // switch (id_div) {
-               //      // case 'movies':
-               //      //      sub.textContent = elemento.genero;
-               //      //      sub.classList.add('card-subtitle');
-               //      //      sub.classList.add(`${clase}__subtitle`);
-               //      //      body.appendChild(sub);
-               //      //      break;
-               //      case 'theaters':
-               //           sub.textContent = elemento.adress;
-               //           sub.classList.add('card-subtitle');
-               //           sub.classList.add(`${clase}__subtitle`);
-               //           body.appendChild(sub);
-               //           break;
-               // }
                sub.textContent = elemento.adress;
                sub.classList.add('card-subtitle');
                sub.classList.add(`${clase}__subtitle`);

@@ -17,7 +17,7 @@
      color: $color-background;
 }
 .carrito {
-     &__mensaje {
+     &__encabezado {
           text-align: center;
           font-weight: normal;
           color: $color-link;
@@ -41,6 +41,14 @@
      .enviar__btn {
           text-align: center;
           font-weight: normal;
-          // color: white;
+     }
+     .volver__btn {
+          text-align: center;
+          font-weight: normal;
+          color: $color-link;
+     }
+     .cancelar__btn {
+          text-align: center;
+          font-weight: normal;
      }
 }
