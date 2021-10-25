@@ -118,6 +118,14 @@ li a {
   color: #1a1a1a;
   background-color: #9ebdfa; }
 
+.menu {
+  padding: 3vw;
+  justify-content: center;
+  align-items: center;
+  font-style: oblique;
+  font-weight: bold;
+  border: solid #2662d9; }
+
 .cartelera {
   justify-content: space-around; }
 

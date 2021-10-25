@@ -12,80 +12,169 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
      <!-- css propio -->
      <link rel="stylesheet" href="/css/styles.css">
-     <title>INICIO</title>
+     <title>ENTRADAS</title>
 </head>
 <body>
      <!-- MENU -->
-     <!-- <header class="header">
-          <ul>
-               <li><a class="link_activo" href="#">INICIO</a></li>
-               <li><a href="/pages/movies.html">PELICULAS</a></li>
-               <li><a href="/pages/theaters.html">CINES</a></li>
-               <li><a href="/pages/tickets.html">ENTRADAS</a></li>
-          </ul>
-     </header> -->
      <header>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-               <div class="container-fluid">
-                    <a class="navbar-brand" href="#">cineXcusas</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                         <div class="navbar-nav">
-                         <!-- <a class="nav-link" href="index.html">CineXcusas</a> -->
-                         <!-- <a class="nav-link" href="/pages/movies.html">PELICULAS</a> -->
-                         <!-- <a class="nav-link" href="/pages/theaters.html">CINES</a> -->
-                         <a class="nav-link" href="/pages/tickets.html">ENTRADAS</a>
-                    </div>
-               </div>
-          </nav>
+          <div class="navbar navbar-expand-lg navbar-light bg-light btn menu">
+               <h3><a class="menu__logo" href="../index.html">cineXcusas</a></h3>
+          </div>
      </header>
      <main class="container">
-          <!-- LISTADO DE PELICULAS -->
-          <!-- INFO -->
-          <!-- TRAILER -->
-          <section id="section_cartelera_principal" class="row cartelera">
-               <div class="row options options__movie" id="movies_principal">
-                    <!-- <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 col-xxl-4 offset-xxl-0 my-2 py-3">
-                         <div class="card movie">
-                              <img class="card-img-top movie__img" src="/images/posters/silence_of_the_lambs.jpg" alt="silence_of_the_lambs">
-                              <div class="card-body movie__body">
-                                   <h3 class="card-title movie__title">Silence of the lambs</h3>
-                                   <h4 class="card-subtitle movie__subtitle">thriller</h4>
-                                   <a href="#" class="btn btn-danger movie__btn">Quiero!</a>
+          <!-- OPCIONES DE COMPRA -->
+          <section class="row cartelera" id="section_cartelera">
+               <div class="row options options__movie" id="movies_tickets">
+               </div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__theaters" style="display:none"><h4>CINES</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__theater" id="theaters">
+               </div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__dias" style="display:none"><h4>DIAS</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__dia" id="dias">
+               </div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__horarios" style="display:none"><h4>HORARIOS</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__horario" id="horarios">
+               </div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__entradas" style="display:none"><h4>ENTRADAS ($100)</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__entrada" id="entradas">
+               </div>
+          </section>
+          <section class="row pago" id="section_pago">
+               <!-- OPCIONES DE PAGO -->
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__promociones" style="display:none"><h4>PROMOCIONES</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__promocion" id="promociones">
+               </div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__formas_de_pago" style="display:none"><h4>FORMAS DE PAGO</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__forma_de_pago" id="formas_de_pago">
+                    <!-- <div class="option__pay"></div> -->
+               </div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 bg-dark titles titles__cuotas" style="display:none"><h4>CUOTAS</h4></div>
+               <div class="btn col-10 col-md-8 mt-2 py-2 options options__cuota" id="cuotas" style="display:none">
+               </div>
+          </section>
+          <section class="row checkout" id="section_checkout">
+               <!-- CONFIRMAR COMPRA -->
+               <div class="btn col-10 col-md-8 my-2 py-2 bg-warning checkout checkout__compra" id="btn_checkout" style="display:none">
+                    <h4>CONFIRMÁS TU COMPRA?</h4>
+               </div>
+          </section>
+          <section class="row importe" id="section_importe" style="display:none">
+               <!-- RESUMEN DE COMPRA -->
+               <div class="btn col-10 my-2 py-2 bg-success importe" id="resumen_compra">
+               </div>
+          </section>
+          <section class="resumen_comprador" id="section_comprador" style="display:none">
+               <form class="row g-3 comprador" id="form_comprador">
+                    <div class="col-12 col-md-6 col-lg-6 comprador__nombre">
+                         <label for="comprador_nombre" class="form-label">Nombre</label>
+                         <input type="text" class="form-control" id="comprador_nombre" value="" placeholder="Nombre">
+                         <div class="invalid-feedback invalido" id="invalido_comprador_nombre" style="display: none;">
+                              Ingresá tu Nombre
+                         </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 comprador__apellido">
+                         <label for="comprador_apellido" class="form-label">Apellido</label>
+                         <input type="text" class="form-control" id="comprador_apellido" value="" placeholder="Apellido">
+                         <div class="invalid-feedback invalido" id="invalido_comprador_apellido" style="display: none;">
+                              Ingresá tu Apellido
+                         </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-2 col-lg-2 comprador__dni">
+                         <label for="comprador_dni" class="form-label">Nro DNI</label>
+                         <input type="number" class="form-control" id="comprador_dni" placeholder="12345678">
+                         <div class="invalid-feedback invalido" id="invalido_comprador_dni" style="display: none;">
+                              Ingresá 8 números para tu DNI
+                         </div>
+                    </div>
+                    <section class="row g-3 comprador__tarjeta tarjeta" id="section_tarjeta" style="display:none">
+                         <div class="col-12 col-md-6 col-lg-6 offset-lg-1 tarjeta__titular">
+                              <label for="tarjeta_titular" class="form-label">Titular Tarjeta</label>
+                              <input type="text" class="form-control" id="tarjeta_titular" value="" placeholder="Titular Tarjeta">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_titular" style="display: none;">
+                                   Ingresá Nombre y Apellido del Titular de la tarjeta
                               </div>
                          </div>
-                    </div> -->
-               </div>
-               <div class="btn col-12 my-3 py-3 bg-info" id="btn_comprar_principal"><a href="/pages/tickets.html">COMPRAR ENTRADAS</a></div>
+                         <div class="col-6 col-sm-6 col-md-3 col-lg-3 tarjeta__nro">
+                              <label for="tarjeta_nro" class="form-label">Nro Tarjeta</label>
+                              <input type="number" class="form-control" id="tarjeta_nro" placeholder="1111 2222 3333 4444">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_nro" style="display: none;">
+                                   Ingresá 16 números (TC) o 22 números (TD)
+                              </div>
+                         </div>
+                         <div class="col-3 col-sm-3 col-md-2 col-lg-1 offset-lg-1 tarjeta__mes">
+                              <label for="tarjeta_mes" class="form-label">MES</label>
+                              <input type="number" class="form-control" id="tarjeta_mes" placeholder="MM">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_mes" style="display: none;">
+                                   Ingresá 2 números válidos para el Mes
+                              </div>
+                         </div>
+                         <div class="col-3 col-sm-3 col-md-2 col-lg-1 tarjeta__anio">
+                              <label for="tarjeta_anio" class="form-label">AÑO</label>
+                              <input type="number" class="form-control" id="tarjeta_anio" placeholder="AA">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_anio" style="display: none;">
+                                   Ingresá 2 números válidos para el Año
+                              </div>
+                         </div>
+                         <div class="col-3 col-sm-3 col-md-2 col-lg-1 tarjeta__cvc">
+                              <label for="tarjeta_cvc" class="form-label">CVC</label>
+                              <input type="password" class="form-control" id="tarjeta_cvc" placeholder="***">
+                              <div class="invalid-feedback invalido" id="invalido_tarjeta_cvc" style="display: none;">
+                                   Ingresá 3 números
+                              </div>
+                         </div>
+                    </section>
+                    <div class="col-12 col-md-12 col-lg-10 comprador__email">
+                         <label for="comprador_email" class="form-label">Correo Electrónico</label>
+                         <input type="email" class="form-control" id="comprador_email" aria-describedby="emailHelp" placeholder="tu_correo_electronico@email.com.ar">
+                         <div class="invalid-feedback invalido" id="invalido_comprador_email" style="display: none;">
+                              Ingresá un Email válido para recibir tus Tickets
+                         </div>
+                    </div>
+                    <div class="col-12">
+                         <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="comprador_mayor" aria-describedby="invalido_comprador_mayor">
+                              <label class="form-check-label" for="comprador_mayor">
+                              Soy mayor de edad
+                              </label>
+                              <div class="invalid-feedback invalido" id="invalido_comprador_mayor" style="display: none;">
+                                   Confirmá que sos mayor de 18 años
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                         <button class="btn btn-success comprador__btn boton" id="btn_comprador" type="button">Confirmá tus datos</button>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                         <button class="btn btn-danger comprador__btn boton" id="btn_comprador_cancelar" type="button">Cancelá tus tickets</button>
+                    </div>
+               </form>
           </section>
-          <!-- <section class="cartelera">
-               <article class="pelicula">
-                    <img src="/images/posters/silence_of_the_lambs.jpg" width="100%" alt="">
-               </article>
-               <article class="pelicula">
-                    <img src="/images/posters/die_hard.jpg" width="100%" alt="">
-               </article>
-               <article class="pelicula">
-                    <img src="/images/posters/toy_story.jpg" width="100%" alt="">
-               </article>
-               <article class="pelicula">
-                    <img src="/images/posters/the_sixth_sense.jpg" width="100%" alt="">
-               </article>
-          </section> -->
+          <section class="row carrito" id="section_carrito" style="display:none">
+               <!-- FINALIZAR COMPRA Y ENVIAR MAIL -->
+               <div class="btn col-12 my-2 py-2 bg-info carrito__encabezado" id="carrito">
+                    <h4 id="carrito_mensaje">MUCHAS GRACIAS POR VISITAR NUESTROS CINES</h4>
+                    <div class="col-12 my-2 py-2 carrito__comprador" id="carrito_comprador">
+                    </div>
+                    <section class="row movies__carrito" id="movies_carrito"></section>
+                    <div class="btn col-12 mt-2 py-2 bg-light seguir_btn" id="btn_seguir" style="display:none">SEGUIR COMPRANDO</div>
+                    <div class="btn col-12 mt-2 py-2 bg-success titles titles__enviar enviar_btn" id="btn_enviar" style="display:none">ENVIAR TICKETS</div>
+                    <div class="btn col-12 mt-2 py-2 bg-light volver_btn" id="btn_volver" style="display:none">VOLVER A LA COMPRA</div>
+                    <div class="btn col-12 mt-2 py-2 bg-danger titles titles__cancelar cancelar_btn" id="btn_cancelar" style="display:none">CANCELAR TICKETS</div>
+               </div>
+          </section>
      </main>
      <footer class="footer">
-          <!-- MENU? -->
+          <!-- FORM CONTACTO - NEWSLETTER -->
      </footer>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
      <script src="/scripts/clases.js"></script>
      <script src="/scripts/variables.js"></script>
+     <script src="/scripts/validaciones.js"></script>
      <script src="/scripts/metodos_clases/metodos_funciones.js"></script>
      <script src="/scripts/metodos_clases/metodos_movies.js"></script>
      <script src="/scripts/metodos_clases/metodos_theaters.js"></script>
      <script src="/scripts/ticketera.js"></script>
-     <script src="/scripts/inicio.js"></script>
+     <script src="/scripts/pages/tickets.js"></script>
 </body>
 </html>

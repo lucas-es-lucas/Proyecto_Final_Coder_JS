@@ -1,3 +1,11 @@
+.menu {
+     padding: 3vw;
+     justify-content: center;
+     align-items: center;
+     font-style: oblique;
+     font-weight: bold;
+     border: solid $color-text;
+}
 .cartelera {
      justify-content: space-around;
 }
